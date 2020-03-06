@@ -71,7 +71,7 @@ CREATE TYPE PersonName (
    input = pname_in,
    output = pname_out,
    receive = pname_recv,
-   send = pname_send,
+   send = pname_send
 );
 
 -----------------------------
@@ -92,9 +92,7 @@ CREATE FUNCTION pname_less(PersonName, PersonName) RETURNS bool
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 CREATE FUNCTION pname_lessequal(PersonName, PersonName) RETURNS bool
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_unequal(PersonName, PersonName) RETURNS bool
-   AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_special(PersonName, PersonName) RETURNS bool
+CREATE FUNCTION pname_notequal(PersonName, PersonName) RETURNS bool
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
 CREATE OPERATOR = (
@@ -123,12 +121,12 @@ CREATE OPERATOR <= (
    commutator = >= , negator = > ,
    restrict = scalarlesel, join = scalarlejoinsel
 );
--- waiting for fixing
-CREATE OPERATOR ~! (
-   leftarg = PersonName, rightarg = PersonName, procedure = pname_notmatched,
-   commutator = ~! , negator = =~ ,
-   restrict = scalarlesel, join = scalarlejoinsel
+CREATE OPERATOR <> (
+   leftarg = PersonName, rightarg = PersonName, procedure = pname_notequal,
+   commutator = <> , negator = = ,
+   restrict = eqsel, join = eqjoinsel
 );
+
 
 -- create the support function too
 CREATE FUNCTION pname_compare(PersonName, PersonName) RETURNS int4
@@ -139,4 +137,3 @@ CREATE OPERATOR CLASS pname_ops
     DEFAULT FOR TYPE PersonName USING hash AS
         OPERATOR        1       = ,
         FUNCTION        1       pname_hash(PersonName);
-

@@ -10,40 +10,66 @@
 ******************************************************************************/
 
 #include "postgres.h"
-
+#include <regex.h>
 #include "fmgr.h"
 #include "libpq/pqformat.h"		/* needed for send/recv functions */
-
+#include <string.h>
 PG_MODULE_MAGIC;
 
-typedef struct Complex
+typedef struct PersonName 
 {
-	double		x;
-	double		y;
-}			Complex;
+  char *family;
+  char *given;
+  int length;
+} PersonName;
 
+/*---- Regex function----*/
+const char * pattern = "^(([A-Z])((['|-][A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])((['|-][A-Z])?)([a-z])+(([ |-])([A-Z])((['|-][A-Z])?)([a-z])+)*)$";
+
+bool matchRegex(const char* pattern,char* nameString)
+{
+    bool result = false;
+    regex_t regex;
+    int regexInit = regcomp(&regex,pattern,REG_EXTENDED);
+    if(regexInit)
+    {
+        printf("Compile Regex failed\n");
+    }
+    else
+    {
+        int reti = regexec(&regex,nameString,0,NULL,0);
+        if(REG_NOERROR == reti)
+            result = true;
+    }
+    regfree(&regex);
+    return result;
+}
 
 /*****************************************************************************
  * Input/Output functions
  *****************************************************************************/
 
-PG_FUNCTION_INFO_V1(complex_in);
+PG_FUNCTION_INFO_V1(pname_in);
 
 Datum
-complex_in(PG_FUNCTION_ARGS)
+pname_in(PG_FUNCTION_ARGS)
 {
 	char	   *str = PG_GETARG_CSTRING(0);
-	double		x,
-				y;
-	Complex    *result;
-
-	if (sscanf(str, " ( %lf , %lf )", &x, &y) != 2)
+	int length = strlen(str)+1; // include the length of "\0"
+	if(!matchRegex(pattern,str))
+	{
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
 				 errmsg("invalid input syntax for type %s: \"%s\"",
-						"complex", str)));
+						"PersonName", str)));
+	}
+    
+	// store the total size of the datum (including the length field itself)
+	result = (PersonName *) palloc(VARHDRSZ+length); 
 
-	result = (Complex *) palloc(sizeof(Complex));
+
+	SET_VARSIZE(result, VARHDRSZ+length);
+
 	result->x = x;
 	result->y = y;
 	PG_RETURN_POINTER(result);
