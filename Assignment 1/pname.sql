@@ -125,8 +125,8 @@ CREATE OPERATOR <= (
 );
 -- waiting for fixing
 CREATE OPERATOR ~! (
-   leftarg = PersonName, rightarg = PersonName, procedure = pname_lessequal,
-   commutator = >= , negator = > ,
+   leftarg = PersonName, rightarg = PersonName, procedure = pname_notmatched,
+   commutator = ~! , negator = =~ ,
    restrict = scalarlesel, join = scalarlejoinsel
 );
 
