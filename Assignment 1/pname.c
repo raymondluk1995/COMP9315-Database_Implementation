@@ -10,15 +10,22 @@
 ******************************************************************************/
 
 #include "postgres.h"
+<<<<<<< HEAD
 #include "fmgr.h"
 #include "libpq/pqformat.h" /* needed for send/recv functions */
 #include "access/hash.h"
 
 #include <regex.h>
+=======
+#include <regex.h>
+#include "fmgr.h"
+#include "libpq/pqformat.h"		/* needed for send/recv functions */
+>>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
 #include <string.h>
 PG_MODULE_MAGIC;
 #define COMMASTRING ","
 
+<<<<<<< HEAD
 typedef struct PersonName
 {
 	char *pname;
@@ -51,6 +58,35 @@ bool matchRegex(const char *pattern, char *nameString)
 	}
 	regfree(&regex);
 	return result;
+=======
+typedef struct PersonName 
+{
+  char *family;
+  char *given;
+  int length;
+} PersonName;
+
+/*---- Regex function----*/
+const char * pattern = "^(([A-Z])((['|-][A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])((['|-][A-Z])?)([a-z])+(([ |-])([A-Z])((['|-][A-Z])?)([a-z])+)*)$";
+
+bool matchRegex(const char* pattern,char* nameString)
+{
+    bool result = false;
+    regex_t regex;
+    int regexInit = regcomp(&regex,pattern,REG_EXTENDED);
+    if(regexInit)
+    {
+        printf("Compile Regex failed\n");
+    }
+    else
+    {
+        int reti = regexec(&regex,nameString,0,NULL,0);
+        if(REG_NOERROR == reti)
+            result = true;
+    }
+    regfree(&regex);
+    return result;
+>>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
 }
 
 /*****************************************************************************
@@ -60,6 +96,7 @@ bool matchRegex(const char *pattern, char *nameString)
 PG_FUNCTION_INFO_V1(pname_in);
 
 Datum
+<<<<<<< HEAD
 	pname_in(PG_FUNCTION_ARGS)
 {
 	char *str = PG_GETARG_CSTRING(0);
@@ -68,12 +105,20 @@ Datum
 	int length = strlen(str) + 1;
 
 	if (!matchRegex(pattern, str) && strlen(str) <= 2)
+=======
+pname_in(PG_FUNCTION_ARGS)
+{
+	char	   *str = PG_GETARG_CSTRING(0);
+	int length = strlen(str)+1; // include the length of "\0"
+	if(!matchRegex(pattern,str))
+>>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
 	{
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
 				 errmsg("invalid input syntax for type %s: \"%s\"",
 						"PersonName", str)));
 	}
+<<<<<<< HEAD
 
 	// store the total size of the datum (including the length field itself)
 	result = (PersonName *)palloc(VARHDRSZ + length);
@@ -82,6 +127,17 @@ Datum
 
 	// assign value to pname pointer
 	snprintf(result->pname, length, "%s", str);
+=======
+    
+	// store the total size of the datum (including the length field itself)
+	result = (PersonName *) palloc(VARHDRSZ+length); 
+
+
+	SET_VARSIZE(result, VARHDRSZ+length);
+
+	result->x = x;
+	result->y = y;
+>>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
 	PG_RETURN_POINTER(result);
 }
 

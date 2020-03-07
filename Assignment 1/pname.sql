@@ -122,7 +122,11 @@ CREATE OPERATOR <= (
    restrict = scalarlesel, join = scalarlejoinsel
 );
 CREATE OPERATOR <> (
+<<<<<<< HEAD
    leftarg = PersonName, rightarg = PersonName, procedure = pname_unequal,
+=======
+   leftarg = PersonName, rightarg = PersonName, procedure = pname_notequal,
+>>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
    commutator = <> , negator = = ,
    restrict = eqsel, join = eqjoinsel
 );
