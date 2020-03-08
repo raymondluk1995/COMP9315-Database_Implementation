@@ -6,7 +6,6 @@
 #define FAMILY 0
 #define GIVEN 1
 
-
 bool checkComponentVaild(char *component, unsigned int length, bool isgiven) {
     int word_len = 0;
     int i = 0;
@@ -18,6 +17,8 @@ bool checkComponentVaild(char *component, unsigned int length, bool isgiven) {
             if (!isupper(component[1]))
                 return false;
         }
+    }else if(!isupper(component[0])){
+        return false;
     }
     for (i = 0; i < length; i++) {
         if (component[i] == ' ') {
@@ -53,18 +54,18 @@ bool pname_valid(char *str) {
 }
 
 int main(int argc, char const *argv[]) {
-    char a[] = "Smith,John";
+    char a[] = "Ab, John";
     printf("%d\n", pname_valid(a));
-    char b[] = "O'Brien,Patrick Sean";
+    char b[] = "smith， John";
     printf("%d\n", pname_valid(b));
-    char c[] = "Jesus,  ";
-    printf("%d\n", pname_valid(c));
-    char d[] = "Smith , Harold";
-    printf("%d\n", pname_valid(d));
-    char e[] = "Smith , Harold";
-    printf("%d\n", pname_valid(e));
-    char f[] = "A-'-'-'-, Peter";
-    printf("%d\n", pname_valid(f));
+//    char c[] = "Jesus,  ";
+//    printf("%d\n", pname_valid(c));
+//    char d[] = "Smith , Harold";
+//    printf("%d\n", pname_valid(d));
+//    char e[] = "Smith , Harold";
+//    printf("%d\n", pname_valid(e));
+//    char f[] = "A-'-'-'-, Peter";
+//    printf("%d\n", pname_valid(f));
 //    printf("%d\n", pname_valid("Smith,James"));
 //    printf("%d\n", pname_valid("O'Brien,Patrick Sean"));
 //    printf("%d\n", pname_valid("Mahagedara Patabendige,Minosha Mitsuaki Senakasir"));
