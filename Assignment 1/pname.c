@@ -26,7 +26,7 @@ typedef struct PersonName
 } PersonName;
 
 /*---- Regex function----*/
-const char * pattern = "^(([A-Z]([A-Z]*[a-z]*[']*[-]*)*)([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*)*))*),([ ]?)(([A-Z]([A-Z]*[a-z]*[']*[-]*)*)([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*)*))*)$";
+const char * pattern = "^(([A-Z]([A-Z]*[a-z]*[']*[-]*){1,})([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*){1,}))*),([ ]?)(([A-Z]([A-Z]*[a-z]*[']*[-]*){1,})([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*){1,}))*)$";
 
 bool matchRegex(const char *pattern, char *nameString)
 {
