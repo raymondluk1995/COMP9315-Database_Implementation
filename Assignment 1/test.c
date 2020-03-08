@@ -54,19 +54,27 @@ bool checkComponentVaild(char *component, unsigned int length, bool isgiven) {
     return true;
 }
 
-// Left trim the spaces in a string
-char *ltrim(char *str) {
-    if (str == NULL || *str == '\0')
-        return str;
-
-    int len = 0;
-    char *c = str;
-    while (*c != '\0' && isspace(*c)) {
-        ++c;
-        ++len;
+char * ltrim(char* str)
+{
+	while(isspace(*str))
+    {
+        str++;
     }
-    memmove(str, c, strlen(str) - len + 1);
-    return str;
+    return (str);
+}
+
+// remove commas and spaces in a string
+void *removeSpaceAndComma(char* str)
+{
+    int count =0;
+    for (int i=0;i<strlen(str);i++)
+    {
+        if(str[i]!=' '&& str[i]!=',')
+        {
+            str[count++]=str[i];
+        }
+    }
+    str[count]='\0';
 }
 
 // Transform the information from name string to PersonName struct
@@ -205,7 +213,10 @@ int main(int argc, char const *argv[]) {
     //  printf("%d\n", pname_compare("Smith,John" , "Smith,John David"));
     //  printf("%d\n", pname_compare("Smith,James" , "Smith,James"));
     //  printf("%d\n", pname_compare("Zimmerman, Trent" , "Smith,John David"));
-    printf("%s", show("Smith,John David"));
+    char * str = "  apple ,  ";
+    removeSpaceAndComma(str);
+    printf("%s\n",str);
+    printf("%s\n", show("Smith,John David"));
     return 0;
 }
 

@@ -1,7 +1,6 @@
 
 
 /*
- * src/tutorial/complex.c
  *
  ******************************************************************************
   This file contains routines that can be bound to a Postgres backend and
@@ -10,36 +9,24 @@
 ******************************************************************************/
 
 #include "postgres.h"
-<<<<<<< HEAD
 #include "fmgr.h"
 #include "libpq/pqformat.h" /* needed for send/recv functions */
-#include "access/hash.h"
+#include "utils/hashutils.h"
 
 #include <regex.h>
-=======
-#include <regex.h>
-#include "fmgr.h"
-#include "libpq/pqformat.h"		/* needed for send/recv functions */
->>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
 #include <string.h>
+#include <ctype.h>
 PG_MODULE_MAGIC;
 #define COMMASTRING ","
 
-<<<<<<< HEAD
 typedef struct PersonName
 {
 	char *pname;
 	int length;
 } PersonName;
 
-
-// comparison of name
-int nameCpm(PersonName *first, PersonName *second);
-// trim the left space of string
-char *ltrim(char *str);
-
 /*---- Regex function----*/
-const char *pattern = "^(([A-Z])((['|-][A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])((['|-][A-Z])?)([a-z])+(([ |-])([A-Z])((['|-][A-Z])?)([a-z])+)*)$";
+const char * pattern = "^(([A-Z]([A-Z]*[a-z]*[']*[-]*)*)([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*)*))*),([ ]?)(([A-Z]([A-Z]*[a-z]*[']*[-]*)*)([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*)*))*)$";
 
 bool matchRegex(const char *pattern, char *nameString)
 {
@@ -58,35 +45,6 @@ bool matchRegex(const char *pattern, char *nameString)
 	}
 	regfree(&regex);
 	return result;
-=======
-typedef struct PersonName 
-{
-  char *family;
-  char *given;
-  int length;
-} PersonName;
-
-/*---- Regex function----*/
-const char * pattern = "^(([A-Z])((['|-][A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])((['|-][A-Z])?)([a-z])+(([ |-])([A-Z])((['|-][A-Z])?)([a-z])+)*)$";
-
-bool matchRegex(const char* pattern,char* nameString)
-{
-    bool result = false;
-    regex_t regex;
-    int regexInit = regcomp(&regex,pattern,REG_EXTENDED);
-    if(regexInit)
-    {
-        printf("Compile Regex failed\n");
-    }
-    else
-    {
-        int reti = regexec(&regex,nameString,0,NULL,0);
-        if(REG_NOERROR == reti)
-            result = true;
-    }
-    regfree(&regex);
-    return result;
->>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
 }
 
 /*****************************************************************************
@@ -96,48 +54,28 @@ bool matchRegex(const char* pattern,char* nameString)
 PG_FUNCTION_INFO_V1(pname_in);
 
 Datum
-<<<<<<< HEAD
 	pname_in(PG_FUNCTION_ARGS)
 {
 	char *str = PG_GETARG_CSTRING(0);
-
-	// define the length of pname, including the length of '' \0
-	int length = strlen(str) + 1;
-
 	if (!matchRegex(pattern, str) && strlen(str) <= 2)
-=======
-pname_in(PG_FUNCTION_ARGS)
-{
-	char	   *str = PG_GETARG_CSTRING(0);
-	int length = strlen(str)+1; // include the length of "\0"
-	if(!matchRegex(pattern,str))
->>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
 	{
 		ereport(ERROR,
 				(errcode(ERRCODE_INVALID_TEXT_REPRESENTATION),
 				 errmsg("invalid input syntax for type %s: \"%s\"",
 						"PersonName", str)));
 	}
-<<<<<<< HEAD
+
+	// define the length of pname, including the length of '\0'
+	int length = strlen(str) + 1;
 
 	// store the total size of the datum (including the length field itself)
-	result = (PersonName *)palloc(VARHDRSZ + length);
-
-	SET_VARSIZE(result, VARHDRSZ + length);
-
+	result = (PersonName *)palloc(VARSIZE(PersonName));
+	result ->pname = (char*)palloc(VARHDRSZ+length*sizeof(char)); // need a padding of VARHDRSZ
+	SET_VARSIZE(result, VARSIZE(PersonName));
+	SET_VARSIZE(result->name, VARSIZE(VARHDRSZ+length*sizeof(char)));
 	// assign value to pname pointer
 	snprintf(result->pname, length, "%s", str);
-=======
-    
-	// store the total size of the datum (including the length field itself)
-	result = (PersonName *) palloc(VARHDRSZ+length); 
-
-
-	SET_VARSIZE(result, VARHDRSZ+length);
-
-	result->x = x;
-	result->y = y;
->>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
+	result->length = length;
 	PG_RETURN_POINTER(result);
 }
 
@@ -166,14 +104,15 @@ Datum
 	StringInfo buf = (StringInfo)PG_GETARG_POINTER(0);
 	PersonName *result;
 
-	char *name = pg_getmsgstring(buf);
-
+	char *name = pq_getmsgstring(buf);
+	int length = strlen(name)+1;
 	result = (PersonName *)palloc(VARHDRSZ + length);
 
 	SET_VARSIZE(result, VARHDRSZ + length);
 
 	// assign value to pname pointer
-	snprintf(result->pname, length, "%s", str);
+	snprintf(result->pname, length, "%s", name);
+	result->length = length;
 	PG_RETURN_POINTER(result);
 }
 
@@ -196,51 +135,52 @@ Datum
  *
  * A practical PersonName datatype would provide much more than this, of course.
  *****************************************************************************/
-
-char *ltrim(char *str)
+char * removeSpace(char*str)
 {
-  if (str == NULL || *str == '\0')
-    return str;
+	int count =0;
+    char * result = malloc(strlen(str)*sizeof(char));
+    for (int i=0;i<strlen(str);i++)
+    {
+        if(str[i]!=' ')
+        {
+            result[count++]=str[i];
+        }
+    }
+    result[count]='\0';
+    return(result);
+}
 
-  int len = 0;
-  char *c = str;
-  while (*c != '\0' && isspace(*c))
-  {
-    ++c;
-    ++len;
-  }
-  memmove(str, c, strlen(str) - len + 1);
-  return str;
+char * ltrim(char* str)
+{
+	while(isspace(*str))
+    {
+        str++;
+    }
+    return (str);
+}
+
+
+
+char *removeSpaceAndComma(char* str)
+{
+    int count =0;
+    char * result = malloc(strlen(str)*sizeof(char));
+    for (int i=0;i<strlen(str);i++)
+    {
+        if(str[i]!=' '&& str[i]!=',')
+        {
+            result[count++]=str[i];
+        }
+    }
+    result[count]='\0';
+    return(result);
 }
 
 int nameCpm(PersonName *first, PersonName *second)
 {
-	char *name1 = first -> name;
-	char *name2 = second -> name;
-
-	// returned int value
-	int ret;
-
-	// extraction of family and given name
-	char *family1;
-	char *given1;
-	family1 = strtok(name1, COMMASTRING);
-	given1 = strtok(NULL, COMMASTRING);
-
-	char *family2;
-	char *given2;
-	family2 = strtok(name2, COMMASTRING);
-	given2 = strtok(NULL, COMMASTRING);
-
-	// trim the left space of given name
-	ltrim(given1);
-	ltrim(given2);
-
-	if ((ret = strcmp(family1, family2)) == 0)
-	{
-		ret = strcmp(given1, given2);
-	}
-	return ret;
+	char *name1 = removeSpaceAndComma(first->pname);
+	char *name2 = removeSpaceAndComma(second->pname);
+	return (strcmp(name1,name2));
 }
 
 PG_FUNCTION_INFO_V1(pname_equal);
@@ -305,7 +245,6 @@ Datum
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	char *result
-
 	int len = strlen(a ->pname) +1;
 
 	// create a new string type to store the whole name
@@ -330,8 +269,8 @@ Datum
 
 	// create a new string type to store the whole name
 	// because a cannot be modified here
-	int len = strlen(a ->pname) +1;
-	char new[len];
+	int length = strlen(a ->pname) +1;
+	char new[length];
 	strcpy(new, a -> pname);
 
 	// extraction of given name
@@ -339,7 +278,7 @@ Datum
 	given = strtok(new, COMMASTRING);
 	given = strtok(NULL, COMMASTRING);
 	// trim the left space
-	ltrim(given);
+	given = ltrim(given);
 
 	result = psprintf("%s", given);
 
@@ -355,9 +294,9 @@ Datum
 
 	// create a new string type to store the whole name
 	// because a cannot be modified here
-	int len = strlen(a ->pname) +1;
-	char new[len];
-	char name[len];
+	int length = strlen(a ->pname) +1;
+	char new[length];
+	char name[length];
 	strcpy(new, a -> pname);
 
 	// extraction of given name
@@ -366,11 +305,11 @@ Datum
 	family = strtok(new, COMMASTRING);
 	given = strtok(NULL, COMMASTRING);
 	// trim the left space
-	ltrim(given);
+	given = ltrim(given);
 
-	strcpy(name, family);
+	strcpy(name, given);
 	strcat(name, " ");
-	strcat(name, given);
+	strcat(name, family);
 
 	result = psprintf("%s", name);
 
@@ -392,14 +331,14 @@ Datum
 	char *given;
 	family = strtok(new, COMMASTRING);
 	given = strtok(NULL, COMMASTRING);
-	ltrim(given);
+	given = ltrim(given);
 
 	char name[len];
 	strcpy(name, family);
 	strcat(name, given);
 
 	int hashCode = 0;
-	hashCode = DatumGetUInt32(hashany((unsigned char *)name, len-1));
+	hashCode = DatumGetUInt32(hash_any((unsigned char *)name, len-1));
 
 	PG_RETURN_INT32(hashCode);
 }

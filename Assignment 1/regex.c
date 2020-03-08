@@ -26,8 +26,10 @@ bool matchRegex(const char* pattern,char* nameString)
 int main(int argc, char* argv[])
 {
     //const char * pattern = "^(([A-Z])((['|-][A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])([a-z])+(([ |-])([A-Z])([a-z])+)*)$";
-    const char * pattern = "^(([A-Z])((['|-][A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])((['|-][A-Z])?)([a-z])+(([ |-])([A-Z])((['|-][A-Z])?)([a-z])+)*)$";
-    char* nameString = "Bronte,Greta-Anna O'Karyanne";
+    //const char * pattern = "^(([A-Z]+)(((['|-]+)[A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])((['|-][A-Z])?)([a-z])+(([ |-])([A-Z])((['|-][A-Z])?)([a-z])+)*)$";
+    // const char * pattern = "^([A-Z]([A-Z|a-z|'|-]+)(([ ])([A-Z]([A-Z|a-z|'|-]+))*)$";
+    const char * pattern = "^(([A-Z]([A-Z]*[a-z]*[']*[-]*)*)([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*)*))*),([ ]?)(([A-Z]([A-Z]*[a-z]*[']*[-]*)*)([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*)*))*)$";
+    char* nameString = "SMith-'-'BGElash, Jone";
     printf("%d\n",matchRegex(pattern,nameString));
     return 0;
 }
