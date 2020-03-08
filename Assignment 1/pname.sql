@@ -42,7 +42,7 @@ CREATE FUNCTION pname_in(cstring)
 -- converts it into the textual representation.
 
 CREATE FUNCTION pname_out(PersonName)
-   RETURNS PersonName
+   RETURNS cstring
    AS '_OBJWD_/pname'
    LANGUAGE C IMMUTABLE STRICT;
 
@@ -82,17 +82,26 @@ CREATE TYPE PersonName (
 -----------------------------
 
 -- first, define the required operators
-CREATE FUNCTION pname_equal(PersonName, PersonName) RETURNS bool
+CREATE FUNCTION pname_equal(PersonName, PersonName) 
+   RETURNS bool
+   AS '_OBJWD_/pname' 
+   LANGUAGE C IMMUTABLE STRICT;
+CREATE FUNCTION pname_greater(PersonName, PersonName) 
+   RETURNS bool
+   AS '_OBJWD_/pname' 
+   LANGUAGE C IMMUTABLE STRICT;
+CREATE FUNCTION pname_greaterequal(PersonName, PersonName) 
+   RETURNS bool
+   AS '_OBJWD_/pname' 
+   LANGUAGE C IMMUTABLE STRICT;
+CREATE FUNCTION pname_less(PersonName, PersonName) 
+   RETURNS bool
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_greater(PersonName, PersonName) RETURNS bool
+CREATE FUNCTION pname_lessequal(PersonName, PersonName) 
+   RETURNS bool
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_greaterequal(PersonName, PersonName) RETURNS bool
-   AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_less(PersonName, PersonName) RETURNS bool
-   AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_lessequal(PersonName, PersonName) RETURNS bool
-   AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_notequal(PersonName, PersonName) RETURNS bool
+CREATE FUNCTION pname_notequal(PersonName, PersonName) 
+   RETURNS bool
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
 CREATE OPERATOR = (
@@ -122,20 +131,13 @@ CREATE OPERATOR <= (
    restrict = scalarlesel, join = scalarlejoinsel
 );
 CREATE OPERATOR <> (
-<<<<<<< HEAD
-   leftarg = PersonName, rightarg = PersonName, procedure = pname_unequal,
-=======
    leftarg = PersonName, rightarg = PersonName, procedure = pname_notequal,
->>>>>>> c8600d7e439f7256cb5b886696f2bbc8c7320e43
    commutator = <> , negator = = ,
-   restrict = eqsel, join = eqjoinsel
+   restrict = neqsel, join = neqjoinsel
 );
 
 
 -- create the support function too
-CREATE FUNCTION pname_compare(PersonName, PersonName) RETURNS int4
-   AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-
 CREATE FUNCTION family(PersonName) RETURNS cstring
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
@@ -145,7 +147,7 @@ CREATE FUNCTION given(PersonName) RETURNS cstring
 CREATE FUNCTION show(PersonName) RETURNS cstring
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
-CREATE FUNCTION given(PersonName) RETURNS cstring
+CREATE FUNCTION pname_hash(PersonName) RETURNS int4
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
 

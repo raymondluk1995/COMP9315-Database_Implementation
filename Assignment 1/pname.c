@@ -138,7 +138,7 @@ Datum
 char * removeSpace(char*str)
 {
 	int count =0;
-    char * result = malloc(strlen(str)*sizeof(char));
+    char * result = palloc(strlen(str)*sizeof(char));
     for (int i=0;i<strlen(str);i++)
     {
         if(str[i]!=' ')
@@ -164,7 +164,7 @@ char * ltrim(char* str)
 char *removeSpaceAndComma(char* str)
 {
     int count =0;
-    char * result = malloc(strlen(str)*sizeof(char));
+    char * result = palloc(strlen(str)*sizeof(char));
     for (int i=0;i<strlen(str);i++)
     {
         if(str[i]!=' '&& str[i]!=',')
@@ -176,7 +176,7 @@ char *removeSpaceAndComma(char* str)
     return(result);
 }
 
-int nameCpm(PersonName *first, PersonName *second)
+int pname_compare(PersonName *first, PersonName *second)
 {
 	char *name1 = removeSpaceAndComma(first->pname);
 	char *name2 = removeSpaceAndComma(second->pname);
@@ -191,7 +191,7 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
 
-	PG_RETURN_BOOL(nameCpm(a, b) == 0);
+	PG_RETURN_BOOL(pname_compare(a, b) == 0);
 }
 
 PG_FUNCTION_INFO_V1(pname_greater);
@@ -202,7 +202,7 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
 
-	PG_RETURN_BOOL(nameCpm(a, b) > 0);
+	PG_RETURN_BOOL(pname_compare(a, b) > 0);
 }
 
 PG_FUNCTION_INFO_V1(pname_greaterequal);
@@ -213,7 +213,7 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
 
-	PG_RETURN_BOOL(nameCpm(a, b) >= 0);
+	PG_RETURN_BOOL(pname_compare(a, b) >= 0);
 }
 
 PG_FUNCTION_INFO_V1(pname_less);
@@ -224,7 +224,7 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
 
-	PG_RETURN_BOOL(nameCpm(a, b) < 0);
+	PG_RETURN_BOOL(pname_compare(a, b) < 0);
 }
 
 PG_FUNCTION_INFO_V1(pname_lessequal);
@@ -235,7 +235,18 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
 
-	PG_RETURN_BOOL(nameCpm(a, b) <= 0);
+	PG_RETURN_BOOL(pname_compare(a, b) <= 0);
+}
+
+PG_FUNCTION_INFO_V1(pname_notequal);
+
+Datum
+	pname_notequal(PG_FUNCTION_ARGS)
+{
+	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
+	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
+
+	PG_RETURN_BOOL(pname_compare(a, b) != 0);
 }
 
 
@@ -337,8 +348,7 @@ Datum
 	strcpy(name, family);
 	strcat(name, given);
 
-	int hashCode = 0;
-	hashCode = DatumGetUInt32(hash_any((unsigned char *)name, len-1));
+	int hashCode = DatumGetUInt32(hash_any((unsigned char *)name,strlen(name)));
 
 	PG_RETURN_INT32(hashCode);
 }
