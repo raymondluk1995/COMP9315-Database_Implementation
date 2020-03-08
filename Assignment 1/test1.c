@@ -63,8 +63,30 @@ char * ltrim(char* str)
     return (str);
 }
 
+char * family_name(char*name){
+    char *temp = strdup(name);
+    char*token;
+    token = strtok(temp,",");
+    token = strtok(NULL,",");
+    return (token);
+}
+
+
+char * full_name(char*name){
+    int length = strlen(name) +1;
+	char * temp = strdup(name);
+	char *result = (char*)malloc(sizeof(char)*length);
+    memset(result,'\0',length);
+	char *family = strtok(temp, ",");
+	char *given = strtok(NULL, ",");
+
+    strcpy(result, given);
+	strcat(result, " ");
+	strcat(result, family);
+    return (result);
+}
+
 int main(){
-    printf("%s\n",family("Clifton,John"));
-    printf("%s\n",ltrim("  eqjioerj jfqioe jrqi"));
+    printf("%s\n",full_name("Smith,Jones"));
     return 0;
 }
