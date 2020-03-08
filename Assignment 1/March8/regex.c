@@ -29,8 +29,7 @@ int main(int argc, char* argv[])
     //const char * pattern = "^(([A-Z])((['|-][A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])([a-z])+(([ |-])([A-Z])([a-z])+)*)$";
     //const char * pattern = "^(([A-Z]+)(((['|-]+)[A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])((['|-][A-Z])?)([a-z])+(([ |-])([A-Z])((['|-][A-Z])?)([a-z])+)*)$";
     // const char * pattern = "^([A-Z]([A-Z|a-z|'|-]+)(([ ])([A-Z]([A-Z|a-z|'|-]+))*)$";
-    const char * pattern = "^(([A-Z]([A-Z]*[a-z]*[']*[-]*)*)([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*)*))*){2,},([ ]?)(([A-Z]([A-Z]*[a-z]*[']*[-]*)*)([ ]([A-Z]([A-Z]*[a-z]*[']*[-]*)*))*){2,}$";
-    char* nameString = "SMith-'-'BGEl, A";
+    const char * pattern = "^(([A-Z])((['|-][A-Z])?)([a-z]+)(([ |-])?([A-Z])([a-z])+)*),(([ ]?)([A-Z])((['|-][A-Z])?)([a-z])+(([ |-])([A-Z])((['|-][A-Z])?)([a-z])+)*)$";    char* nameString = "SMith-'-'BGEl, A";
     printf("%d\n",matchRegex(pattern,nameString));
     return 0;
 }
