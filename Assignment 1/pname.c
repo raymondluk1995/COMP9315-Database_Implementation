@@ -91,7 +91,7 @@ Datum
 	char *str = PG_GETARG_CSTRING(0);
 	// define the length of pname, including the length of '\0'
 	int length =strlen(str) + 1;
-	PersonName *result = (PersonName *)palloc(sizeof(PersonName));
+	PersonName *result = (PersonName *)palloc(VARHDRSZ+length);
 	if (!pname_valid(str))
 	{
 		ereport(ERROR,
@@ -100,9 +100,10 @@ Datum
 						"PersonName", str)));
 	}
 	
-	result ->pname = (char*)palloc(VARHDRSZ+length*sizeof(char)); // need a padding of VARHDRSZ
-	SET_VARSIZE(result, sizeof(PersonName));
-	SET_VARSIZE(result->pname, VARHDRSZ+length*sizeof(char));
+	//result = (char*)palloc(VARHDRSZ+length*sizeof(char)); // need a padding of VARHDRSZ
+	SET_VARSIZE(result,VARHDRSZ+length);
+	//SET_VARSIZE(result, sizeof(PersonName));
+	//SET_VARSIZE(result->pname, VARHDRSZ+length*sizeof(char));
 	// assign value to pname pointer
 	snprintf(result->pname, length, "%s", str);
 	result->length = length;
