@@ -20,8 +20,8 @@ PG_MODULE_MAGIC;
 
 typedef struct PersonName
 {
-	char *pname;
 	int length;
+	char pname[FLEXIBLE_ARRAY_MEMBER];
 } PersonName;
 
 /*---- Check function----*/
@@ -100,11 +100,7 @@ Datum
 						"PersonName", str)));
 	}
 	
-	//result = (char*)palloc(VARHDRSZ+length*sizeof(char)); // need a padding of VARHDRSZ
 	SET_VARSIZE(result,VARHDRSZ+length);
-	//SET_VARSIZE(result, sizeof(PersonName));
-	//SET_VARSIZE(result->pname, VARHDRSZ+length*sizeof(char));
-	// assign value to pname pointer
 	snprintf(result->pname, length, "%s", str);
 	result->length = length;
 	PG_RETURN_POINTER(result);
