@@ -17,7 +17,6 @@
 #include <ctype.h>
 PG_MODULE_MAGIC;
 #define COMMASTRING ","
-#define SPACESTRING " "
 
 typedef struct PersonName
 {
@@ -32,7 +31,6 @@ static bool checkComponentVaild(char *component, unsigned int length, bool isgiv
 static bool pname_valid(char *str);
 static char *ltrim(char* str);
 static char *removeSpaceAndComma(char* str);
-static char *removeSpaceOfGiven(char* str);
 
 
 static bool checkComponentVaild(char *component, unsigned int length, bool isgiven) 
@@ -109,9 +107,7 @@ Datum
 				 errmsg("invalid input syntax for type %s: \"%s\"",
 						"PersonName", str)));
 	}
-
 	length = strlen(str) + 1;
-	str = removeSpaceOfGiven(str);
 	result = (PersonName *)palloc(VARHDRSZ+length);
 	SET_VARSIZE(result,VARHDRSZ+length);
 	snprintf(result->pname, length, "%s", str);
@@ -126,7 +122,6 @@ Datum
 	PersonName *name = (PersonName *)PG_GETARG_POINTER(0);
 	char *result;
 	result = psprintf("%s", name->pname);
-
 	PG_RETURN_CSTRING(result);
 }
 
@@ -199,24 +194,7 @@ static char * ltrim(char* str)
     return (str);
 }
 
-static char *removeSpaceOfGiven(char* str)
-{
-	int index = 0;
-	char *result;
-    for(index = 0; index < strlen(str); index++){
-		if(str[index] == ',') break;
-	}
-	index++;
-	if (str[index] == ' ')
-	{
-		str[index++] = '\0';
-		result = psprintf("%s%s", &str[0], &str[index]);
-	}else
-	{
-		result = psprintf("%s", str);
-	}
-	return result;
-}
+
 
 static char *removeSpaceAndComma(char* str)
 {
@@ -347,7 +325,7 @@ Datum
 	given_name = strtok(NULL, COMMASTRING);
 	// trim the left space
 	given_name = ltrim(given_name);
-	given_name = strtok(given_name, SPACESTRING);
+
 	strcpy(name, given_name);
 	strcat(name, " ");
 	strcat(name, family_name);
