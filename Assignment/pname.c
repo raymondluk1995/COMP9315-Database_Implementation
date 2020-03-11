@@ -175,21 +175,6 @@ Datum
  *
  * A practical PersonName datatype would provide much more than this, of course.
  *****************************************************************************/
-// static char * removeSpace(char*str)
-// {
-// 	int count =0;
-//     char * result = palloc(strlen(str)*sizeof(char));
-//     for (int i=0;i<strlen(str);i++)
-//     {
-//         if(str[i]!=' ')
-//         {
-//             result[count++]=str[i];
-//         }
-//     }
-//     result[count]='\0';
-//     return(result);
-// }
-
 static char * ltrim(char* str)
 {
 	while(isspace(*str))
@@ -203,15 +188,18 @@ static char *removeSpaceOfGiven(char* str)
 {
 	int index = 0;
 	char *result;
-    for(index = 0; index < strlen(str); index++){
-		if(str[index] == ',') break;
+    for(index = 0; index < strlen(str); index++)
+	{
+		if(str[index] == ',') 
+			break;
 	}
 	index++;
 	if (str[index] == ' ')
 	{
 		str[index++] = '\0';
 		result = psprintf("%s%s", &str[0], &str[index]);
-	}else
+	}
+	else
 	{
 		result = psprintf("%s", str);
 	}
@@ -364,19 +352,7 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	int hashCode;
 	int index = 0;
-	char *name;
-	for(index = 0; index < strlen(a -> pname); index++){
-		if(a -> pname[index] == ',') break;
-	}
-	index++;
-	if (a->pname[index] == ' ')
-	{
-		a -> pname[index++] = '\0';
-		name = psprintf("%s%s", &a->pname[0], &a->pname[index]);
-	}else
-	{
-		name = psprintf("%s", a->pname);
-	}
+	char *name = removeSpaceOfGiven(a->name);
 	
 	hashCode = DatumGetUInt32(hash_any((unsigned char *)name,strlen(name)));
 

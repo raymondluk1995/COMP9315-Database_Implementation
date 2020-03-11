@@ -34,11 +34,14 @@ bool checkComponentVaild(char *component, unsigned int length, bool isgiven)
             if (i == length -1)
                 return false;
             word_len = 0;
+            continue;
         } 
         else if (!isalpha(component[i]) && component[i] != '\'' && component[i] != '-')
             return false;
         word_len++;
     }
+    if(word_len<2)
+      return false;
     return true;
 }
 
@@ -59,7 +62,7 @@ bool pname_valid(char *str)
 }
 
 int main(int argc, char const *argv[]) {
-    char a[] = "Ab, John";
+    char a[] = "Smith, John A";
     printf("%d\n", pname_valid(a));
     char b[] = "smith， John";
     printf("%d\n", pname_valid(b));
