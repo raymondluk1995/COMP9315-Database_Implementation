@@ -1,0 +1,25 @@
+CREATE INDEX
+ zid |  realname  
+-----+------------
+ 394 | Smith,John
+(1 row)
+
+                                   QUERY PLAN                                    
+---------------------------------------------------------------------------------
+ Bitmap Heap Scan on users  (REMOVED_TIME rows=2 REMOVED_WIDTH)
+   Recheck Cond: (realname = 'Smith,John'::personname)
+   ->  Bitmap Index Scan on users_realname_idx  (REMOVED_TIME rows=2 REMOVED_WIDTH)
+         Index Cond: (realname = 'Smith,John'::personname)
+(4 rows)
+
+                                                        QUERY PLAN                                                         
+---------------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on users  (REMOVED_TIME rows=2 REMOVED_WIDTH) (REMOVED_TIME rows=1 loops=1)
+   Recheck Cond: (realname = 'Smith,John'::personname)
+   Heap Blocks: exact=1
+   ->  Bitmap Index Scan on users_realname_idx  (REMOVED_TIME rows=2 REMOVED_WIDTH) (REMOVED_TIME rows=1 loops=1)
+         Index Cond: (realname = 'Smith,John'::personname)
+REMOVED_TIME
+REMOVED_TIME
+(7 rows)
+

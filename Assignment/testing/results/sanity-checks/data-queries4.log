@@ -1,0 +1,88 @@
+
+-- Checking relational operators ... tests below should return False --
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+
+ ?column? 
+----------
+ f
+(1 row)
+

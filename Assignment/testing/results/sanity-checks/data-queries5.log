@@ -1,0 +1,53 @@
+
+-- Checking given(), family(), show() ... expect to see names echo'd in three different forms
+
+ given | family |    show    
+-------+--------+------------
+ John  | Smith  | John Smith
+(1 row)
+
+    given    | family |    show    
+-------------+--------+------------
+ John Andrew | Smith  | John Smith
+(1 row)
+
+  given  | family  |      show       
+---------+---------+-----------------
+ Patrick | O'Brien | Patrick O'Brien
+(1 row)
+
+  given  | family  |      show       
+---------+---------+-----------------
+ Patrick | O'brien | Patrick O'brien
+(1 row)
+
+ given |   family   |       show       
+-------+------------+------------------
+ David | Foam-Ocean | David Foam-Ocean
+(1 row)
+
+   given    |   family   |         show          
+------------+------------+-----------------------
+ Anna-Marie | Ocean-Foam | Anna-Marie Ocean-Foam
+(1 row)
+
+ given |     family      |         show         
+-------+-----------------+----------------------
+ Sean  | O'Brien-O'Byrne | Sean O'Brien-O'Byrne
+(1 row)
+
+   given    | family |     show      
+------------+--------+---------------
+ O'ch-A'hop | A'     | O'ch-A'hop A'
+(1 row)
+
+ given | family |    show    
+-------+--------+------------
+ O'-'  | A'-'-  | O'-' A'-'-
+(1 row)
+
+          given          | family |  show   
+-------------------------+--------+---------
+ Yyy Zzz Aaa Bbb Ccc Ddd | Xxx    | Yyy Xxx
+(1 row)
+

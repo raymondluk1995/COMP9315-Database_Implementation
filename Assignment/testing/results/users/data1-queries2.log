@@ -1,0 +1,21 @@
+CREATE INDEX
+ zid |  realname  
+-----+------------
+  11 | Smith,John
+(1 row)
+
+                      QUERY PLAN                      
+------------------------------------------------------
+ Seq Scan on users  (REMOVED_TIME rows=1 REMOVED_WIDTH)
+   Filter: (realname = 'Smith,John'::personname)
+(2 rows)
+
+                                           QUERY PLAN                                           
+------------------------------------------------------------------------------------------------
+ Seq Scan on users  (REMOVED_TIME rows=1 REMOVED_WIDTH) (REMOVED_TIME rows=1 loops=1)
+   Filter: (realname = 'Smith,John'::personname)
+   Rows Removed by Filter: 19
+REMOVED_TIME
+REMOVED_TIME
+(5 rows)
+

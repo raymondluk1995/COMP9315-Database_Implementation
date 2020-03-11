@@ -1,0 +1,67 @@
+
+-- Running some queries --
+
+
+-- Count students
+
+ count 
+-------
+     0
+(1 row)
+
+
+-- Lookup on Students using id and name
+
+ id | name | program | plan 
+----+------+---------+------
+(0 rows)
+
+ id | name | program | plan 
+----+------+---------+------
+(0 rows)
+
+ id | name | program | plan 
+----+------+---------+------
+(0 rows)
+
+psql:/REMOVED_PATH/queries2.sql:32: ERROR:  invalid input syntax for type PersonName: "Toth, Agnes"
+LINE 3: where  name = 'Toth, Agnes'::PersonName;
+                      ^
+psql:/REMOVED_PATH/queries2.sql:36: ERROR:  invalid input syntax for type PersonName: "Toth,Agnes"
+LINE 3: where  name = 'Toth,Agnes'::PersonName;
+                      ^
+psql:/REMOVED_PATH/queries2.sql:40: ERROR:  invalid input syntax for type PersonName: "Burg,Tracy Lauren Claire Nicola Samantha"
+LINE 3: where  name = 'Burg,Tracy Lauren Claire Nicola Samantha'::Pe...
+                      ^
+psql:/REMOVED_PATH/queries2.sql:44: ERROR:  invalid input syntax for type PersonName: "Misra,Olla"
+LINE 3: where  name = 'Misra,Olla'::PersonName;
+                      ^
+psql:/REMOVED_PATH/queries2.sql:48: ERROR:  invalid input syntax for type PersonName: "Mouse, Mickey"
+LINE 3: where  name = 'Mouse, Mickey'::PersonName;
+                      ^
+
+-- Check ordering for PersonName
+
+ id | name | program | plan 
+----+------+---------+------
+(0 rows)
+
+ id | name | program | plan 
+----+------+---------+------
+(0 rows)
+
+
+-- Check grouping based on name (look for repeated names)
+
+psql:/REMOVED_PATH/queries2.sql:72: ERROR:  could not identify an ordering operator for type cstring
+LINE 4: order  by count(*) DESC, given(name) ASC, name ASC
+                                 ^
+HINT:  Use an explicit ordering operator or modify the query.
+psql:/REMOVED_PATH/queries2.sql:78: ERROR:  could not identify an ordering operator for type cstring
+LINE 4: order  by count(*) DESC, given(name) DESC
+                                 ^
+HINT:  Use an explicit ordering operator or modify the query.
+psql:/REMOVED_PATH/queries2.sql:84: ERROR:  could not identify an ordering operator for type cstring
+LINE 4: order  by count(*) ASC, family(name) ASC, show(name) DESC
+                                ^
+HINT:  Use an explicit ordering operator or modify the query.

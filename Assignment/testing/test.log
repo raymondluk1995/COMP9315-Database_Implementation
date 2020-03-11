@@ -1,0 +1,825 @@
+Info: removing old pname.so from /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing
+Info: removing old pname.o from /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing
+Info: removing old pname.sql from /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing
+|---------- running `make` ----------|
+rm -f pname.sql; \
+C=`pwd`; \
+sed -e "s:_OBJWD_:$C:g" < pname.source > pname.sql
+gcc -std=gnu99 -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2 -fPIC -I. -I./ -I/export/grieg/1/z5277884/pgsql/include/server -I/export/grieg/1/z5277884/pgsql/include/internal  -D_GNU_SOURCE   -c -o pname.o pname.c
+pname.c: In function ‘pname_hash’:
+pname.c:371:6: warning: unused variable ‘index’ [-Wunused-variable]
+  int index = 0;
+      ^
+gcc -std=gnu99 -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -fexcess-precision=standard -O2 -fPIC pname.o -L/export/grieg/1/z5277884/pgsql/lib   -Wl,--as-needed -Wl,-rpath,'/export/grieg/1/z5277884/pgsql/lib',--enable-new-dtags  -shared -o pname.so
+
+|---------- setting-up database server ----------|
+The files belonging to this database system will be owned by user "z5277884".
+This user must also own the server process.
+
+The database cluster will be initialized with locales
+  COLLATE:  C
+  CTYPE:    en_AU.UTF-8
+  MESSAGES: en_AU.UTF-8
+  MONETARY: en_AU.UTF-8
+  NUMERIC:  en_AU.UTF-8
+  TIME:     en_AU.UTF-8
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /tmp/tmp5dynl8ca ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... Australia/Sydney
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /tmp/tmp5dynl8ca -l logfile start
+
+waiting for server to start.... done
+server started
+
+|---------- running tests ----------|
+
+|---------- START TEST -- sanity-checks  -- data -- queries1 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+---------- Loading Test Data
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/sanity-checks/data-queries1.log ----------
+---------- Dropping Test Data/Schema
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+PASS: sanity-checks -- data -- queries1
+|---------- END TEST -- sanity-checks  -- data -- queries1 ----------|
+|---------- START TEST -- sanity-checks  -- data -- queries2 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+---------- Loading Test Data
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/sanity-checks/data-queries2.log ----------
+---------- Dropping Test Data/Schema
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+FAIL: sanity-checks -- data -- queries2
+	run: `diff /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/sanity-checks/data-queries2.log /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/tests/0_sanity-checks/expected-data-queries2.log`
+|---------- END TEST -- sanity-checks  -- data -- queries2 ----------|
+|---------- START TEST -- sanity-checks  -- data -- queries3 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+---------- Loading Test Data
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/sanity-checks/data-queries3.log ----------
+---------- Dropping Test Data/Schema
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+PASS: sanity-checks -- data -- queries3
+|---------- END TEST -- sanity-checks  -- data -- queries3 ----------|
+|---------- START TEST -- sanity-checks  -- data -- queries4 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+---------- Loading Test Data
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/sanity-checks/data-queries4.log ----------
+---------- Dropping Test Data/Schema
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+PASS: sanity-checks -- data -- queries4
+|---------- END TEST -- sanity-checks  -- data -- queries4 ----------|
+|---------- START TEST -- sanity-checks  -- data -- queries5 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+---------- Loading Test Data
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/sanity-checks/data-queries5.log ----------
+---------- Dropping Test Data/Schema
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+PASS: sanity-checks -- data -- queries5
+|---------- END TEST -- sanity-checks  -- data -- queries5 ----------|
+
+|---------- START TEST -- users  -- data1 -- queries1 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+CREATE TABLE
+---------- Loading Test Data
+INSERT 0 20
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/users/data1-queries1.log ----------
+---------- Dropping Test Data/Schema
+DROP TABLE
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+PASS: users -- data1 -- queries1
+|---------- END TEST -- users  -- data1 -- queries1 ----------|
+|---------- START TEST -- users  -- data1 -- queries2 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+CREATE TABLE
+---------- Loading Test Data
+INSERT 0 20
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/users/data1-queries2.log ----------
+---------- Dropping Test Data/Schema
+DROP TABLE
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+PASS: users -- data1 -- queries2
+|---------- END TEST -- users  -- data1 -- queries2 ----------|
+|---------- START TEST -- users  -- data1 -- queries3 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+CREATE TABLE
+---------- Loading Test Data
+INSERT 0 20
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/users/data1-queries3.log ----------
+---------- Dropping Test Data/Schema
+DROP TABLE
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+FAIL: users -- data1 -- queries3
+	run: `diff /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/users/data1-queries3.log /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/tests/1_users/expected-data1-queries3.log`
+|---------- END TEST -- users  -- data1 -- queries3 ----------|
+|---------- START TEST -- users  -- data1 -- queries4 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+CREATE TABLE
+---------- Loading Test Data
+INSERT 0 20
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/users/data1-queries4.log ----------
+---------- Dropping Test Data/Schema
+DROP TABLE
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+PASS: users -- data1 -- queries4
+|---------- END TEST -- users  -- data1 -- queries4 ----------|
+|---------- START TEST -- users  -- data2 -- queries1 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+CREATE TABLE
+---------- Loading Test Data
+INSERT 0 400
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/users/data2-queries1.log ----------
+---------- Dropping Test Data/Schema
+DROP TABLE
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+PASS: users -- data2 -- queries1
+|---------- END TEST -- users  -- data2 -- queries1 ----------|
+|---------- START TEST -- users  -- data2 -- queries2 ----------|
+---------- setting-up database
+---------- Loading PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:39: NOTICE:  type "personname" is not yet defined
+DETAIL:  Creating a shell type definition.
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:47: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:55: NOTICE:  return type personname is only a shell
+CREATE FUNCTION
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname.sql:63: NOTICE:  argument type personname is only a shell
+CREATE FUNCTION
+CREATE TYPE
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE OPERATOR
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE OPERATOR CLASS
+CREATE OPERATOR CLASS
+
+---------- Loading Test Schema
+CREATE TABLE
+---------- Loading Test Data
+INSERT 0 400
+---------- Loading Test Queries
+---------- Running queries: see /export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/results/users/data2-queries2.log ----------
+---------- Dropping Test Data/Schema
+DROP TABLE
+---------- Dropping PersonName Type
+psql:/export/grieg/1/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname_drop.sql:4: NOTICE:  drop cascades to 23 other objects
+DETAIL:  drop cascades to function pname_in(cstring)
+drop cascades to function pname_out(personname)
+drop cascades to function pname_recv(internal)
+drop cascades to function pname_send(personname)
+drop cascades to function pname_equal(personname,personname)
+drop cascades to function pname_greater(personname,personname)
+drop cascades to function pname_greaterequal(personname,personname)
+drop cascades to function pname_less(personname,personname)
+drop cascades to function pname_lessequal(personname,personname)
+drop cascades to function pname_notequal(personname,personname)
+drop cascades to operator <>(personname,personname)
+drop cascades to operator =(personname,personname)
+drop cascades to operator <(personname,personname)
+drop cascades to operator <=(personname,personname)
+drop cascades to operator >(personname,personname)
+drop cascades to operator >=(personname,personname)
+drop cascades to function pname_compare(personname,personname)
+drop cascades to function family(personname)
+drop cascades to function given(personname)
+drop cascades to function show(personname)
+drop cascades to function pname_hash(personname)
+drop cascades to operator class pname_opc1 for access method btree
+drop cascades to operator class pname_opc2 for access method hash
+DROP TYPE
+---------- tearing-down database
+---------- TEST RESULTS
+PASS: users -- data2 -- queries2
+|---------- END TEST -- users  -- data2 -- queries2 ----------|
+|---------- START TEST -- users  -- data2 -- queries3 ----------|
+---------- setting-up database
+createdb: error: could not connect to database template1: could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/tmp5dynl8ca/.s.PGSQL.5432"?
+---------- Loading PersonName Type

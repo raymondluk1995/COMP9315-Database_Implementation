@@ -1,0 +1,35 @@
+
+-- Checking invalid PersonNames ... expect to see errors --
+
+psql:/REMOVED_PATH/queries2.sql:5: ERROR:  invalid input syntax for type PersonName: "Smith, John  "
+LINE 1: select 'Smith, John  '::PersonName;
+               ^
+psql:/REMOVED_PATH/queries2.sql:6: ERROR:  invalid input syntax for type PersonName: " Smith, John"
+LINE 1: select ' Smith, John'::PersonName;
+               ^
+psql:/REMOVED_PATH/queries2.sql:7: ERROR:  invalid input syntax for type PersonName: "Smith,  John"
+LINE 1: select 'Smith,  John'::PersonName;
+               ^
+psql:/REMOVED_PATH/queries2.sql:8: ERROR:  invalid input syntax for type PersonName: "Smith, john"
+LINE 1: select 'Smith, john'::PersonName;
+               ^
+psql:/REMOVED_PATH/queries2.sql:9: ERROR:  invalid input syntax for type PersonName: "smith, John"
+LINE 1: select 'smith, John'::PersonName;
+               ^
+  personname  
+--------------
+ Smith,John A
+(1 row)
+
+psql:/REMOVED_PATH/queries2.sql:11: ERROR:  invalid input syntax for type PersonName: "Smith, John 3rd"
+LINE 1: select 'Smith, John 3rd'::PersonName;
+               ^
+psql:/REMOVED_PATH/queries2.sql:12: ERROR:  invalid input syntax for type PersonName: "Able, Baker C#arlie"
+LINE 1: select 'Able, Baker C#arlie'::PersonName;
+               ^
+psql:/REMOVED_PATH/queries2.sql:13: ERROR:  invalid input syntax for type PersonName: "1234567"
+LINE 1: select '1234567'::PersonName;
+               ^
+psql:/REMOVED_PATH/queries2.sql:14: ERROR:  invalid input syntax for type PersonName: "-----"
+LINE 1: select '-----'::PersonName;
+               ^

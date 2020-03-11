@@ -1,0 +1,53 @@
+
+-- Checking valid PersonNames ... expect to see name echoed in canonical form
+
+ personname 
+------------
+ Smith,John
+(1 row)
+
+    personname     
+-------------------
+ Smith,John Andrew
+(1 row)
+
+   personname    
+-----------------
+ O'Brien,Patrick
+(1 row)
+
+   personname    
+-----------------
+ O'brien,Patrick
+(1 row)
+
+    personname    
+------------------
+ Foam-Ocean,David
+(1 row)
+
+      personname       
+-----------------------
+ Ocean-Foam,Anna-Marie
+(1 row)
+
+      personname      
+----------------------
+ O'Brien-O'Byrne,Sean
+(1 row)
+
+  personname   
+---------------
+ A',O'ch-A'hop
+(1 row)
+
+ personname 
+------------
+ A'-'-,O'-'
+(1 row)
+
+         personname          
+-----------------------------
+ Xxx,Yyy Zzz Aaa Bbb Ccc Ddd
+(1 row)
+

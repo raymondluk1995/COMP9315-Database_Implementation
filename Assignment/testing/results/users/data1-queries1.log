@@ -1,0 +1,101 @@
+ count 
+-------
+    20
+(1 row)
+
+ zid |                            realname                             
+-----+-----------------------------------------------------------------
+   1 | Shepherd,John Andrew
+   2 | Brotherston,Dylan
+   3 | Lin,Xuemin
+   4 | Eilish,Billie
+   5 | Martin,Eric Andre
+   6 | Lakshminarasimhan,Venkateswaran Chandrasekara
+   7 | Marshall-Martin,Sally Angela
+   8 | Featherstone,Albert Basil Ernest George Harold Randolph William
+   9 | FamilyName,GivenNames
+  10 | Smith,Stephen
+  11 | Smith,John
+  12 | O'Brien,Patrick Sean
+  13 | Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+  14 | I-Sun,Chen Wang
+  15 | Clifton-Everest,Charles Edward
+  16 | Smith,John David
+  17 | Smith,James
+  18 | Zimmerman,Trent
+  19 | Clifton-Everest,David Ewan
+  20 | Bronte,Greta-Anna Maryanne
+(20 rows)
+
+         family         
+------------------------
+ Shepherd
+ Brotherston
+ Lin
+ Eilish
+ Martin
+ Lakshminarasimhan
+ Marshall-Martin
+ Featherstone
+ FamilyName
+ Smith
+ Smith
+ O'Brien
+ Mahagedara Patabendige
+ I-Sun
+ Clifton-Everest
+ Smith
+ Smith
+ Zimmerman
+ Clifton-Everest
+ Bronte
+(20 rows)
+
+                       given                        
+----------------------------------------------------
+ John Andrew
+ Dylan
+ Xuemin
+ Billie
+ Eric Andre
+ Venkateswaran Chandrasekara
+ Sally Angela
+ Albert Basil Ernest George Harold Randolph William
+ GivenNames
+ Stephen
+ John
+ Patrick Sean
+ Minosha Mitsuaki Senakasiri
+ Chen Wang
+ Charles Edward
+ John David
+ James
+ Trent
+ David Ewan
+ Greta-Anna Maryanne
+(20 rows)
+
+              show               
+---------------------------------
+ John Shepherd
+ Dylan Brotherston
+ Xuemin Lin
+ Billie Eilish
+ Eric Martin
+ Venkateswaran Lakshminarasimhan
+ Sally Marshall-Martin
+ Albert Featherstone
+ GivenNames FamilyName
+ Stephen Smith
+ John Smith
+ Patrick O'Brien
+ Minosha Mahagedara Patabendige
+ Chen I-Sun
+ Charles Clifton-Everest
+ John Smith
+ James Smith
+ Trent Zimmerman
+ David Clifton-Everest
+ Greta-Anna Bronte
+(20 rows)
+

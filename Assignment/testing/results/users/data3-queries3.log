@@ -1,0 +1,8 @@
+ realname 
+----------
+(0 rows)
+
+psql:/REMOVED_PATH/queries3.sql:7: ERROR:  could not identify an ordering operator for type cstring
+LINE 4: order  by given(realname) ASC, realname ASC;
+                  ^
+HINT:  Use an explicit ordering operator or modify the query.

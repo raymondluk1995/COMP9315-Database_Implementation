@@ -1,0 +1,9 @@
+psql:/REMOVED_PATH/queries4.sql:2: ERROR:  invalid input syntax for type PersonName: "La,Aa"
+LINE 2: from Users where realname > 'La,Aa';
+                                    ^
+psql:/REMOVED_PATH/queries4.sql:5: ERROR:  invalid input syntax for type PersonName: "Ka,Aa"
+LINE 2: from Users where realname <= 'Ka,Aa';
+                                     ^
+psql:/REMOVED_PATH/queries4.sql:8: ERROR:  invalid input syntax for type PersonName: "Smith,John"
+LINE 2: from Users where realname <> 'Smith,John';
+                                     ^

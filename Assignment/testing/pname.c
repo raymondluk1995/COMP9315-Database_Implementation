@@ -68,6 +68,8 @@ static bool checkComponentVaild(char *component, unsigned int length, bool isgiv
             return false;
         word_len++;
     }
+	if (word_len<2)
+		return false;
     return true;
 }
 

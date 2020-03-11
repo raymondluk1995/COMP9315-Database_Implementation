@@ -1,0 +1,28 @@
+                            realname                             
+-----------------------------------------------------------------
+ Shepherd,John Andrew
+ Brotherston,Dylan
+ Lin,Xuemin
+ Eilish,Billie
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Featherstone,Albert Basil Ernest George Harold Randolph William
+ FamilyName,GivenNames
+ Smith,Stephen
+ Smith,John
+ O'Brien,Patrick Sean
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+ I-Sun,Chen Wang
+ Clifton-Everest,Charles Edward
+ Smith,John David
+ Smith,James
+ Zimmerman,Trent
+ Clifton-Everest,David Ewan
+ Bronte,Greta-Anna Maryanne
+(20 rows)
+
+psql:/REMOVED_PATH/queries3.sql:7: ERROR:  could not identify an ordering operator for type cstring
+LINE 4: order  by given(realname) ASC, realname ASC;
+                  ^
+HINT:  Use an explicit ordering operator or modify the query.

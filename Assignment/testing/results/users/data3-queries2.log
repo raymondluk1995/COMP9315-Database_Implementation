@@ -1,0 +1,10 @@
+CREATE INDEX
+psql:/REMOVED_PATH/queries2.sql:3: ERROR:  invalid input syntax for type PersonName: "Smith,John"
+LINE 1: select * from Users where realname='Smith,John';
+                                           ^
+psql:/REMOVED_PATH/queries2.sql:4: ERROR:  invalid input syntax for type PersonName: "Smith,John"
+LINE 1: explain select * from Users where realname='Smith,John';
+                                                   ^
+psql:/REMOVED_PATH/queries2.sql:5: ERROR:  invalid input syntax for type PersonName: "Smith,John"
+LINE 1: ...xplain analyze select * from Users where realname='Smith,Joh...
+                                                             ^
