@@ -32,7 +32,7 @@ typedef struct PersonName
 static bool checkComponentVaild(char *component, unsigned int length, bool isgiven);
 static bool pname_valid(char *str);
 static char *left_trim(char* str);
-static char *removeSpaceAndComma(char* str);
+//static char *removeSpaceAndCommas(char* str);
 static char *removeSpaceOfGiven(char* str);
 
 
@@ -209,25 +209,27 @@ static char *removeSpaceOfGiven(char* str)
 	return result;
 }
 
-static char *removeSpaceAndComma(char* str)
-{
-    int count =0;
-    char * result = palloc(strlen(str)*sizeof(char));
-    for (int i=0;i<strlen(str);i++)
-    {
-        if(str[i]!=' '&& str[i]!=',')
-        {
-            result[count++]=str[i];
-        }
-    }
-    result[count]='\0';
-    return(result);
-}
+// static char *removeSpaceAndCommas(char* str)
+// {
+//     int count =0;
+//     char * result = palloc(strlen(str)*sizeof(char));
+//     for (int i=0;i<strlen(str);i++)
+//     {
+//         if(str[i]!=','&&str[i]!=' ')
+//         {
+//             result[count++]=str[i];
+//         }
+//     }
+//     result[count]='\0';
+//     return(result);
+// }
 
 static int pname_compare_internal(PersonName *first, PersonName *second)
 {
-	char *name1 = removeSpaceAndComma(first->pname);
-	char *name2 = removeSpaceAndComma(second->pname);
+	//char *name1 = removeSpaceAndCommas(first->pname);
+	//char *name2 = removeSpaceAndCommas(second->pname);
+	char *name1 = removeSpaceOfGiven(first->pname);
+	char *name2 = removeSpaceOfGiven(second->pname);
 	if(strcmp(name1,name2)<0)
 		return -1;
 	else if (strcmp(name1,name2)>0)
@@ -353,7 +355,8 @@ Datum
 	int length = strlen(a ->pname) +1;
 	char *temp = pstrdup(a->pname);
 	char *name = (char*)palloc(sizeof(char)*length);
-	char *family_name, *given_name, *result;
+	char *family_name, *given_name;
+	text * result;
 	memset(name,'\0',length);
 	family_name = strtok(temp, COMMASTRING);
 	given_name = strtok(NULL, COMMASTRING);
@@ -364,9 +367,9 @@ Datum
 	strcat(name, " ");
 	strcat(name, family_name);
 
-	result = psprintf("%s", name);
+	result = cstring_to_text(name);
 	pfree(name);
-	PG_RETURN_CSTRING(result);
+	PG_RETURN_TEXT_P(result);
 }
 
 PG_FUNCTION_INFO_V1(pname_hash);

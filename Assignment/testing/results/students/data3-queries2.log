@@ -132,7 +132,27 @@
  Raoul Nicolas      |    13
 (20 rows)
 
-psql:/REMOVED_PATH/queries2.sql:84: ERROR:  could not identify an ordering operator for type cstring
-LINE 4: order  by count(*) ASC, family(name) ASC, show(name) DESC
-                                                  ^
-HINT:  Use an explicit ordering operator or modify the query.
+         show          | count 
+-----------------------+-------
+ Yegor Abdirova        |     2
+ Denis Abdirova        |     2
+ Naima Aberdan         |     2
+ Hassan Aberdan        |     2
+ Elizabeth Abuhusain   |     2
+ Nurul Akand           |     2
+ Nijat Akhmedov        |     2
+ Ilmaddin Akhmedov     |     2
+ Khaled Al-Majzoub     |     2
+ Matti Alakangas       |     2
+ Aino-Maria Alakangas  |     2
+ Edward Alperovich     |     2
+ Lisa Aluni            |     2
+ Mohammad Anupindi     |     2
+ Sigitas Anusaitis     |     2
+ Agne Anusaitis        |     2
+ Soledad Aranco Araujo |     2
+ Nivedita Arlandoo     |     2
+ Jack Asatryan         |     2
+ Davit Asatryan        |     2
+(20 rows)
+

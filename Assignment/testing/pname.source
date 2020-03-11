@@ -149,7 +149,7 @@ CREATE FUNCTION family(PersonName) RETURNS text
 CREATE FUNCTION given(PersonName) RETURNS text
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
-CREATE FUNCTION show(PersonName) RETURNS cstring
+CREATE FUNCTION show(PersonName) RETURNS text
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
 CREATE FUNCTION pname_hash(PersonName) RETURNS int4

@@ -1,54 +1,24 @@
-2020-03-11 22:14:17.426 AEDT [24753] LOG:  starting PostgreSQL 12.1 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10+deb8u2) 4.9.2, 32-bit
-2020-03-11 22:14:17.428 AEDT [24753] LOG:  listening on Unix socket "/tmp/tmp6xfyqiae/.s.PGSQL.5432"
-2020-03-11 22:14:17.443 AEDT [24755] LOG:  database system was shut down at 2020-03-11 22:14:17 AEDT
-2020-03-11 22:14:17.462 AEDT [24753] LOG:  database system is ready to accept connections
-2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith, John  " at character 8
-2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select 'Smith, John  '::PersonName;
-2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: " Smith, John" at character 8
-2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select ' Smith, John'::PersonName;
-2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith,  John" at character 8
-2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select 'Smith,  John'::PersonName;
-2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith, john" at character 8
-2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select 'Smith, john'::PersonName;
-2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "smith, John" at character 8
-2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select 'smith, John'::PersonName;
-2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith, John A" at character 8
-2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select 'Smith, John A'::PersonName;
-2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith, John 3rd" at character 8
-2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select 'Smith, John 3rd'::PersonName;
-2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Able, Baker C#arlie" at character 8
-2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select 'Able, Baker C#arlie'::PersonName;
-2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "1234567" at character 8
-2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select '1234567'::PersonName;
-2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "-----" at character 8
-2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select '-----'::PersonName;
-2020-03-11 22:14:22.136 AEDT [25214] ERROR:  could not identify an ordering operator for type cstring at character 142
-2020-03-11 22:14:22.136 AEDT [25214] HINT:  Use an explicit ordering operator or modify the query.
-2020-03-11 22:14:22.136 AEDT [25214] STATEMENT:  select show(name), count(*)
-	from   Students
-	group  by family(name), show(name) having count(*) > 1
-	order  by count(*) ASC, family(name) ASC, show(name) DESC
-	limit  20;
-2020-03-11 22:14:24.184 AEDT [25278] ERROR:  could not identify an ordering operator for type cstring at character 142
-2020-03-11 22:14:24.184 AEDT [25278] HINT:  Use an explicit ordering operator or modify the query.
-2020-03-11 22:14:24.184 AEDT [25278] STATEMENT:  select show(name), count(*)
-	from   Students
-	group  by family(name), show(name) having count(*) > 1
-	order  by count(*) ASC, family(name) ASC, show(name) DESC
-	limit  20;
-2020-03-11 22:14:39.260 AEDT [25468] ERROR:  could not identify an ordering operator for type cstring at character 142
-2020-03-11 22:14:39.260 AEDT [25468] HINT:  Use an explicit ordering operator or modify the query.
-2020-03-11 22:14:39.260 AEDT [25468] STATEMENT:  select show(name), count(*)
-	from   Students
-	group  by family(name), show(name) having count(*) > 1
-	order  by count(*) ASC, family(name) ASC, show(name) DESC
-	limit  20;
-2020-03-11 22:15:02.603 AEDT [24758] PANIC:  could not create file "pg_wal/xlogtemp.24758": No such file or directory
-2020-03-11 22:15:02.604 AEDT [24753] LOG:  WAL writer process (PID 24758) was terminated by signal 6: Aborted
-2020-03-11 22:15:02.604 AEDT [24753] LOG:  terminating any other active server processes
-2020-03-11 22:15:02.605 AEDT [24759] WARNING:  terminating connection because of crash of another server process
-2020-03-11 22:15:02.605 AEDT [24759] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
-2020-03-11 22:15:02.605 AEDT [24759] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
-2020-03-11 22:15:02.605 AEDT [24760] LOG:  could not open temporary statistics file "pg_stat/global.tmp": No such file or directory
-2020-03-11 22:15:02.606 AEDT [24753] LOG:  all server processes terminated; reinitializing
-2020-03-11 22:15:02.608 AEDT [24753] PANIC:  could not open file "global/pg_control": No such file or directory
+2020-03-11 23:00:22.224 AEDT [5717] LOG:  starting PostgreSQL 12.1 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10+deb8u2) 4.9.2, 32-bit
+2020-03-11 23:00:22.226 AEDT [5717] LOG:  listening on Unix socket "/tmp/tmp57slq8wn/.s.PGSQL.5432"
+2020-03-11 23:00:22.251 AEDT [5719] LOG:  database system was shut down at 2020-03-11 23:00:22 AEDT
+2020-03-11 23:00:22.269 AEDT [5717] LOG:  database system is ready to accept connections
+2020-03-11 23:00:22.792 AEDT [5761] ERROR:  invalid input syntax for type PersonName: "Smith, John  " at character 8
+2020-03-11 23:00:22.792 AEDT [5761] STATEMENT:  select 'Smith, John  '::PersonName;
+2020-03-11 23:00:22.793 AEDT [5761] ERROR:  invalid input syntax for type PersonName: " Smith, John" at character 8
+2020-03-11 23:00:22.793 AEDT [5761] STATEMENT:  select ' Smith, John'::PersonName;
+2020-03-11 23:00:22.793 AEDT [5761] ERROR:  invalid input syntax for type PersonName: "Smith,  John" at character 8
+2020-03-11 23:00:22.793 AEDT [5761] STATEMENT:  select 'Smith,  John'::PersonName;
+2020-03-11 23:00:22.793 AEDT [5761] ERROR:  invalid input syntax for type PersonName: "Smith, john" at character 8
+2020-03-11 23:00:22.793 AEDT [5761] STATEMENT:  select 'Smith, john'::PersonName;
+2020-03-11 23:00:22.793 AEDT [5761] ERROR:  invalid input syntax for type PersonName: "smith, John" at character 8
+2020-03-11 23:00:22.793 AEDT [5761] STATEMENT:  select 'smith, John'::PersonName;
+2020-03-11 23:00:22.793 AEDT [5761] ERROR:  invalid input syntax for type PersonName: "Smith, John A" at character 8
+2020-03-11 23:00:22.793 AEDT [5761] STATEMENT:  select 'Smith, John A'::PersonName;
+2020-03-11 23:00:22.793 AEDT [5761] ERROR:  invalid input syntax for type PersonName: "Smith, John 3rd" at character 8
+2020-03-11 23:00:22.793 AEDT [5761] STATEMENT:  select 'Smith, John 3rd'::PersonName;
+2020-03-11 23:00:22.793 AEDT [5761] ERROR:  invalid input syntax for type PersonName: "Able, Baker C#arlie" at character 8
+2020-03-11 23:00:22.793 AEDT [5761] STATEMENT:  select 'Able, Baker C#arlie'::PersonName;
+2020-03-11 23:00:22.793 AEDT [5761] ERROR:  invalid input syntax for type PersonName: "1234567" at character 8
+2020-03-11 23:00:22.793 AEDT [5761] STATEMENT:  select '1234567'::PersonName;
+2020-03-11 23:00:22.793 AEDT [5761] ERROR:  invalid input syntax for type PersonName: "-----" at character 8
+2020-03-11 23:00:22.793 AEDT [5761] STATEMENT:  select '-----'::PersonName;

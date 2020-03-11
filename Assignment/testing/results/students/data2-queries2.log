@@ -56,8 +56,8 @@
  3019665 | Aarnes,Jeivishnu                       |    3624 | CVENI1
  3014847 | Abdelrahman,Georgette Samuel Dina Fagr |    3422 | CRIMA1
  3034296 | Abdirova,Yegor Alexeevich              |    4802 | DESGA1
- 3035579 | Abdul-Nabi,Hasan Haneen                |    3625 | CVENB1
  3037253 | Abdul Rasheed,Husna                    |    3502 | ACCTAD
+ 3035579 | Abdul-Nabi,Hasan Haneen                |    3625 | CVENB1
  3035363 | Abdulla,Muli Yusuf Mubeen              |    8404 | MARKAS
  3029743 | Abdullahi,Idil Naima                   |    8123 | CONSGS
  3033663 | Abela,Joy Carmela Catherine Marneil    |    1650 | COMPER
@@ -128,7 +128,27 @@
  Monica Magdi        |     2
 (20 rows)
 
-psql:/REMOVED_PATH/queries2.sql:84: ERROR:  could not identify an ordering operator for type cstring
-LINE 4: order  by count(*) ASC, family(name) ASC, show(name) DESC
-                                                  ^
-HINT:  Use an explicit ordering operator or modify the query.
+          show           | count 
+-------------------------+-------
+ Hussein Abualrob        |     2
+ Lionel Alcala           |     2
+ Suzanne Babbington      |     2
+ Adrian Bailey           |     2
+ Georges Beydoun         |     2
+ Alexander Braun         |     2
+ Camilo Cassel           |     2
+ Luis Costa              |     2
+ Xavier Cuadrado Quesada |     2
+ Sebastien De Cambiaire  |     2
+ Raoul Edwards           |     2
+ Chi-Hung Forau          |     2
+ Wai Ho                  |     2
+ Emilia Ho               |     2
+ Magdi Ikladios          |     2
+ Osvaldas Kausinis       |     2
+ Amir Koropachinskaya    |     2
+ Simon Lai               |     2
+ Ellena Lavrencic        |     2
+ Xiluva Lynch            |     2
+(20 rows)
+

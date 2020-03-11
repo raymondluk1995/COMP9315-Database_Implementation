@@ -86,7 +86,7 @@
 -------+-------
 (0 rows)
 
-psql:/REMOVED_PATH/queries2.sql:84: ERROR:  could not identify an ordering operator for type cstring
-LINE 4: order  by count(*) ASC, family(name) ASC, show(name) DESC
-                                                  ^
-HINT:  Use an explicit ordering operator or modify the query.
+ show | count 
+------+-------
+(0 rows)
+
