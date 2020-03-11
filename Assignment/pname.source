@@ -82,25 +82,25 @@ CREATE TYPE PersonName (
 -----------------------------
 
 -- first, define the required operators
-CREATE FUNCTION pname_equal(PersonName, PersonName) 
+CREATE FUNCTION pname_equal(PersonName, PersonName)
    RETURNS bool
-   AS '_OBJWD_/pname' 
+   AS '_OBJWD_/pname'
    LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_greater(PersonName, PersonName) 
+CREATE FUNCTION pname_greater(PersonName, PersonName)
    RETURNS bool
-   AS '_OBJWD_/pname' 
+   AS '_OBJWD_/pname'
    LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_greaterequal(PersonName, PersonName) 
+CREATE FUNCTION pname_greaterequal(PersonName, PersonName)
    RETURNS bool
-   AS '_OBJWD_/pname' 
+   AS '_OBJWD_/pname'
    LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_less(PersonName, PersonName) 
+CREATE FUNCTION pname_less(PersonName, PersonName)
    RETURNS bool
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_lessequal(PersonName, PersonName) 
+CREATE FUNCTION pname_lessequal(PersonName, PersonName)
    RETURNS bool
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_notequal(PersonName, PersonName) 
+CREATE FUNCTION pname_notequal(PersonName, PersonName)
    RETURNS bool
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
@@ -138,6 +138,10 @@ CREATE OPERATOR <> (
 
 
 -- create the support function too
+CREATE FUNCTION pname_compare(PersonName,PersonName) RETURNS int4
+  AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
+
+
 CREATE FUNCTION family(PersonName) RETURNS cstring
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
@@ -152,7 +156,18 @@ CREATE FUNCTION pname_hash(PersonName) RETURNS int4
 
 
 -- now we can make the operator class
-CREATE OPERATOR CLASS pname_ops
+CREATE OPERATOR CLASS pname_opc1 -- opc stands for operator class
+    DEFAULT FOR TYPE PersonName USING btree AS
+      OPERATOR        1       < ,
+      OPERATOR        2       <= ,
+      OPERATOR        3       = ,
+      OPERATOR        4       >= ,
+      OPERATOR        5       > ,
+      FUNCTION        1       pname_compare(PersonName,PersonName);
+
+
+
+CREATE OPERATOR CLASS pname_opc2
     DEFAULT FOR TYPE PersonName USING hash AS
         OPERATOR        1       = ,
         FUNCTION        1       pname_hash(PersonName);
