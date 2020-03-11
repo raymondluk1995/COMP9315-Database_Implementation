@@ -143,10 +143,10 @@ CREATE FUNCTION pname_compare(PersonName,PersonName) RETURNS int4
   AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
 
-CREATE FUNCTION family(PersonName) RETURNS text
+CREATE FUNCTION family(PersonName) RETURNS cstring
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
-CREATE FUNCTION given(PersonName) RETURNS text
+CREATE FUNCTION given(PersonName) RETURNS cstring
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
 CREATE FUNCTION show(PersonName) RETURNS cstring

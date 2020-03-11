@@ -1,8 +1,148 @@
- realname 
-----------
-(0 rows)
+                            realname                             
+-----------------------------------------------------------------
+ Shepherd,John Andrew
+ Shepherd,John Andrew
+ Brotherston,Dylan
+ Brotherston,Dylan
+ Lin,Xuemin
+ Lin,Xuemin
+ Eilish,Billie
+ Eilish,Billie
+ Martin,Eric Andre
+ Martin,Eric Andre
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Marshall-Martin,Sally Angela
+ Marshall-Martin,Sally Angela
+ Featherstone,Albert Basil Ernest George Harold Randolph William
+ Featherstone,Albert Basil Ernest George Harold Randolph William
+ FamilyName,GivenNames
+ FamilyName,GivenNames
+ Smith,Stephen
+ Smith,Stephen
+ Smith,John
+ Smith,John
+ O'Brien,Patrick Sean
+ O'Brien,Patrick Sean
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+ I-Sun,Chen Wang
+ I-Sun,Chen Wang
+ Clifton-Everest,Charles Edward
+ Clifton-Everest,Charles Edward
+ Clifton-Everest,Charles Edward
+ Smith,John David
+ Smith,John David
+ Smith,John David
+ Smith,James
+ Smith,James
+ Smith,James
+ Zimmerman,Trent
+ Zimmerman,Trent
+ Zimmerman,Trent
+ Clifton-Everest,David Ewan
+ Clifton-Everest,David Ewan
+ Clifton-Everest,David Ewan
+ Martin,Eric Andre
+ Martin,Eric Andre
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Marshall-Martin,Sally Angela
+ Marshall-Martin,Sally Angela
+ Featherstone,Albert Basil Ernest George Harold Randolph William
+ Featherstone,Albert Basil Ernest George Harold Randolph William
+ FamilyName,GivenNames
+ FamilyName,GivenNames
+ Smith,Stephen
+ Smith,Stephen
+ Smith,John
+ Smith,John
+ O'Brien,Patrick Sean
+ O'Brien,Patrick Sean
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+ I-Sun,Chen Wang
+ I-Sun,Chen Wang
+ Clifton-Everest,Charles Edward
+ Clifton-Everest,Charles Edward
+ Clifton-Everest,Charles Edward
+ Smith,John David
+ Smith,John David
+ Smith,John David
+ Smith,James
+ Smith,James
+ Smith,James
+ Zimmerman,Trent
+ Zimmerman,Trent
+ Zimmerman,Trent
+ Clifton-Everest,David Ewan
+ Clifton-Everest,David Ewan
+ Clifton-Everest,David Ewan
+ Bronte,Greta-Anna Maryanne
+ Bronte,Greta-Anna Maryanne
+ Shepherd,John Andrew
+ Shepherd,John Andrew
+ Brotherston,Dylan
+ Brotherston,Dylan
+ Lin,Xuemin
+ Lin,Xuemin
+ Eilish,Billie
+ Eilish,Billie
+ Martin,Eric Andre
+ Martin,Eric Andre
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Marshall-Martin,Sally Angela
+ Marshall-Martin,Sally Angela
+ Clifton-Everest,Charles Edward
+ Clifton-Everest,Charles Edward
+ Clifton-Everest,Charles Edward
+ Smith,John David
+ Smith,John David
+ Smith,John David
+ Smith,James
+ Smith,James
+ Smith,James
+ Zimmerman,Trent
+ Zimmerman,Trent
+ Zimmerman,Trent
+ Clifton-Everest,David Ewan
+ Clifton-Everest,David Ewan
+ Clifton-Everest,David Ewan
+ Bronte,Greta-Anna Maryanne
+ Bronte,Greta-Anna Maryanne
+(120 rows)
 
-psql:/REMOVED_PATH/queries3.sql:7: ERROR:  could not identify an ordering operator for type cstring
-LINE 4: order  by given(realname) ASC, realname ASC;
-                  ^
-HINT:  Use an explicit ordering operator or modify the query.
+                            realname                             | count 
+-----------------------------------------------------------------+-------
+ Featherstone,Albert Basil Ernest George Harold Randolph William |     2
+ Eilish,Billie                                                   |     2
+ Clifton-Everest,Charles Edward                                  |     3
+ I-Sun,Chen Wang                                                 |     2
+ Clifton-Everest,David Ewan                                      |     3
+ Brotherston,Dylan                                               |     2
+ Martin,Eric Andre                                               |     3
+ FamilyName,GivenNames                                           |     2
+ Bronte,Greta-Anna Maryanne                                      |     2
+ Smith,James                                                     |     3
+ Smith,John                                                      |     2
+ Shepherd,John Andrew                                            |     2
+ Smith,John David                                                |     3
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri              |     2
+ O'Brien,Patrick Sean                                            |     2
+ Marshall-Martin,Sally Angela                                    |     3
+ Smith,Stephen                                                   |     2
+ Zimmerman,Trent                                                 |     3
+ Lakshminarasimhan,Venkateswaran Chandrasekara                   |     3
+ Lin,Xuemin                                                      |     2
+(20 rows)
+

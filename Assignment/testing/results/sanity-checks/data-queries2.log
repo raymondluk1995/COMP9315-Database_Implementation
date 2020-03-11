@@ -16,11 +16,9 @@ LINE 1: select 'Smith, john'::PersonName;
 psql:/REMOVED_PATH/queries2.sql:9: ERROR:  invalid input syntax for type PersonName: "smith, John"
 LINE 1: select 'smith, John'::PersonName;
                ^
-  personname  
---------------
- Smith,John A
-(1 row)
-
+psql:/REMOVED_PATH/queries2.sql:10: ERROR:  invalid input syntax for type PersonName: "Smith, John A"
+LINE 1: select 'Smith, John A'::PersonName;
+               ^
 psql:/REMOVED_PATH/queries2.sql:11: ERROR:  invalid input syntax for type PersonName: "Smith, John 3rd"
 LINE 1: select 'Smith, John 3rd'::PersonName;
                ^

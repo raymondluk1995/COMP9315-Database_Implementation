@@ -6,7 +6,7 @@
 
  count 
 -------
-     0
+  1000
 (1 row)
 
 
@@ -24,44 +24,111 @@
 ----+------+---------+------
 (0 rows)
 
-psql:/REMOVED_PATH/queries2.sql:32: ERROR:  invalid input syntax for type PersonName: "Toth, Agnes"
-LINE 3: where  name = 'Toth, Agnes'::PersonName;
-                      ^
-psql:/REMOVED_PATH/queries2.sql:36: ERROR:  invalid input syntax for type PersonName: "Toth,Agnes"
-LINE 3: where  name = 'Toth,Agnes'::PersonName;
-                      ^
-psql:/REMOVED_PATH/queries2.sql:40: ERROR:  invalid input syntax for type PersonName: "Burg,Tracy Lauren Claire Nicola Samantha"
-LINE 3: where  name = 'Burg,Tracy Lauren Claire Nicola Samantha'::Pe...
-                      ^
-psql:/REMOVED_PATH/queries2.sql:44: ERROR:  invalid input syntax for type PersonName: "Misra,Olla"
-LINE 3: where  name = 'Misra,Olla'::PersonName;
-                      ^
-psql:/REMOVED_PATH/queries2.sql:48: ERROR:  invalid input syntax for type PersonName: "Mouse, Mickey"
-LINE 3: where  name = 'Mouse, Mickey'::PersonName;
-                      ^
+   id    
+---------
+ 3037677
+(1 row)
+
+   id    
+---------
+ 3037677
+(1 row)
+
+ id 
+----
+(0 rows)
+
+ id 
+----
+(0 rows)
+
+ id 
+----
+(0 rows)
+
 
 -- Check ordering for PersonName
 
- id | name | program | plan 
-----+------+---------+------
-(0 rows)
+   id    |                  name                  | program |  plan  
+---------+----------------------------------------+---------+--------
+ 3029329 | Aagaard,Anders Niels                   |    3710 | MTRNA1
+ 3036489 | Aagaard,Ann-Sofie Schmidt              |    8404 | IROBCS
+ 3019665 | Aarnes,Jeivishnu                       |    3624 | CVENI1
+ 3014847 | Abdelrahman,Georgette Samuel Dina Fagr |    3422 | CRIMA1
+ 3034296 | Abdirova,Yegor Alexeevich              |    4802 | DESGA1
+ 3035579 | Abdul-Nabi,Hasan Haneen                |    3625 | CVENB1
+ 3037253 | Abdul Rasheed,Husna                    |    3502 | ACCTAD
+ 3035363 | Abdulla,Muli Yusuf Mubeen              |    8404 | MARKAS
+ 3029743 | Abdullahi,Idil Naima                   |    8123 | CONSGS
+ 3033663 | Abela,Joy Carmela Catherine Marneil    |    1650 | COMPER
+(10 rows)
 
- id | name | program | plan 
-----+------+---------+------
-(0 rows)
+   id    |               name               | program |  plan  
+---------+----------------------------------+---------+--------
+ 3036950 | Zvezdakoski,Bobby Oliver Stefan  |    3400 | ENGLA1
+ 3034944 | Zimmerli,Sylvia Kubeni           |    3710 | MTRNA1
+ 3017900 | Zhong Chau,Carolina Maria        |    7436 | OPTMDS
+ 3015131 | Zheng,Yao Ming Rui Li            |    3255 | INTAA1
+ 3014304 | Zhang,Gyorgy Mario Tibor         |    3525 | MARKA1
+ 3036106 | Zelenskaya,Svetlana Alika Marina |    2354 | EDSTAR
+ 3034470 | Zapart,Thomas Christoph          |    3449 | CHEMB1
+ 3022168 | Zapart,Maria Sophie              |    8616 | GBATAS
+ 3033919 | Zammit,Sephora Bernardette       |    4031 | SOCWA1
+ 3019999 | Zammit,Neville Ravi              |    4802 | DESGA1
+(10 rows)
 
 
 -- Check grouping based on name (look for repeated names)
 
-psql:/REMOVED_PATH/queries2.sql:72: ERROR:  could not identify an ordering operator for type cstring
-LINE 4: order  by count(*) DESC, given(name) ASC, name ASC
-                                 ^
-HINT:  Use an explicit ordering operator or modify the query.
-psql:/REMOVED_PATH/queries2.sql:78: ERROR:  could not identify an ordering operator for type cstring
-LINE 4: order  by count(*) DESC, given(name) DESC
-                                 ^
-HINT:  Use an explicit ordering operator or modify the query.
+            name            | count 
+----------------------------+-------
+ Liu,Charles                |     3
+ Webb-Martin,Clive          |     3
+ Ralikariki,Mohale Nephtaly |     3
+ Seasay,Sekou Karamo        |     3
+ Bailey,Adrian Kenneth      |     2
+ Surace,Alex                |     2
+ Braun,Alexander Pierre     |     2
+ Watkins,Ashley John        |     2
+ Umutoni Wa Shema,Blaise    |     2
+ Cassel,Camilo              |     2
+ O'Brien,Chi-Hung Luke      |     2
+ Yeo,Danielle Pamela        |     2
+ Ho,Emilia Yee              |     2
+ Ben Aouicha,Haifa          |     2
+ Ukola,Harald Tomas         |     2
+ Abualrob,Hussein           |     2
+ Watkins,John Ashley        |     2
+ Bailey,Kenneth             |     2
+ Bailey,Kenneth Adrian      |     2
+ Om Vijay,Kristinn Fridrik  |     2
+(20 rows)
+
+        given        | count 
+---------------------+-------
+ Sekou Karamo        |     3
+ Roman               |     3
+ Raoul               |     3
+ Mohale Nephtaly     |     3
+ Jae Moon            |     3
+ Haifa               |     3
+ Emilia Yee          |     3
+ Clive               |     3
+ Chi-Hung Luke       |     3
+ Charles             |     3
+ Amir Roman          |     3
+ Alex                |     3
+ Xavier Camilo       |     2
+ Suzanne Rebecca     |     2
+ Smriti Kinley       |     2
+ Sephora Bernardette |     2
+ Rebecca Suzanne     |     2
+ Peter               |     2
+ Oscar               |     2
+ Monica Magdi        |     2
+(20 rows)
+
 psql:/REMOVED_PATH/queries2.sql:84: ERROR:  could not identify an ordering operator for type cstring
 LINE 4: order  by count(*) ASC, family(name) ASC, show(name) DESC
-                                ^
+                                                  ^
 HINT:  Use an explicit ordering operator or modify the query.

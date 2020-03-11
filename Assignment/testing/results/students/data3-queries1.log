@@ -1,3 +1,27 @@
-psql: error: could not connect to server: could not connect to server: No such file or directory
-	Is the server running locally and accepting
-	connections on Unix domain socket "/tmp/tmp7z2m6m1x/.s.PGSQL.5432"?
+
+-- Check to see whether hash index works
+
+CREATE INDEX
+                                                    QUERY PLAN                                                     
+-------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on students  (REMOVED_TIME rows=50 REMOVED_WIDTH) (REMOVED_TIME rows=3 loops=1)
+   Recheck Cond: (name = 'Biskin,Diana Hannah'::personname)
+   Heap Blocks: exact=3
+   ->  Bitmap Index Scan on hash_file  (REMOVED_TIME rows=50 REMOVED_WIDTH) (REMOVED_TIME rows=3 loops=1)
+         Index Cond: (name = 'Biskin,Diana Hannah'::personname)
+REMOVED_TIME
+REMOVED_TIME
+(7 rows)
+
+                                                    QUERY PLAN                                                     
+-------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on students  (REMOVED_TIME rows=50 REMOVED_WIDTH) (REMOVED_TIME rows=1 loops=1)
+   Recheck Cond: (name = 'Han,Hao Yao'::personname)
+   Heap Blocks: exact=1
+   ->  Bitmap Index Scan on hash_file  (REMOVED_TIME rows=50 REMOVED_WIDTH) (REMOVED_TIME rows=1 loops=1)
+         Index Cond: (name = 'Han,Hao Yao'::personname)
+REMOVED_TIME
+REMOVED_TIME
+(7 rows)
+
+DROP INDEX

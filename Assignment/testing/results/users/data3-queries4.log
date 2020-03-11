@@ -1,9 +1,106 @@
-psql:/REMOVED_PATH/queries4.sql:2: ERROR:  invalid input syntax for type PersonName: "La,Aa"
-LINE 2: from Users where realname > 'La,Aa';
-                                    ^
-psql:/REMOVED_PATH/queries4.sql:5: ERROR:  invalid input syntax for type PersonName: "Ka,Aa"
-LINE 2: from Users where realname <= 'Ka,Aa';
-                                     ^
-psql:/REMOVED_PATH/queries4.sql:8: ERROR:  invalid input syntax for type PersonName: "Smith,John"
-LINE 2: from Users where realname <> 'Smith,John';
-                                     ^
+                      realname                      
+----------------------------------------------------
+ Shepherd,John Andrew
+ Lin,Xuemin
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Smith,Stephen
+ Smith,John
+ O'Brien,Patrick Sean
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+ Smith,John David
+ Smith,James
+ Zimmerman,Trent
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Smith,Stephen
+ Smith,John
+ O'Brien,Patrick Sean
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+ Smith,John David
+ Smith,James
+ Zimmerman,Trent
+ Shepherd,John Andrew
+ Lin,Xuemin
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Smith,John David
+ Smith,James
+ Zimmerman,Trent
+(30 rows)
+
+                            realname                             
+-----------------------------------------------------------------
+ Brotherston,Dylan
+ Eilish,Billie
+ Featherstone,Albert Basil Ernest George Harold Randolph William
+ FamilyName,GivenNames
+ I-Sun,Chen Wang
+ Clifton-Everest,Charles Edward
+ Clifton-Everest,David Ewan
+ Featherstone,Albert Basil Ernest George Harold Randolph William
+ FamilyName,GivenNames
+ I-Sun,Chen Wang
+ Clifton-Everest,Charles Edward
+ Clifton-Everest,David Ewan
+ Bronte,Greta-Anna Maryanne
+ Brotherston,Dylan
+ Eilish,Billie
+ Clifton-Everest,Charles Edward
+ Clifton-Everest,David Ewan
+ Bronte,Greta-Anna Maryanne
+(18 rows)
+
+                            realname                             
+-----------------------------------------------------------------
+ Shepherd,John Andrew
+ Brotherston,Dylan
+ Lin,Xuemin
+ Eilish,Billie
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Featherstone,Albert Basil Ernest George Harold Randolph William
+ FamilyName,GivenNames
+ Smith,Stephen
+ O'Brien,Patrick Sean
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+ I-Sun,Chen Wang
+ Clifton-Everest,Charles Edward
+ Smith,John David
+ Smith,James
+ Zimmerman,Trent
+ Clifton-Everest,David Ewan
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Featherstone,Albert Basil Ernest George Harold Randolph William
+ FamilyName,GivenNames
+ Smith,Stephen
+ O'Brien,Patrick Sean
+ Mahagedara Patabendige,Minosha Mitsuaki Senakasiri
+ I-Sun,Chen Wang
+ Clifton-Everest,Charles Edward
+ Smith,John David
+ Smith,James
+ Zimmerman,Trent
+ Clifton-Everest,David Ewan
+ Bronte,Greta-Anna Maryanne
+ Shepherd,John Andrew
+ Brotherston,Dylan
+ Lin,Xuemin
+ Eilish,Billie
+ Martin,Eric Andre
+ Lakshminarasimhan,Venkateswaran Chandrasekara
+ Marshall-Martin,Sally Angela
+ Clifton-Everest,Charles Edward
+ Smith,John David
+ Smith,James
+ Zimmerman,Trent
+ Clifton-Everest,David Ewan
+ Bronte,Greta-Anna Maryanne
+(46 rows)
+

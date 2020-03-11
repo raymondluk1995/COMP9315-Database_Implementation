@@ -2,10 +2,25 @@
 -- Check to see whether hash index works
 
 CREATE INDEX
-psql:/REMOVED_PATH/queries1.sql:11: ERROR:  invalid input syntax for type PersonName: "Biskin,Diana Hannah"
-LINE 3: where name = 'Biskin,Diana Hannah'::PersonName;
-                     ^
-psql:/REMOVED_PATH/queries1.sql:15: ERROR:  invalid input syntax for type PersonName: "Han, Hao Yao"
-LINE 3: where name = 'Han, Hao Yao'::PersonName;
-                     ^
+                                                    QUERY PLAN                                                    
+------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on students  (REMOVED_TIME rows=5 REMOVED_WIDTH) (REMOVED_TIME rows=0 loops=1)
+   Recheck Cond: (name = 'Biskin,Diana Hannah'::personname)
+   ->  Bitmap Index Scan on hash_file  (REMOVED_TIME rows=5 REMOVED_WIDTH) (REMOVED_TIME rows=0 loops=1)
+         Index Cond: (name = 'Biskin,Diana Hannah'::personname)
+REMOVED_TIME
+REMOVED_TIME
+(6 rows)
+
+                                                    QUERY PLAN                                                    
+------------------------------------------------------------------------------------------------------------------
+ Bitmap Heap Scan on students  (REMOVED_TIME rows=5 REMOVED_WIDTH) (REMOVED_TIME rows=1 loops=1)
+   Recheck Cond: (name = 'Han,Hao Yao'::personname)
+   Heap Blocks: exact=1
+   ->  Bitmap Index Scan on hash_file  (REMOVED_TIME rows=5 REMOVED_WIDTH) (REMOVED_TIME rows=1 loops=1)
+         Index Cond: (name = 'Han,Hao Yao'::personname)
+REMOVED_TIME
+REMOVED_TIME
+(7 rows)
+
 DROP INDEX

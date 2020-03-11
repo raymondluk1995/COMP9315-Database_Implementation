@@ -6,7 +6,7 @@
 
  count 
 -------
-     0
+   100
 (1 row)
 
 
@@ -24,44 +24,69 @@
 ----+------+---------+------
 (0 rows)
 
-psql:/REMOVED_PATH/queries2.sql:32: ERROR:  invalid input syntax for type PersonName: "Toth, Agnes"
-LINE 3: where  name = 'Toth, Agnes'::PersonName;
-                      ^
-psql:/REMOVED_PATH/queries2.sql:36: ERROR:  invalid input syntax for type PersonName: "Toth,Agnes"
-LINE 3: where  name = 'Toth,Agnes'::PersonName;
-                      ^
-psql:/REMOVED_PATH/queries2.sql:40: ERROR:  invalid input syntax for type PersonName: "Burg,Tracy Lauren Claire Nicola Samantha"
-LINE 3: where  name = 'Burg,Tracy Lauren Claire Nicola Samantha'::Pe...
-                      ^
-psql:/REMOVED_PATH/queries2.sql:44: ERROR:  invalid input syntax for type PersonName: "Misra,Olla"
-LINE 3: where  name = 'Misra,Olla'::PersonName;
-                      ^
-psql:/REMOVED_PATH/queries2.sql:48: ERROR:  invalid input syntax for type PersonName: "Mouse, Mickey"
-LINE 3: where  name = 'Mouse, Mickey'::PersonName;
-                      ^
+ id 
+----
+(0 rows)
+
+ id 
+----
+(0 rows)
+
+ id 
+----
+(0 rows)
+
+ id 
+----
+(0 rows)
+
+ id 
+----
+(0 rows)
+
 
 -- Check ordering for PersonName
 
- id | name | program | plan 
-----+------+---------+------
-(0 rows)
+   id    |                  name                  | program |  plan  
+---------+----------------------------------------+---------+--------
+ 3014847 | Abdelrahman,Georgette Samuel Dina Fagr |    3422 | CRIMA1
+ 3013704 | Al Basri,Muhammad Yaseen               |    4810 | DIGMA1
+ 3014437 | Al Jehani,Saad Ebtihal                 |    4620 | ATAXB1
+ 3013329 | Al Tebrineh,Jamal                      |    5855 | ZHSSFS
+ 3013302 | Alanazi,Melvin Nasser Mohammed         |    4810 | DIGMA1
+ 3014797 | Alcala,Hwai Tak                        |    9045 | PHCMAS
+ 3012897 | Ali,Barongo Adelaide                   |    8538 | CVENQS
+ 3013474 | Aye,Inggyin Anne Ni                    |    3521 | ECONA1
+ 3013356 | Babbington,Suzanne Rebecca             |    7442 | SESCKS
+ 3014931 | Beydoun,Georges                        |    3710 | MECHA1
+(10 rows)
 
- id | name | program | plan 
-----+------+---------+------
-(0 rows)
+   id    |                    name                     | program |  plan  
+---------+---------------------------------------------+---------+--------
+ 3014304 | Zhang,Gyorgy Mario Tibor                    |    3525 | MARKA1
+ 3014694 | Yenko,Yevgeny Konstantin Stanislav          |    3048 | CHEMA1
+ 3012643 | Wu,Chi-Hung Luke James                      |    3261 | ARCHC1
+ 3015109 | Wijaya,Carissa Olivia Veronica Felita Nadya |    3970 | PATHA2
+ 3014178 | Widjaja,Ming Anastasia Jennifer             |    1405 | PSYCER
+ 3012797 | Webb-Martin,Michael                         |    3710 | MANFA1
+ 3014352 | Watkins,John Ashley                         |    4031 | SOCWA1
+ 3015080 | Wangdi,Smriti                               |    3841 | MFACA1
+ 3012814 | Wang,Helen Elizabeth                        |    5338 | MECHAS
+ 3013536 | Vakafua,Latasi Lama                         |    8415 | ACCTAS
+(10 rows)
 
 
 -- Check grouping based on name (look for repeated names)
 
-psql:/REMOVED_PATH/queries2.sql:72: ERROR:  could not identify an ordering operator for type cstring
-LINE 4: order  by count(*) DESC, given(name) ASC, name ASC
-                                 ^
-HINT:  Use an explicit ordering operator or modify the query.
-psql:/REMOVED_PATH/queries2.sql:78: ERROR:  could not identify an ordering operator for type cstring
-LINE 4: order  by count(*) DESC, given(name) DESC
-                                 ^
-HINT:  Use an explicit ordering operator or modify the query.
+ name | count 
+------+-------
+(0 rows)
+
+ given | count 
+-------+-------
+(0 rows)
+
 psql:/REMOVED_PATH/queries2.sql:84: ERROR:  could not identify an ordering operator for type cstring
 LINE 4: order  by count(*) ASC, family(name) ASC, show(name) DESC
-                                ^
+                                                  ^
 HINT:  Use an explicit ordering operator or modify the query.

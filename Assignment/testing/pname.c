@@ -12,6 +12,7 @@
 #include "fmgr.h"
 #include "libpq/pqformat.h" /* needed for send/recv functions */
 #include "utils/hashutils.h"
+#include "utils/builtins.h"
 
 #include <string.h>
 #include <ctype.h>
@@ -30,21 +31,21 @@ typedef struct PersonName
 #define GIVEN 1
 static bool checkComponentVaild(char *component, unsigned int length, bool isgiven);
 static bool pname_valid(char *str);
-static char *ltrim(char* str);
+static char *left_trim(char* str);
 static char *removeSpaceAndComma(char* str);
 static char *removeSpaceOfGiven(char* str);
 
 
-static bool checkComponentVaild(char *component, unsigned int length, bool isgiven)
+static bool checkComponentVaild(char *component, unsigned int length, bool isgiven) 
 {
     int word_len = 0;
     int i = 0;
 
-    if (component[0] == ' ')
+    if (component[0] == ' ') 
     {
         if (!isgiven)
             return false;
-        else
+        else 
         {
             if (!isupper(component[1]))
                 return false;
@@ -52,31 +53,30 @@ static bool checkComponentVaild(char *component, unsigned int length, bool isgiv
     }
     else if(!isupper(component[0]))
         return false;
-    for (i = 0; i < length; i++)
+    for (i = 0; i < length; i++) 
     {
-        if (component[i] == ' ')
+        if (component[i] == ' ') 
         {
-            if(word_len < 2 && i != 0)
-                return false;
             if(!isupper(component[i+1]))
                 return false;
             if (i == length -1)
                 return false;
             word_len = 0;
-        }
+			continue;
+        } 
         else if (!isalpha(component[i]) && component[i] != '\'' && component[i] != '-')
             return false;
         word_len++;
     }
-	if (word_len<2)
-		return false;
+	// cope with the last word
+	if(word_len < 2) return false;
     return true;
 }
 
 static bool pname_valid(char *str)
 {
-  unsigned int len = strlen(str);
-  int cur = 0;
+    unsigned int len = strlen(str);
+    int cur = 0;
 	bool family;
 	bool given;
 
@@ -90,6 +90,7 @@ static bool pname_valid(char *str)
 
     return (family && given);
 }
+    
 
 /*****************************************************************************
  * Input/Output functions
@@ -177,7 +178,7 @@ Datum
  *
  * A practical PersonName datatype would provide much more than this, of course.
  *****************************************************************************/
-static char * ltrim(char* str)
+static char * left_trim(char* str)
 {
 	while(isspace(*str))
     {
@@ -235,10 +236,12 @@ static int pname_compare_internal(PersonName *first, PersonName *second)
 		return 0;
 }
 
-PG_FUNCTION_INFO_V1(pname_equal);
+/*----------Person Name OPERATOR PG FUNCTIONS Starts---------*/
+
+PG_FUNCTION_INFO_V1(pname_eq);
 
 Datum
-	pname_equal(PG_FUNCTION_ARGS)
+	pname_eq(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
@@ -246,10 +249,10 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) == 0);
 }
 
-PG_FUNCTION_INFO_V1(pname_greater);
+PG_FUNCTION_INFO_V1(pname_gt);
 
 Datum
-	pname_greater(PG_FUNCTION_ARGS)
+	pname_gt(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
@@ -257,10 +260,10 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) > 0);
 }
 
-PG_FUNCTION_INFO_V1(pname_greaterequal);
+PG_FUNCTION_INFO_V1(pname_ge);
 
 Datum
-	pname_greaterequal(PG_FUNCTION_ARGS)
+	pname_ge(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
@@ -268,10 +271,10 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) >= 0);
 }
 
-PG_FUNCTION_INFO_V1(pname_less);
+PG_FUNCTION_INFO_V1(pname_lt);
 
 Datum
-	pname_less(PG_FUNCTION_ARGS)
+	pname_lt(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
@@ -279,10 +282,10 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) < 0);
 }
 
-PG_FUNCTION_INFO_V1(pname_lessequal);
+PG_FUNCTION_INFO_V1(pname_le);
 
 Datum
-	pname_lessequal(PG_FUNCTION_ARGS)
+	pname_le(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
@@ -290,16 +293,19 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) <= 0);
 }
 
-PG_FUNCTION_INFO_V1(pname_notequal);
+PG_FUNCTION_INFO_V1(pname_ne);
 
 Datum
-	pname_notequal(PG_FUNCTION_ARGS)
+	pname_ne(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
 
 	PG_RETURN_BOOL(pname_compare_internal(a, b) != 0);
 }
+
+/*----------Person Name OPERATOR PG FUNCTIONS Ends---------*/
+
 
 PG_FUNCTION_INFO_V1(pname_compare);
 
@@ -319,8 +325,9 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	char *temp = pstrdup(a->pname);
 	char *family_name = strtok(temp, COMMASTRING);
-	char *result = psprintf("%s", family_name);
-	PG_RETURN_CSTRING(result);
+	//char *result = psprintf("%s", family_name);
+	text *result = cstring_to_text(family_name);
+	PG_RETURN_TEXT_P(result);
 }
 
 PG_FUNCTION_INFO_V1(given);
@@ -329,13 +336,13 @@ Datum
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	char *temp = pstrdup(a->pname);
-	char *result;
+	text *result;
 	char *given_name = strtok(temp, COMMASTRING);
 	given_name = strtok(NULL, COMMASTRING);
 	// trim the left space
-	given_name = ltrim(given_name);
-	result = psprintf("%s", given_name);
-	PG_RETURN_CSTRING(result);
+	given_name = left_trim(given_name);
+	result = cstring_to_text(given_name);
+	PG_RETURN_TEXT_P(result);
 }
 
 PG_FUNCTION_INFO_V1(show);
@@ -351,7 +358,7 @@ Datum
 	family_name = strtok(temp, COMMASTRING);
 	given_name = strtok(NULL, COMMASTRING);
 	// trim the left space
-	given_name = ltrim(given_name);
+	given_name = left_trim(given_name);
 	given_name = strtok(given_name, SPACESTRING);
 	strcpy(name, given_name);
 	strcat(name, " ");
@@ -368,7 +375,6 @@ Datum
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	int hashCode;
-	int index = 0;
 	char *name = removeSpaceOfGiven(a->pname);
 
 	hashCode = DatumGetUInt32(hash_any((unsigned char *)name,strlen(name)));

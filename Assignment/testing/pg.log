@@ -1,143 +1,54 @@
-2020-03-11 20:39:23.137 AEDT [16551] LOG:  starting PostgreSQL 12.1 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10+deb8u2) 4.9.2, 32-bit
-2020-03-11 20:39:23.139 AEDT [16551] LOG:  listening on Unix socket "/tmp/tmp5dynl8ca/.s.PGSQL.5432"
-2020-03-11 20:39:23.167 AEDT [16553] LOG:  database system was shut down at 2020-03-11 20:39:22 AEDT
-2020-03-11 20:39:23.185 AEDT [16551] LOG:  database system is ready to accept connections
-2020-03-11 20:39:24.484 AEDT [16611] ERROR:  invalid input syntax for type PersonName: "Smith, John  " at character 8
-2020-03-11 20:39:24.484 AEDT [16611] STATEMENT:  select 'Smith, John  '::PersonName;
-2020-03-11 20:39:24.485 AEDT [16611] ERROR:  invalid input syntax for type PersonName: " Smith, John" at character 8
-2020-03-11 20:39:24.485 AEDT [16611] STATEMENT:  select ' Smith, John'::PersonName;
-2020-03-11 20:39:24.485 AEDT [16611] ERROR:  invalid input syntax for type PersonName: "Smith,  John" at character 8
-2020-03-11 20:39:24.485 AEDT [16611] STATEMENT:  select 'Smith,  John'::PersonName;
-2020-03-11 20:39:24.485 AEDT [16611] ERROR:  invalid input syntax for type PersonName: "Smith, john" at character 8
-2020-03-11 20:39:24.485 AEDT [16611] STATEMENT:  select 'Smith, john'::PersonName;
-2020-03-11 20:39:24.485 AEDT [16611] ERROR:  invalid input syntax for type PersonName: "smith, John" at character 8
-2020-03-11 20:39:24.485 AEDT [16611] STATEMENT:  select 'smith, John'::PersonName;
-2020-03-11 20:39:24.485 AEDT [16611] ERROR:  invalid input syntax for type PersonName: "Smith, John 3rd" at character 8
-2020-03-11 20:39:24.485 AEDT [16611] STATEMENT:  select 'Smith, John 3rd'::PersonName;
-2020-03-11 20:39:24.485 AEDT [16611] ERROR:  invalid input syntax for type PersonName: "Able, Baker C#arlie" at character 8
-2020-03-11 20:39:24.485 AEDT [16611] STATEMENT:  select 'Able, Baker C#arlie'::PersonName;
-2020-03-11 20:39:24.485 AEDT [16611] ERROR:  invalid input syntax for type PersonName: "1234567" at character 8
-2020-03-11 20:39:24.485 AEDT [16611] STATEMENT:  select '1234567'::PersonName;
-2020-03-11 20:39:24.486 AEDT [16611] ERROR:  invalid input syntax for type PersonName: "-----" at character 8
-2020-03-11 20:39:24.486 AEDT [16611] STATEMENT:  select '-----'::PersonName;
-2020-03-11 20:39:28.877 AEDT [16775] ERROR:  could not identify an ordering operator for type cstring at character 68
-2020-03-11 20:39:28.877 AEDT [16775] HINT:  Use an explicit ordering operator or modify the query.
-2020-03-11 20:39:28.877 AEDT [16775] STATEMENT:  select realname,count(*)
-	from   Users
-	group  by realname
-	order  by given(realname) ASC, realname ASC;
-2020-03-11 20:39:31.060 AEDT [16554] ERROR:  could not open file "global/1262": No such file or directory
-2020-03-11 20:39:31.060 AEDT [16554] CONTEXT:  writing block 0 of relation global/1262
-2020-03-11 20:39:31.060 AEDT [16870] ERROR:  checkpoint request failed
-2020-03-11 20:39:31.060 AEDT [16870] HINT:  Consult recent messages in the server log for details.
-2020-03-11 20:39:31.060 AEDT [16870] STATEMENT:  DROP DATABASE "pname-test";
-2020-03-11 20:39:31.060 AEDT [16870] LOG:  could not send data to client: Broken pipe
-2020-03-11 20:39:31.060 AEDT [16870] STATEMENT:  DROP DATABASE "pname-test";
-2020-03-11 20:39:31.060 AEDT [16870] FATAL:  connection to client lost
-2020-03-11 20:39:59.376 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:00.021 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:00.021 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:00.666 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:00.666 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:01.312 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:01.312 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:01.957 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:01.957 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:02.602 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:02.677 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:03.247 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:03.247 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:03.892 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:03.892 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:04.537 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:04.537 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:05.182 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:05.182 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:05.827 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:05.827 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:06.472 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:06.472 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:07.117 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:07.117 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:07.761 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:07.761 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:08.406 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:08.406 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:09.051 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:09.051 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:09.454 AEDT [16557] LOG:  using stale statistics instead of current ones because stats collector is not responding
-2020-03-11 20:40:09.454 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:09.454 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:10.099 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:10.099 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:10.746 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:10.746 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:11.390 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:11.391 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:12.035 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:12.035 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:12.680 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:12.680 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:13.325 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:13.325 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:13.970 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:13.970 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:14.615 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:14.615 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:15.261 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:15.261 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:15.906 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:15.906 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:16.552 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:16.552 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:17.197 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:17.197 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:17.841 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:17.841 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:18.487 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:18.487 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:19.132 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:19.132 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:19.535 AEDT [16557] LOG:  using stale statistics instead of current ones because stats collector is not responding
-2020-03-11 20:40:19.535 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:19.535 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:20.180 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:20.180 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:20.825 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:20.825 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:21.470 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:21.470 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:22.115 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:22.115 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:22.760 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:22.760 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:23.405 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:23.405 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:24.050 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:24.050 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:24.695 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:24.695 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:25.340 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:25.340 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:25.985 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:25.985 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:26.630 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:26.630 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:27.275 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:27.275 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:27.920 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:27.920 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:28.565 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:28.565 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:29.209 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:29.209 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat_tmp/global.tmp": No such file or directory
-2020-03-11 20:40:29.612 AEDT [16557] LOG:  using stale statistics instead of current ones because stats collector is not responding
-2020-03-11 20:40:31.076 AEDT [16551] LOG:  could not open file "postmaster.pid": No such file or directory
-2020-03-11 20:40:31.076 AEDT [16551] LOG:  performing immediate shutdown because data directory lock file is invalid
-2020-03-11 20:40:31.076 AEDT [16551] LOG:  received immediate shutdown request
-2020-03-11 20:40:31.076 AEDT [16551] LOG:  could not open file "postmaster.pid": No such file or directory
-2020-03-11 20:40:31.079 AEDT [16558] LOG:  could not open temporary statistics file "pg_stat/global.tmp": No such file or directory
-2020-03-11 20:40:31.079 AEDT [16557] WARNING:  terminating connection because of crash of another server process
-2020-03-11 20:40:31.079 AEDT [16557] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
-2020-03-11 20:40:31.079 AEDT [16557] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
-2020-03-11 20:40:31.081 AEDT [16551] LOG:  database system is shut down
+2020-03-11 22:14:17.426 AEDT [24753] LOG:  starting PostgreSQL 12.1 on x86_64-pc-linux-gnu, compiled by gcc (Debian 4.9.2-10+deb8u2) 4.9.2, 32-bit
+2020-03-11 22:14:17.428 AEDT [24753] LOG:  listening on Unix socket "/tmp/tmp6xfyqiae/.s.PGSQL.5432"
+2020-03-11 22:14:17.443 AEDT [24755] LOG:  database system was shut down at 2020-03-11 22:14:17 AEDT
+2020-03-11 22:14:17.462 AEDT [24753] LOG:  database system is ready to accept connections
+2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith, John  " at character 8
+2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select 'Smith, John  '::PersonName;
+2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: " Smith, John" at character 8
+2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select ' Smith, John'::PersonName;
+2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith,  John" at character 8
+2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select 'Smith,  John'::PersonName;
+2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith, john" at character 8
+2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select 'Smith, john'::PersonName;
+2020-03-11 22:14:17.893 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "smith, John" at character 8
+2020-03-11 22:14:17.893 AEDT [24798] STATEMENT:  select 'smith, John'::PersonName;
+2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith, John A" at character 8
+2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select 'Smith, John A'::PersonName;
+2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Smith, John 3rd" at character 8
+2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select 'Smith, John 3rd'::PersonName;
+2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "Able, Baker C#arlie" at character 8
+2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select 'Able, Baker C#arlie'::PersonName;
+2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "1234567" at character 8
+2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select '1234567'::PersonName;
+2020-03-11 22:14:17.894 AEDT [24798] ERROR:  invalid input syntax for type PersonName: "-----" at character 8
+2020-03-11 22:14:17.894 AEDT [24798] STATEMENT:  select '-----'::PersonName;
+2020-03-11 22:14:22.136 AEDT [25214] ERROR:  could not identify an ordering operator for type cstring at character 142
+2020-03-11 22:14:22.136 AEDT [25214] HINT:  Use an explicit ordering operator or modify the query.
+2020-03-11 22:14:22.136 AEDT [25214] STATEMENT:  select show(name), count(*)
+	from   Students
+	group  by family(name), show(name) having count(*) > 1
+	order  by count(*) ASC, family(name) ASC, show(name) DESC
+	limit  20;
+2020-03-11 22:14:24.184 AEDT [25278] ERROR:  could not identify an ordering operator for type cstring at character 142
+2020-03-11 22:14:24.184 AEDT [25278] HINT:  Use an explicit ordering operator or modify the query.
+2020-03-11 22:14:24.184 AEDT [25278] STATEMENT:  select show(name), count(*)
+	from   Students
+	group  by family(name), show(name) having count(*) > 1
+	order  by count(*) ASC, family(name) ASC, show(name) DESC
+	limit  20;
+2020-03-11 22:14:39.260 AEDT [25468] ERROR:  could not identify an ordering operator for type cstring at character 142
+2020-03-11 22:14:39.260 AEDT [25468] HINT:  Use an explicit ordering operator or modify the query.
+2020-03-11 22:14:39.260 AEDT [25468] STATEMENT:  select show(name), count(*)
+	from   Students
+	group  by family(name), show(name) having count(*) > 1
+	order  by count(*) ASC, family(name) ASC, show(name) DESC
+	limit  20;
+2020-03-11 22:15:02.603 AEDT [24758] PANIC:  could not create file "pg_wal/xlogtemp.24758": No such file or directory
+2020-03-11 22:15:02.604 AEDT [24753] LOG:  WAL writer process (PID 24758) was terminated by signal 6: Aborted
+2020-03-11 22:15:02.604 AEDT [24753] LOG:  terminating any other active server processes
+2020-03-11 22:15:02.605 AEDT [24759] WARNING:  terminating connection because of crash of another server process
+2020-03-11 22:15:02.605 AEDT [24759] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, because another server process exited abnormally and possibly corrupted shared memory.
+2020-03-11 22:15:02.605 AEDT [24759] HINT:  In a moment you should be able to reconnect to the database and repeat your command.
+2020-03-11 22:15:02.605 AEDT [24760] LOG:  could not open temporary statistics file "pg_stat/global.tmp": No such file or directory
+2020-03-11 22:15:02.606 AEDT [24753] LOG:  all server processes terminated; reinitializing
+2020-03-11 22:15:02.608 AEDT [24753] PANIC:  could not open file "global/pg_control": No such file or directory

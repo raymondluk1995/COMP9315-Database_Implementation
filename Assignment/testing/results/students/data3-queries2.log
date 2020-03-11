@@ -1,0 +1,138 @@
+
+-- Running some queries --
+
+
+-- Count students
+
+ count 
+-------
+ 10000
+(1 row)
+
+
+-- Lookup on Students using id and name
+
+   id    |           name            | program |  plan  
+---------+---------------------------+---------+--------
+ 3261141 | Barahona Dos Santos,Carla |    7449 | AVIABS
+(1 row)
+
+   id    |           name            | program |  plan  
+---------+---------------------------+---------+--------
+ 3108264 | Webb-Martin,Michael Clive |    1640 | ELECAR
+(1 row)
+
+ id | name | program | plan 
+----+------+---------+------
+(0 rows)
+
+   id    
+---------
+ 3037677
+(1 row)
+
+   id    
+---------
+ 3037677
+(1 row)
+
+   id    
+---------
+ 3062703
+(1 row)
+
+   id    
+---------
+ 3079056
+(1 row)
+
+ id 
+----
+(0 rows)
+
+
+-- Check ordering for PersonName
+
+   id    |           name            | program |  plan  
+---------+---------------------------+---------+--------
+ 3029329 | Aagaard,Anders Niels      |    3710 | MTRNA1
+ 3036489 | Aagaard,Ann-Sofie Schmidt |    8404 | IROBCS
+ 3245330 | Aagaard,Eva Alsly Katrine |    3040 | CEICA1
+ 3217073 | Aagaard,Kasper Soren      |    5560 | EDTMAF
+ 3075713 | Aagaard,Schmidt Natascha  |    8413 | FINSLS
+ 3221504 | Aarhaug,Johan Alix        |    4802 | DESGA1
+ 3149582 | Aarhaug,Karen Kaia        |    3502 | ACCTAD
+ 3051094 | Aarnes,Andre Weiss        |    3403 | JAPNB2
+ 3019665 | Aarnes,Jeivishnu          |    3624 | CVENI1
+ 3079304 | Aarnes,Rikke Eleana       |    8404 | ACCTAS
+(10 rows)
+
+   id    |                 name                  | program |  plan  
+---------+---------------------------------------+---------+--------
+ 3045114 | Zwieky,Redhwan Yahya Adnan            |    3261 | ARCHC1
+ 3251657 | Zvezdakoski,Ilo Milan                 |    3727 | ELECA1
+ 3259306 | Zvezdakoski,Goran Dejan               |    6555 | ADMNHN
+ 3036950 | Zvezdakoski,Bobby Oliver Stefan       |    3400 | ENGLA1
+ 3227310 | Zurcher,Naomi Aleksandra              |    3688 | MTRNA1
+ 3045062 | Zurcher,Lock                          |    3640 | ELECA1
+ 3074510 | Zuniga Navarro,Pedro Sergio           |    3543 | ECONA1
+ 3100872 | Zuniga Navarro,Elizabeth Naysa Romina |    8569 | AELEAS
+ 3180733 | Zuniga Navarro,Aquiles                |    3710 | MECHA1
+ 3194955 | Zoltaszek,Sylvia Milena               |    3968 | COMPA1
+(10 rows)
+
+
+-- Check grouping based on name (look for repeated names)
+
+               name                | count 
+-----------------------------------+-------
+ Watkins,Ashley John               |    14
+ Webb-Martin,Clive                 |    14
+ Watkins,John Ashley               |    14
+ Iqbal,Mohammad Kaiser             |    14
+ Babbington,Rebecca Suzanne        |    14
+ Dasso Barrantes,Alicia Alessandra |    13
+ Watkins,Ashley                    |    13
+ Abualrob,Hussein Mohammad         |    13
+ Webb-Martin,Clive Michael         |    12
+ Webb-Martin,Michael Clive         |    12
+ Aleixo,Mingas                     |    12
+ Ikladios,Monica Magdi             |    12
+ Seasay,Sekou Karamo               |    12
+ Braun,Alexander Pierre            |    11
+ Liu,Charles                       |    11
+ Watkins,John                      |    11
+ Mees,Julien Quentin               |    11
+ Aleixo,Reginaldo Mingas           |    11
+ Beydoun,Georges Stephanie         |    10
+ Iqbal,Kaiser Mohammad             |    10
+(20 rows)
+
+       given        | count 
+--------------------+-------
+ John               |    18
+ Georges Stephanie  |    17
+ Michael            |    16
+ Diana              |    16
+ Raoul              |    15
+ Clive              |    15
+ Alex               |    15
+ Rebecca Suzanne    |    14
+ Mohammad Kaiser    |    14
+ Marija Marijana    |    14
+ John Ashley        |    14
+ Diana Hannah       |    14
+ Camilo Xavier      |    14
+ Ashley John        |    14
+ Ashley             |    14
+ Xavier Camilo      |    13
+ Vidya Nirosha      |    13
+ Svjatoslavs Deniss |    13
+ Roman              |    13
+ Raoul Nicolas      |    13
+(20 rows)
+
+psql:/REMOVED_PATH/queries2.sql:84: ERROR:  could not identify an ordering operator for type cstring
+LINE 4: order  by count(*) ASC, family(name) ASC, show(name) DESC
+                                                  ^
+HINT:  Use an explicit ordering operator or modify the query.

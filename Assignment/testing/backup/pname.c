@@ -12,7 +12,6 @@
 #include "fmgr.h"
 #include "libpq/pqformat.h" /* needed for send/recv functions */
 #include "utils/hashutils.h"
-#include "utils/builtins.h"
 
 #include <string.h>
 #include <ctype.h>
@@ -31,7 +30,7 @@ typedef struct PersonName
 #define GIVEN 1
 static bool checkComponentVaild(char *component, unsigned int length, bool isgiven);
 static bool pname_valid(char *str);
-static char *left_trim(char* str);
+static char *ltrim(char* str);
 static char *removeSpaceAndComma(char* str);
 static char *removeSpaceOfGiven(char* str);
 
@@ -178,7 +177,7 @@ Datum
  *
  * A practical PersonName datatype would provide much more than this, of course.
  *****************************************************************************/
-static char * left_trim(char* str)
+static char * ltrim(char* str)
 {
 	while(isspace(*str))
     {
@@ -307,6 +306,77 @@ Datum
 /*----------Person Name OPERATOR PG FUNCTIONS Ends---------*/
 
 
+
+/*----------CSTRING OPERATOR PG FUNCTIONS Starts---------*/
+// PG_FUNCTION_INFO_V1(cstring_eq);
+
+// Datum
+// 	cstring_eq(PG_FUNCTION_ARGS)
+// {
+// 	char *a = (char *)PG_GETARG_POINTER(0);
+// 	char *b = (char *)PG_GETARG_POINTER(1);
+
+// 	PG_RETURN_BOOL(strcmp(a, b) == 0);
+// }
+
+// PG_FUNCTION_INFO_V1(cstring_gt);
+
+// Datum
+// 	cstring_gt(PG_FUNCTION_ARGS)
+// {
+// 	char *a = (char *)PG_GETARG_POINTER(0);
+// 	char *b = (char *)PG_GETARG_POINTER(1);
+
+// 	PG_RETURN_BOOL(strcmp(a, b) > 0);
+// }
+
+// PG_FUNCTION_INFO_V1(cstring_ge);
+
+// Datum
+// 	cstring_ge(PG_FUNCTION_ARGS)
+// {
+// 	char *a = (char *)PG_GETARG_POINTER(0);
+// 	char *b = (char *)PG_GETARG_POINTER(1);
+
+// 	PG_RETURN_BOOL(strcmp(a, b) >= 0);
+// }
+
+// PG_FUNCTION_INFO_V1(cstring_lt);
+
+// Datum
+// 	cstring_lt(PG_FUNCTION_ARGS)
+// {
+// 	char *a = (char *)PG_GETARG_POINTER(0);
+// 	char *b = (char *)PG_GETARG_POINTER(1);
+
+// 	PG_RETURN_BOOL(strcmp(a, b) < 0);
+// }
+
+// PG_FUNCTION_INFO_V1(cstring_le);
+
+// Datum
+// 	cstring_le(PG_FUNCTION_ARGS)
+// {
+// 	char *a = (char *)PG_GETARG_POINTER(0);
+// 	char *b = (char *)PG_GETARG_POINTER(1);
+
+// 	PG_RETURN_BOOL(strcmp(a, b) <= 0);
+// }
+
+// PG_FUNCTION_INFO_V1(cstring_ne);
+
+// Datum
+// 	cstring_ne(PG_FUNCTION_ARGS)
+// {
+// 	char *a = (char *)PG_GETARG_POINTER(0);
+// 	char *b = (char *)PG_GETARG_POINTER(1);
+
+// 	PG_RETURN_BOOL(strcmp(a, b) != 0);
+// }
+
+
+/*----------CSTRING OPERATOR PG FUNCTIONS Ends---------*/
+
 PG_FUNCTION_INFO_V1(pname_compare);
 
 Datum
@@ -318,6 +388,17 @@ pname_compare(PG_FUNCTION_ARGS)
 	PG_RETURN_INT32(pname_compare_internal(a, b));
 }
 
+// PG_FUNCTION_INFO_V1(cstring_compare);
+
+// Datum
+// cstring_compare(PG_FUNCTION_ARGS)
+// {
+// 	char *a = (char *)PG_GETARG_POINTER(0);
+// 	char *b = (char *)PG_GETARG_POINTER(1);
+
+// 	PG_RETURN_INT32(strcmp(a, b));
+// }
+
 PG_FUNCTION_INFO_V1(family);
 Datum
 	family(PG_FUNCTION_ARGS)
@@ -325,9 +406,8 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	char *temp = pstrdup(a->pname);
 	char *family_name = strtok(temp, COMMASTRING);
-	//char *result = psprintf("%s", family_name);
-	text *result = cstring_to_text(family_name);
-	PG_RETURN_TEXT_P(result);
+	char *result = psprintf("%s", family_name);
+	PG_RETURN_CSTRING(result);
 }
 
 PG_FUNCTION_INFO_V1(given);
@@ -336,13 +416,13 @@ Datum
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	char *temp = pstrdup(a->pname);
-	text *result;
+	char *result;
 	char *given_name = strtok(temp, COMMASTRING);
 	given_name = strtok(NULL, COMMASTRING);
 	// trim the left space
-	given_name = left_trim(given_name);
-	result = cstring_to_text(given_name);
-	PG_RETURN_TEXT_P(result);
+	given_name = ltrim(given_name);
+	result = psprintf("%s", given_name);
+	PG_RETURN_CSTRING(result);
 }
 
 PG_FUNCTION_INFO_V1(show);
@@ -358,7 +438,7 @@ Datum
 	family_name = strtok(temp, COMMASTRING);
 	given_name = strtok(NULL, COMMASTRING);
 	// trim the left space
-	given_name = left_trim(given_name);
+	given_name = ltrim(given_name);
 	given_name = strtok(given_name, SPACESTRING);
 	strcpy(name, given_name);
 	strcat(name, " ");
@@ -375,6 +455,7 @@ Datum
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	int hashCode;
+	int index = 0;
 	char *name = removeSpaceOfGiven(a->pname);
 
 	hashCode = DatumGetUInt32(hash_any((unsigned char *)name,strlen(name)));

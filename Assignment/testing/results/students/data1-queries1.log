@@ -2,10 +2,22 @@
 -- Check to see whether hash index works
 
 CREATE INDEX
-psql:/REMOVED_PATH/queries1.sql:11: ERROR:  invalid input syntax for type PersonName: "Biskin,Diana Hannah"
-LINE 3: where name = 'Biskin,Diana Hannah'::PersonName;
-                     ^
-psql:/REMOVED_PATH/queries1.sql:15: ERROR:  invalid input syntax for type PersonName: "Han, Hao Yao"
-LINE 3: where name = 'Han, Hao Yao'::PersonName;
-                     ^
+                                            QUERY PLAN                                             
+---------------------------------------------------------------------------------------------------
+ Seq Scan on students  (REMOVED_TIME rows=1 REMOVED_WIDTH) (REMOVED_TIME rows=0 loops=1)
+   Filter: (name = 'Biskin,Diana Hannah'::personname)
+   Rows Removed by Filter: 100
+REMOVED_TIME
+REMOVED_TIME
+(5 rows)
+
+                                            QUERY PLAN                                             
+---------------------------------------------------------------------------------------------------
+ Seq Scan on students  (REMOVED_TIME rows=1 REMOVED_WIDTH) (REMOVED_TIME rows=1 loops=1)
+   Filter: (name = 'Han,Hao Yao'::personname)
+   Rows Removed by Filter: 99
+REMOVED_TIME
+REMOVED_TIME
+(5 rows)
+
 DROP INDEX

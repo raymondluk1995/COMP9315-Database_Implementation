@@ -82,56 +82,57 @@ CREATE TYPE PersonName (
 -----------------------------
 
 -- first, define the required operators
-CREATE FUNCTION pname_equal(PersonName, PersonName)
+CREATE FUNCTION pname_eq(PersonName, PersonName)
    RETURNS bool
    AS '/srvr/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname'
    LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_greater(PersonName, PersonName)
+CREATE FUNCTION pname_gt(PersonName, PersonName)
    RETURNS bool
    AS '/srvr/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname'
    LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_greaterequal(PersonName, PersonName)
+CREATE FUNCTION pname_ge(PersonName, PersonName)
    RETURNS bool
    AS '/srvr/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname'
    LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_less(PersonName, PersonName)
+CREATE FUNCTION pname_lt(PersonName, PersonName)
    RETURNS bool
    AS '/srvr/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_lessequal(PersonName, PersonName)
+CREATE FUNCTION pname_le(PersonName, PersonName)
    RETURNS bool
    AS '/srvr/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname' LANGUAGE C IMMUTABLE STRICT;
-CREATE FUNCTION pname_notequal(PersonName, PersonName)
+CREATE FUNCTION pname_ne(PersonName, PersonName)
    RETURNS bool
    AS '/srvr/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname' LANGUAGE C IMMUTABLE STRICT;
 
 CREATE OPERATOR = (
-   leftarg = PersonName, rightarg = PersonName, procedure = pname_equal,
+   leftarg = PersonName, rightarg = PersonName, procedure = pname_eq,
    commutator = = ,
    negator = <>,
-   restrict = eqsel, join = eqjoinsel
+   restrict = eqsel, join = eqjoinsel,
+   HASHES
 );
 CREATE OPERATOR > (
-   leftarg = PersonName, rightarg = PersonName, procedure = pname_greater,
+   leftarg = PersonName, rightarg = PersonName, procedure = pname_gt,
    commutator = < , negator = <= ,
    restrict = scalargtsel, join = scalargtjoinsel
 );
 CREATE OPERATOR >= (
-   leftarg = PersonName, rightarg = PersonName, procedure = pname_greaterequal,
+   leftarg = PersonName, rightarg = PersonName, procedure = pname_ge,
    commutator = <= , negator = < ,
    restrict = scalargesel, join = scalargejoinsel
 );
 CREATE OPERATOR < (
-   leftarg = PersonName, rightarg = PersonName, procedure = pname_less,
+   leftarg = PersonName, rightarg = PersonName, procedure = pname_lt,
    commutator = > , negator = >= ,
    restrict = scalarltsel, join = scalarltjoinsel
 );
 CREATE OPERATOR <= (
-   leftarg = PersonName, rightarg = PersonName, procedure = pname_lessequal,
+   leftarg = PersonName, rightarg = PersonName, procedure = pname_le,
    commutator = >= , negator = > ,
    restrict = scalarlesel, join = scalarlejoinsel
 );
 CREATE OPERATOR <> (
-   leftarg = PersonName, rightarg = PersonName, procedure = pname_notequal,
+   leftarg = PersonName, rightarg = PersonName, procedure = pname_ne,
    commutator = <> , negator = = ,
    restrict = neqsel, join = neqjoinsel
 );
@@ -142,10 +143,10 @@ CREATE FUNCTION pname_compare(PersonName,PersonName) RETURNS int4
   AS '/srvr/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname' LANGUAGE C IMMUTABLE STRICT;
 
 
-CREATE FUNCTION family(PersonName) RETURNS cstring
+CREATE FUNCTION family(PersonName) RETURNS text
    AS '/srvr/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname' LANGUAGE C IMMUTABLE STRICT;
 
-CREATE FUNCTION given(PersonName) RETURNS cstring
+CREATE FUNCTION given(PersonName) RETURNS text
    AS '/srvr/z5277884/assignment/COMP9315-Database_Implementation/Assignment/testing/pname' LANGUAGE C IMMUTABLE STRICT;
 
 CREATE FUNCTION show(PersonName) RETURNS cstring
