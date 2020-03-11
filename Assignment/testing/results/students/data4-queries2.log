@@ -1,0 +1,158 @@
+
+-- Running some queries --
+
+
+-- Count students
+
+ count  
+--------
+ 100000
+(1 row)
+
+
+-- Lookup on Students using id and name
+
+   id    |           name            | program |  plan  
+---------+---------------------------+---------+--------
+ 3261141 | Barahona Dos Santos,Carla |    7449 | AVIABS
+(1 row)
+
+   id    |           name            | program |  plan  
+---------+---------------------------+---------+--------
+ 3108264 | Webb-Martin,Michael Clive |    1640 | ELECAR
+(1 row)
+
+ id | name | program | plan 
+----+------+---------+------
+(0 rows)
+
+   id    
+---------
+ 3037677
+(1 row)
+
+   id    
+---------
+ 3037677
+(1 row)
+
+   id    
+---------
+ 3062703
+(1 row)
+
+   id    
+---------
+ 3079056
+(1 row)
+
+ id 
+----
+(0 rows)
+
+
+-- Check ordering for PersonName
+
+   id    |             name              | program |  plan  
+---------+-------------------------------+---------+--------
+ 3029329 | Aagaard,Anders Niels          |    3710 | MTRNA1
+ 3036489 | Aagaard,Ann-Sofie Schmidt     |    8404 | IROBCS
+ 4456022 | Aagaard,Anne Fall Maria Marie |    3620 | CVENA1
+ 4426474 | Aagaard,Bare Wittenburg       |    8417 | MARKAS
+ 3424202 | Aagaard,Brian Andreas         |    3502 | ACCTAD
+ 3451938 | Aagaard,Bundgaard Behn        |    4055 | ENGLA1
+ 4218994 | Aagaard,Clement               |    3502 | FINSAD
+ 3245330 | Aagaard,Eva Alsly Katrine     |    3040 | CEICA1
+ 3818613 | Aagaard,Fall                  |    3970 | MICRC1
+ 3895657 | Aagaard,Fall Hartmann         |    3802 | MFACA1
+(10 rows)
+
+   id    |                 name                  | program |  plan  
+---------+---------------------------------------+---------+--------
+ 4140075 | Zwieky,Yousef                         |    8543 | COMPCS
+ 4114978 | Zwieky,Sanah Olla Neha Nirouz Mohamad |    3543 | ECONCD
+ 3860944 | Zwieky,Sanah Hanan Abdusalam          |    8702 | GEOGJS
+ 4519438 | Zwieky,Salma Mohamad Nirouz           |    3710 | MECHA1
+ 3045114 | Zwieky,Redhwan Yahya Adnan            |    3261 | ARCHC1
+ 3608970 | Zwieky,Redhwan Muhiddin Walid         |    3645 | COMPB1
+ 4706784 | Zwieky,Olla Salma                     |    8415 | ACCTAS
+ 3311105 | Zwieky,Mohamad Sanah                  |    3970 | PSYCA1
+ 3661245 | Zwieky,Mohamad Olla Aisha Hassan      |    3451 | INOVA1
+ 3800005 | Zwieky,Khalifa Adnan                  |    8388 | ZBUSAS
+(10 rows)
+
+
+-- Check grouping based on name (look for repeated names)
+
+               name                | count 
+-----------------------------------+-------
+ Dasso Barrantes,Alessandra Alicia |   121
+ Iqbal,Mohammad Kaiser             |   114
+ Watkins,John Ashley               |   111
+ Babbington,Rebecca Suzanne        |   108
+ Bailey,Adrian Kenneth             |   101
+ Ikladios,Magdi Monica             |   101
+ Ikladios,Monica Magdi             |   101
+ Yeo,Danielle Pamela               |   100
+ Abualrob,Hussein Mohammad         |    97
+ Pedel,Jean Caitlin                |    96
+ Ralikariki,Nephtaly Mohale        |    96
+ Iqbal,Kaiser Mohammad             |    95
+ Samonte,Alex John                 |    94
+ Watkins,Ashley John               |    94
+ Yeo,Pamela Danielle               |    94
+ Braun,Pierre Alexander            |    94
+ Webb-Martin,Clive Michael         |    93
+ Abualrob,Mohammad Hussein         |    93
+ Vakafua,Latasi Lama               |    91
+ Samonte,John Alex                 |    89
+(20 rows)
+
+       given       | count 
+-------------------+-------
+ Michael           |   185
+ Alex              |   164
+ John              |   161
+ Mohammad          |   147
+ Jean              |   137
+ Alexander         |   126
+ Alessandra Alicia |   121
+ Jose              |   118
+ Diana             |   115
+ Roman             |   114
+ Mohammad Kaiser   |   114
+ Maria             |   113
+ Marie             |   112
+ John Ashley       |   111
+ Rebecca Suzanne   |   108
+ Peter             |   108
+ Georges Stephanie |   108
+ Raoul Nicolas     |   102
+ Benoit Alex       |   102
+ Alex Benoit       |   102
+(20 rows)
+
+         show          | count 
+-----------------------+-------
+ Fall Aagaard          |     2
+ Kristian Aarhaug      |     2
+ Rikke Aarnes          |     2
+ Jeivishnu Aarnes      |     2
+ Vee Aas               |     2
+ Sadia Abani           |     2
+ Anika Abani           |     2
+ Mohamed Abbas         |     2
+ Mina Abdallah         |     2
+ Farid Abdallah        |     2
+ Sami Abdel Khaleq     |     2
+ Maha Abdel Khaleq     |     2
+ Hussain Abdel Khaleq  |     2
+ Youssef Abdel Messih  |     2
+ Serag Abdel Messih    |     2
+ Mohamed Abdel Messih  |     2
+ Assaad Abdel Messih   |     2
+ Harriet Abdelrahman   |     2
+ Georgette Abdelrahman |     2
+ Yuliya Abdirova       |     2
+(20 rows)
+
