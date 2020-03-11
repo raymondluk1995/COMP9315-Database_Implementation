@@ -367,7 +367,7 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	int hashCode;
 	int index = 0;
-	char *name = removeSpaceOfGiven(a->name);
+	char *name = removeSpaceOfGiven(a->pname);
 
 	hashCode = DatumGetUInt32(hash_any((unsigned char *)name,strlen(name)));
 
