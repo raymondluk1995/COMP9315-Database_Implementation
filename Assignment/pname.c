@@ -4,6 +4,7 @@
 	Student Info: 
 					Minrui Lu (z5277884)
 					Haowei Huang (z5247672)
+	Reference: Postgres Github https://github.com/postgres/postgres
 */
 
 
@@ -30,6 +31,8 @@ PG_MODULE_MAGIC;
 typedef struct PersonName
 {
 	int length;
+	// Since pointer array cannot be used in struct definition, normal char array is used
+	// Bitmap will augment the size of the array in the system
 	char pname[FLEXIBLE_ARRAY_MEMBER];
 } PersonName;
 
@@ -303,7 +306,6 @@ pname_compare(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	PersonName *b = (PersonName *)PG_GETARG_POINTER(1);
-
 	PG_RETURN_INT32(pname_compare_internal(a, b));
 }
 
@@ -349,7 +351,7 @@ Datum
 	given_name = left_trim(given_name);
 	given_name = strtok(given_name, SPACESTRING);
 	strcpy(name, given_name);
-	strcat(name, " ");
+	strcat(name, SPACESTRING);
 	strcat(name, family_name);
 	result = cstring_to_text(name);
 	pfree(name);
@@ -362,8 +364,6 @@ Datum
 	pname_hash(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
-	int hashCode;
 	char *name = removeSpaceOfGiven(a->pname);
-	hashCode = DatumGetUInt32(hash_any((unsigned char *)name,strlen(name)));
-	PG_RETURN_INT32(hashCode);
+	PG_RETURN_INT32(DatumGetUInt32(hash_any((unsigned char *)name,strlen(name))));
 }

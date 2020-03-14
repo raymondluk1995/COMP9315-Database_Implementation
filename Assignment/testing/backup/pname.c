@@ -1,3 +1,10 @@
+/*
+	COMP9315 20T1 Assignment 1
+	Group Name: Tonight Fight Tiger
+	Student Info: 
+					Minrui Lu (z5277884)
+					Haowei Huang (z5247672)
+*/
 
 
 /*
@@ -12,9 +19,10 @@
 #include "fmgr.h"
 #include "libpq/pqformat.h" /* needed for send/recv functions */
 #include "utils/hashutils.h"
-
+#include "utils/builtins.h"
 #include <string.h>
 #include <ctype.h>
+
 PG_MODULE_MAGIC;
 #define COMMASTRING ","
 #define SPACESTRING " "
@@ -30,16 +38,14 @@ typedef struct PersonName
 #define GIVEN 1
 static bool checkComponentVaild(char *component, unsigned int length, bool isgiven);
 static bool pname_valid(char *str);
-static char *ltrim(char* str);
-static char *removeSpaceAndComma(char* str);
+static char *left_trim(char* str);
 static char *removeSpaceOfGiven(char* str);
 
-
+// Check whether family name or given name is valid
 static bool checkComponentVaild(char *component, unsigned int length, bool isgiven) 
 {
     int word_len = 0;
     int i = 0;
-
     if (component[0] == ' ') 
     {
         if (!isgiven)
@@ -67,18 +73,19 @@ static bool checkComponentVaild(char *component, unsigned int length, bool isgiv
             return false;
         word_len++;
     }
-	// cope with the last word
-	if(word_len < 2) return false;
+	// cope with the last character
+	if(word_len < 2) 
+		return false;
     return true;
 }
 
+// Check whether the whole person name is valid or not
 static bool pname_valid(char *str)
 {
     unsigned int len = strlen(str);
-    int cur = 0;
+    int cur = 0; // the position of comma
 	bool family;
 	bool given;
-
     // extraction of family and given name
     while(str[cur] != ',')
         cur++;
@@ -86,7 +93,6 @@ static bool pname_valid(char *str)
         return false;
 	family = checkComponentVaild(str, cur, FAMILY);
 	given = checkComponentVaild(&str[cur+1], len - cur -1, GIVEN);
-
     return (family && given);
 }
     
@@ -102,8 +108,8 @@ Datum
 {
 	char *str = PG_GETARG_CSTRING(0);
 	PersonName *result;
-	int length;
 	// define the length of pname, including the length of '\0'
+	int length = strlen(str) + 1;
 	if (!pname_valid(str))
 	{
 		ereport(ERROR,
@@ -111,8 +117,6 @@ Datum
 				 errmsg("invalid input syntax for type %s: \"%s\"",
 						"PersonName", str)));
 	}
-
-	length = strlen(str) + 1;
 	str = removeSpaceOfGiven(str);
 	result = (PersonName *)palloc(VARHDRSZ+length);
 	SET_VARSIZE(result,VARHDRSZ+length);
@@ -128,14 +132,11 @@ Datum
 	PersonName *name = (PersonName *)PG_GETARG_POINTER(0);
 	char *result;
 	result = psprintf("%s", name->pname);
-
 	PG_RETURN_CSTRING(result);
 }
 
 /*****************************************************************************
  * Binary Input/Output functions
- *
- * These are optional.
  *****************************************************************************/
 
 PG_FUNCTION_INFO_V1(pname_recv);
@@ -145,11 +146,9 @@ Datum
 {
 	StringInfo buf = (StringInfo)PG_GETARG_POINTER(0);
 	PersonName *result;
-
 	const char *name = pq_getmsgstring(buf);
 	int length = strlen(name)+1;
 	result = (PersonName *)palloc(VARHDRSZ + length);
-
 	SET_VARSIZE(result, VARHDRSZ + length);
 
 	// assign value to pname pointer
@@ -166,18 +165,16 @@ Datum
 	PersonName *name = (PersonName *)PG_GETARG_POINTER(0);
 	StringInfoData buf;
 	pq_begintypsend(&buf);
-
 	pq_sendstring(&buf, name->pname);
-
 	PG_RETURN_BYTEA_P(pq_endtypsend(&buf));
 }
 
 /*****************************************************************************
  * Operators
- *
- * A practical PersonName datatype would provide much more than this, of course.
  *****************************************************************************/
-static char * ltrim(char* str)
+
+// Trim off the spaces on the left hand side of a string
+static char * left_trim(char* str)
 {
 	while(isspace(*str))
     {
@@ -186,6 +183,7 @@ static char * ltrim(char* str)
     return (str);
 }
 
+// Remove the space on the left hand side of the given name
 static char *removeSpaceOfGiven(char* str)
 {
 	int index = 0;
@@ -208,25 +206,11 @@ static char *removeSpaceOfGiven(char* str)
 	return result;
 }
 
-static char *removeSpaceAndComma(char* str)
-{
-    int count =0;
-    char * result = palloc(strlen(str)*sizeof(char));
-    for (int i=0;i<strlen(str);i++)
-    {
-        if(str[i]!=' '&& str[i]!=',')
-        {
-            result[count++]=str[i];
-        }
-    }
-    result[count]='\0';
-    return(result);
-}
-
+// Returns -1 if the first PersonName is smaller, 0 if equal, 1 if bigger
 static int pname_compare_internal(PersonName *first, PersonName *second)
 {
-	char *name1 = removeSpaceAndComma(first->pname);
-	char *name2 = removeSpaceAndComma(second->pname);
+	char *name1 = removeSpaceOfGiven(first->pname);
+	char *name2 = removeSpaceOfGiven(second->pname);
 	if(strcmp(name1,name2)<0)
 		return -1;
 	else if (strcmp(name1,name2)>0)
@@ -236,7 +220,7 @@ static int pname_compare_internal(PersonName *first, PersonName *second)
 }
 
 /*----------Person Name OPERATOR PG FUNCTIONS Starts---------*/
-
+// Equal operator "="
 PG_FUNCTION_INFO_V1(pname_eq);
 
 Datum
@@ -248,6 +232,7 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) == 0);
 }
 
+// Greater than operator ">"
 PG_FUNCTION_INFO_V1(pname_gt);
 
 Datum
@@ -259,6 +244,7 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) > 0);
 }
 
+// Greater than or equal to operator ">="
 PG_FUNCTION_INFO_V1(pname_ge);
 
 Datum
@@ -270,6 +256,7 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) >= 0);
 }
 
+// Less than operator "<"
 PG_FUNCTION_INFO_V1(pname_lt);
 
 Datum
@@ -281,6 +268,7 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) < 0);
 }
 
+// Less than or equal to operator "<="
 PG_FUNCTION_INFO_V1(pname_le);
 
 Datum
@@ -292,6 +280,7 @@ Datum
 	PG_RETURN_BOOL(pname_compare_internal(a, b) <= 0);
 }
 
+// Not equal to operator "<>"
 PG_FUNCTION_INFO_V1(pname_ne);
 
 Datum
@@ -305,78 +294,8 @@ Datum
 
 /*----------Person Name OPERATOR PG FUNCTIONS Ends---------*/
 
-
-
-/*----------CSTRING OPERATOR PG FUNCTIONS Starts---------*/
-// PG_FUNCTION_INFO_V1(cstring_eq);
-
-// Datum
-// 	cstring_eq(PG_FUNCTION_ARGS)
-// {
-// 	char *a = (char *)PG_GETARG_POINTER(0);
-// 	char *b = (char *)PG_GETARG_POINTER(1);
-
-// 	PG_RETURN_BOOL(strcmp(a, b) == 0);
-// }
-
-// PG_FUNCTION_INFO_V1(cstring_gt);
-
-// Datum
-// 	cstring_gt(PG_FUNCTION_ARGS)
-// {
-// 	char *a = (char *)PG_GETARG_POINTER(0);
-// 	char *b = (char *)PG_GETARG_POINTER(1);
-
-// 	PG_RETURN_BOOL(strcmp(a, b) > 0);
-// }
-
-// PG_FUNCTION_INFO_V1(cstring_ge);
-
-// Datum
-// 	cstring_ge(PG_FUNCTION_ARGS)
-// {
-// 	char *a = (char *)PG_GETARG_POINTER(0);
-// 	char *b = (char *)PG_GETARG_POINTER(1);
-
-// 	PG_RETURN_BOOL(strcmp(a, b) >= 0);
-// }
-
-// PG_FUNCTION_INFO_V1(cstring_lt);
-
-// Datum
-// 	cstring_lt(PG_FUNCTION_ARGS)
-// {
-// 	char *a = (char *)PG_GETARG_POINTER(0);
-// 	char *b = (char *)PG_GETARG_POINTER(1);
-
-// 	PG_RETURN_BOOL(strcmp(a, b) < 0);
-// }
-
-// PG_FUNCTION_INFO_V1(cstring_le);
-
-// Datum
-// 	cstring_le(PG_FUNCTION_ARGS)
-// {
-// 	char *a = (char *)PG_GETARG_POINTER(0);
-// 	char *b = (char *)PG_GETARG_POINTER(1);
-
-// 	PG_RETURN_BOOL(strcmp(a, b) <= 0);
-// }
-
-// PG_FUNCTION_INFO_V1(cstring_ne);
-
-// Datum
-// 	cstring_ne(PG_FUNCTION_ARGS)
-// {
-// 	char *a = (char *)PG_GETARG_POINTER(0);
-// 	char *b = (char *)PG_GETARG_POINTER(1);
-
-// 	PG_RETURN_BOOL(strcmp(a, b) != 0);
-// }
-
-
-/*----------CSTRING OPERATOR PG FUNCTIONS Ends---------*/
-
+// Returns -1 if the first PersonName is smaller, 0 if equal, 1 if bigger
+// This function is used to build operator class
 PG_FUNCTION_INFO_V1(pname_compare);
 
 Datum
@@ -388,17 +307,7 @@ pname_compare(PG_FUNCTION_ARGS)
 	PG_RETURN_INT32(pname_compare_internal(a, b));
 }
 
-// PG_FUNCTION_INFO_V1(cstring_compare);
-
-// Datum
-// cstring_compare(PG_FUNCTION_ARGS)
-// {
-// 	char *a = (char *)PG_GETARG_POINTER(0);
-// 	char *b = (char *)PG_GETARG_POINTER(1);
-
-// 	PG_RETURN_INT32(strcmp(a, b));
-// }
-
+// Return the family name as text type
 PG_FUNCTION_INFO_V1(family);
 Datum
 	family(PG_FUNCTION_ARGS)
@@ -406,25 +315,24 @@ Datum
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	char *temp = pstrdup(a->pname);
 	char *family_name = strtok(temp, COMMASTRING);
-	char *result = psprintf("%s", family_name);
-	PG_RETURN_CSTRING(result);
+	PG_RETURN_TEXT_P(cstring_to_text(family_name));
 }
 
+// Return the given name as text type
 PG_FUNCTION_INFO_V1(given);
 Datum
 	given(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	char *temp = pstrdup(a->pname);
-	char *result;
 	char *given_name = strtok(temp, COMMASTRING);
 	given_name = strtok(NULL, COMMASTRING);
-	// trim the left space
-	given_name = ltrim(given_name);
-	result = psprintf("%s", given_name);
-	PG_RETURN_CSTRING(result);
+	given_name = left_trim(given_name);
+	PG_RETURN_TEXT_P(cstring_to_text(given_name));
 }
 
+// Appends the entire family name to the first given name
+// Returns as text type
 PG_FUNCTION_INFO_V1(show);
 Datum
 	show(PG_FUNCTION_ARGS)
@@ -433,32 +341,29 @@ Datum
 	int length = strlen(a ->pname) +1;
 	char *temp = pstrdup(a->pname);
 	char *name = (char*)palloc(sizeof(char)*length);
-	char *family_name, *given_name, *result;
+	char *family_name, *given_name;
+	text * result;
 	memset(name,'\0',length);
 	family_name = strtok(temp, COMMASTRING);
 	given_name = strtok(NULL, COMMASTRING);
-	// trim the left space
-	given_name = ltrim(given_name);
+	given_name = left_trim(given_name);
 	given_name = strtok(given_name, SPACESTRING);
 	strcpy(name, given_name);
 	strcat(name, " ");
 	strcat(name, family_name);
-
-	result = psprintf("%s", name);
+	result = cstring_to_text(name);
 	pfree(name);
-	PG_RETURN_CSTRING(result);
+	PG_RETURN_TEXT_P(result);
 }
 
+// Return a hash value of the PersonName
 PG_FUNCTION_INFO_V1(pname_hash);
 Datum
 	pname_hash(PG_FUNCTION_ARGS)
 {
 	PersonName *a = (PersonName *)PG_GETARG_POINTER(0);
 	int hashCode;
-	int index = 0;
 	char *name = removeSpaceOfGiven(a->pname);
-
 	hashCode = DatumGetUInt32(hash_any((unsigned char *)name,strlen(name)));
-
 	PG_RETURN_INT32(hashCode);
 }

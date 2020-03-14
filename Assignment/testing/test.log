@@ -12,19 +12,13 @@ gcc -std=gnu99 -Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-st
 The files belonging to this database system will be owned by user "z5277884".
 This user must also own the server process.
 
-The database cluster will be initialized with locales
-  COLLATE:  C
-  CTYPE:    en_AU.UTF-8
-  MESSAGES: en_AU.UTF-8
-  MONETARY: en_AU.UTF-8
-  NUMERIC:  en_AU.UTF-8
-  TIME:     en_AU.UTF-8
-The default database encoding has accordingly been set to "UTF8".
+The database cluster will be initialized with locale "C".
+The default database encoding has accordingly been set to "SQL_ASCII".
 The default text search configuration will be set to "english".
 
 Data page checksums are disabled.
 
-fixing permissions on existing directory /tmp/tmp3gy62yvo ... ok
+fixing permissions on existing directory /tmp/tmpeklcorw4 ... ok
 creating subdirectories ... ok
 selecting dynamic shared memory implementation ... posix
 selecting default max_connections ... 100
@@ -37,7 +31,7 @@ syncing data to disk ... ok
 
 Success. You can now start the database server using:
 
-    pg_ctl -D /tmp/tmp3gy62yvo -l logfile start
+    pg_ctl -D /tmp/tmpeklcorw4 -l logfile start
 
 waiting for server to start.... done
 server started

@@ -1,15 +1,14 @@
+-- COMP9315 20T1 Assignment 1
+-- Group Name: Tonight Fight Tiger
+-- Student Info:
+--                  Minrui Lu (z5277884)
+--                  Haowei Huang (z5247672)
+
+
 ---------------------------------------------------------------------------
---
 -- pname.sql-
 --    This file shows how to create a new user-defined type and how to
 --    use this new type.
---
---
--- Portions Copyright (c) 1996-2019, PostgreSQL Global Development Group
--- Portions Copyright (c) 1994, Regents of the University of California
---
--- src/tutorial/pname.source
---
 ---------------------------------------------------------------------------
 
 -----------------------------
@@ -30,8 +29,7 @@
 
 -- the input function 'pname_in' takes a null-terminated string (the
 -- textual representation of the type) and turns it into the internal
--- (in memory) representation. You will get a message telling you 'pname'
--- does not exist yet but that's okay.
+-- (in memory) representation. 
 
 CREATE FUNCTION pname_in(cstring)
    RETURNS PersonName
@@ -39,7 +37,7 @@ CREATE FUNCTION pname_in(cstring)
    LANGUAGE C IMMUTABLE STRICT;
 
 -- the output function 'pname_out' takes the internal representation and
--- converts it into the textual representation.
+-- converts it into the cstring representation.
 
 CREATE FUNCTION pname_out(PersonName)
    RETURNS cstring
@@ -64,7 +62,8 @@ CREATE FUNCTION pname_send(PersonName)
 
 
 -- now, we can create the type. The internallength specifies the size of the
--- memory block required to hold the type (we need two 8-byte doubles).
+-- memory block required to hold the type (here the internallength is flexible, 
+-- so we set it to be a variable).
 
 CREATE TYPE PersonName (
    internallength = variable,
@@ -143,13 +142,13 @@ CREATE FUNCTION pname_compare(PersonName,PersonName) RETURNS int4
   AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
 
-CREATE FUNCTION family(PersonName) RETURNS cstring
+CREATE FUNCTION family(PersonName) RETURNS text
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
-CREATE FUNCTION given(PersonName) RETURNS cstring
+CREATE FUNCTION given(PersonName) RETURNS text
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
-CREATE FUNCTION show(PersonName) RETURNS cstring
+CREATE FUNCTION show(PersonName) RETURNS text
    AS '_OBJWD_/pname' LANGUAGE C IMMUTABLE STRICT;
 
 CREATE FUNCTION pname_hash(PersonName) RETURNS int4
