@@ -18,7 +18,7 @@ The default text search configuration will be set to "english".
 
 Data page checksums are disabled.
 
-fixing permissions on existing directory /tmp/tmpeklcorw4 ... ok
+fixing permissions on existing directory /tmp/tmpwxi7inn3 ... ok
 creating subdirectories ... ok
 selecting dynamic shared memory implementation ... posix
 selecting default max_connections ... 100
@@ -31,7 +31,7 @@ syncing data to disk ... ok
 
 Success. You can now start the database server using:
 
-    pg_ctl -D /tmp/tmpeklcorw4 -l logfile start
+    pg_ctl -D /tmp/tmpwxi7inn3 -l logfile start
 
 waiting for server to start.... done
 server started
