@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="mywork" targetName="mywork" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ca15b188-28e8-4294-92eb-bc39b7396b66" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProjectId" id="1ZwGZAx7vf1dCX4bvCAxuoO5Z6s" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/env/huhawel-N-7_hF-2/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mywork" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mywork" TARGET_NAME="mywork" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="mywork" RUN_TARGET_NAME="mywork">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python3.7" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ca15b188-28e8-4294-92eb-bc39b7396b66" name="Default Changelist" comment="" />
+      <created>1585742795976</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585742795976</updated>
+      <workItem from="1585742798594" duration="32000" />
+      <workItem from="1585742831695" duration="369000" />
+      <workItem from="1585743228006" duration="393000" />
+      <workItem from="1585888123447" duration="2651000" />
+      <workItem from="1585917936125" duration="1026000" />
+      <workItem from="1585961687221" duration="10455000" />
+      <workItem from="1586066247911" duration="3412000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1398" height="196" key="GridCell.Tab.0.bottom" timestamp="1586069002019">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="196" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586069002019" />
+    <state width="1398" height="208" key="GridCell.Tab.0.bottom/0.23.1440.812@0.23.1440.812" timestamp="1585981958502" />
+    <state width="1398" height="196" key="GridCell.Tab.0.center" timestamp="1586069002018">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="196" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586069002018" />
+    <state width="1398" height="208" key="GridCell.Tab.0.center/0.23.1440.812@0.23.1440.812" timestamp="1585981958502" />
+    <state width="1398" height="196" key="GridCell.Tab.0.left" timestamp="1586069002017">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="196" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586069002017" />
+    <state width="1398" height="208" key="GridCell.Tab.0.left/0.23.1440.812@0.23.1440.812" timestamp="1585981958502" />
+    <state width="1398" height="196" key="GridCell.Tab.0.right" timestamp="1586069002018">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="196" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586069002018" />
+    <state width="1398" height="208" key="GridCell.Tab.0.right/0.23.1440.812@0.23.1440.812" timestamp="1585981958502" />
+    <state width="1398" height="323" key="GridCell.Tab.1.bottom" timestamp="1585981958499">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state width="1398" height="323" key="GridCell.Tab.1.bottom/0.23.1440.812@0.23.1440.812" timestamp="1585981958499" />
+    <state width="1398" height="323" key="GridCell.Tab.1.center" timestamp="1585981958499">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state width="1398" height="323" key="GridCell.Tab.1.center/0.23.1440.812@0.23.1440.812" timestamp="1585981958499" />
+    <state width="1398" height="323" key="GridCell.Tab.1.left" timestamp="1585981958498">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state width="1398" height="323" key="GridCell.Tab.1.left/0.23.1440.812@0.23.1440.812" timestamp="1585981958498" />
+    <state width="1398" height="323" key="GridCell.Tab.1.right" timestamp="1585981958499">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state width="1398" height="323" key="GridCell.Tab.1.right/0.23.1440.812@0.23.1440.812" timestamp="1585981958499" />
+    <state width="640" height="171" key="ImportCMakeProjectWizard.bottomPanel" timestamp="1585743224910">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state width="640" height="171" key="ImportCMakeProjectWizard.bottomPanel/0.23.1440.812@0.23.1440.812" timestamp="1585743224910" />
+    <state width="640" height="400" key="ImportCMakeProjectWizard.topPanel" timestamp="1585743224910">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state width="640" height="400" key="ImportCMakeProjectWizard.topPanel/0.23.1440.812@0.23.1440.812" timestamp="1585743224910" />
+    <state x="376" y="259" key="com.intellij.ide.util.TipDialog" timestamp="1586065351638">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state x="376" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.812@0.23.1440.812" timestamp="1586065351638" />
+    <state x="385" y="159" width="670" height="676" key="search.everywhere.popup" timestamp="1585968913908">
+      <screen x="0" y="23" width="1440" height="812" />
+    </state>
+    <state x="385" y="159" width="670" height="676" key="search.everywhere.popup/0.23.1440.812@0.23.1440.812" timestamp="1585968913908" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/x1_copy.c</url>
+          <line>33</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/x1_copy.c</url>
+          <line>35</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
