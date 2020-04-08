@@ -56,6 +56,25 @@ void scanAndDisplayMatchingTuples(Query q)
 {
 	assert(q != NULL);
 	//TODO
+	Tuple q_tuple = q->qstring; // query tuple
+    for (int i =0;i<nPages(q->rel);i++){
+        if(bitIsSet(q->pages,i)){
+            q->ntuppages++;
+            Page p = getPage(dataFile(q->rel),i);
+            Bool found = FALSE;
+            for (int j=0;j<pageNitems((p));j++){
+                q->ntuples++;
+                Tuple s_tuple = getTupleFromPage(q->rel,p,j); // search tuple
+                if(tupleMatch(q->rel,q_tuple,s_tuple)){
+                    showTuple(q->rel,s_tuple);
+                    found = TRUE;
+                }
+            }
+            if(found==FALSE) // no tuples in Page i are results
+                q->nfalse++;
+            free(p);
+        }
+    }
 }
 
 // print statistics on query

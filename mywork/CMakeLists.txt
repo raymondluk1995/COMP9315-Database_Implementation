@@ -27,5 +27,5 @@ add_executable(mywork
         tuple.h
         util.c
         util.h
-        x1_copy.c
+        x1.c
         )

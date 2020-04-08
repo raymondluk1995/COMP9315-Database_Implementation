@@ -187,18 +187,18 @@ CMakeFiles/mywork.dir/util.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mywork.dir/util.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/util.c" -o CMakeFiles/mywork.dir/util.c.s
 
-CMakeFiles/mywork.dir/x1_copy.c.o: CMakeFiles/mywork.dir/flags.make
-CMakeFiles/mywork.dir/x1_copy.c.o: ../x1_copy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/mywork.dir/x1_copy.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mywork.dir/x1_copy.c.o   -c "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/x1_copy.c"
+CMakeFiles/mywork.dir/x1.c.o: CMakeFiles/mywork.dir/flags.make
+CMakeFiles/mywork.dir/x1.c.o: ../x1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/mywork.dir/x1.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/mywork.dir/x1.c.o   -c "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/x1.c"
 
-CMakeFiles/mywork.dir/x1_copy.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mywork.dir/x1_copy.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/x1_copy.c" > CMakeFiles/mywork.dir/x1_copy.c.i
+CMakeFiles/mywork.dir/x1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mywork.dir/x1.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/x1.c" > CMakeFiles/mywork.dir/x1.c.i
 
-CMakeFiles/mywork.dir/x1_copy.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mywork.dir/x1_copy.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/x1_copy.c" -o CMakeFiles/mywork.dir/x1_copy.c.s
+CMakeFiles/mywork.dir/x1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mywork.dir/x1.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/x1.c" -o CMakeFiles/mywork.dir/x1.c.s
 
 # Object files for target mywork
 mywork_OBJECTS = \
@@ -212,7 +212,7 @@ mywork_OBJECTS = \
 "CMakeFiles/mywork.dir/tsig.c.o" \
 "CMakeFiles/mywork.dir/tuple.c.o" \
 "CMakeFiles/mywork.dir/util.c.o" \
-"CMakeFiles/mywork.dir/x1_copy.c.o"
+"CMakeFiles/mywork.dir/x1.c.o"
 
 # External object files for target mywork
 mywork_EXTERNAL_OBJECTS =
@@ -227,7 +227,7 @@ mywork: CMakeFiles/mywork.dir/reln.c.o
 mywork: CMakeFiles/mywork.dir/tsig.c.o
 mywork: CMakeFiles/mywork.dir/tuple.c.o
 mywork: CMakeFiles/mywork.dir/util.c.o
-mywork: CMakeFiles/mywork.dir/x1_copy.c.o
+mywork: CMakeFiles/mywork.dir/x1.c.o
 mywork: CMakeFiles/mywork.dir/build.make
 mywork: CMakeFiles/mywork.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Linking C executable mywork"

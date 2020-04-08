@@ -10,18 +10,23 @@ int main(int argc, char **argv)
 {
 	Bits a = newBits(60);
 	Bits b = newBits(60);
-	setBit(a, 3);
+	setBit(a,1);
+//	setBit(a,2);
+//	setBit(a, 3);
 	setBit(a, 10);
 	setBit(a, 40);
-	showBits(a);printf("\n");
+	//showBits(a);
+
+
 	andBits(a, b);
-//
-//
-//////	setBit(b, 50);
-////	setBit(a, 3);
-//////	setBit(a, 40);
-//	showBits(a);printf("\n");
-//	showBits(b);printf("\n");
+
+
+
+////	setBit(b, 50);
+//	setBit(a, 3);
+////	setBit(a, 40);
+	showBits(a);printf("\n");
+	showBits(b);printf("\n");
 ////	printf("if a is b subset:%s\n", isSubset(a, b)?"true":"false");
 //	printf("set posittion %d th bit to 1\n", 3);    // testing
 //	printf("t=0: "); showBits(b); printf("\n");

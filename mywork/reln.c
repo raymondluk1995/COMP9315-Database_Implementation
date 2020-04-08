@@ -136,8 +136,26 @@ PageID addToRelation(Reln r, Tuple t)
 	putPage(r->dataf, pid, p);
 
 	// compute tuple signature and add to tsigf
-	
 	//TODO
+	Page tuple_page;
+	PageID tuple_pid;
+	tuple_pid = rp->tsigNpages -1;
+	tuple_page = getPage(tsigFile(r),tuple_pid);
+	if(pageNitems(tuple_page)==rp->tsigPP){
+	    addPage(tsigFile(r));
+	    rp->tsigNpages++;
+	    tuple_pid++;
+	    free(tuple_page);
+	    tuple_page = newPage();
+	    if (tuple_page==NULL) return NO_PAGE;
+	}
+	Bits tupleSig = makeTupleSig(r,t);
+	putBits(tuple_page,pageNitems(tuple_page),tupleSig);
+	addOneItem(tuple_page);
+	rp->ntsigs++;
+	putPage(tsigFile(r),tuple_pid,tuple_page);
+	freeBits(tupleSig);
+
 
 	// compute page signature and add to psigf
 

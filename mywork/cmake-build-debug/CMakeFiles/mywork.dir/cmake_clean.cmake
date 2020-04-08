@@ -9,7 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/mywork.dir/tsig.c.o"
   "CMakeFiles/mywork.dir/tuple.c.o"
   "CMakeFiles/mywork.dir/util.c.o"
-  "CMakeFiles/mywork.dir/x1_copy.c.o"
+  "CMakeFiles/mywork.dir/x1.c.o"
   "mywork"
   "mywork.pdb"
 )

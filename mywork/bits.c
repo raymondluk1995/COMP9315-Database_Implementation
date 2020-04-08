@@ -7,7 +7,6 @@
 // Written by John Shepherd, March 2020
 
 #include <assert.h>
-#include <stdbool.h>
 #include "defs.h"
 #include "bits.h"
 #include "page.h"
@@ -49,15 +48,19 @@ Bool bitIsSet(Bits b, int position) {
 }
 
 // check whether one Bits b1 is a subset of Bits b2
-
 Bool isSubset(Bits b1, Bits b2) {
     assert(b1 != NULL && b2 != NULL);
     assert(b1->nbytes == b2->nbytes);
-    for (int i = 0; i < b1->nbits; i++) {
-        if (b1->bitstring[i / 8] >> (i % 8) != b2->bitstring[i / 8] >> i % 8)
+    // check bit by bit
+//    for (int i = 0; i < b1->nbits; i++) {
+//        if (b1->bitstring[i / 8] >> (i % 8) != b2->bitstring[i / 8] >> i % 8)
+//            return FALSE;
+//    }
+    for (int i =0;i<b1->nbytes;i++){
+        if(b1->bitstring[i]&b2->bitstring[i]!=b1->bitstring[i])
             return FALSE;
     }
-    return TRUE; // remove this
+    return TRUE;
 }
 
 // set the bit at position to 1
@@ -120,28 +123,16 @@ void orBits(Bits b1, Bits b2) {
 // and place it in a BitsRep structure
 
 void getBits(Page p, Offset pos, Bits b) {
-    // ??
     assert(p != NULL && b != NULL);
-    unsetAllBits(b); // all positions of b are set to 0
-    Offset cur_pos = pos;
-    for (int i = 0; i < b->nbytes; i++) {
-        b -> bitstring[i] |= *addrInPage(p,cur_pos,8);
-        cur_pos += 8;
-    }
+    memcpy(&(b->bitstring[0]),addrInPage(p,pos,b->nbytes),b->nbytes);
 }
 
 // copy the bit-string array in a BitsRep
 // structure to specified position in Page buffer
 
 void putBits(Page p, Offset pos, Bits b) {
-    // ??
     assert(p != NULL && b != NULL);
-    Offset cur_pos = pos;
-    for (int i = 0; i < b->nbytes; i++) {
-        Byte *temp = addrInPage(p,cur_pos,8);
-        *temp = b ->bitstring[i];
-        cur_pos+=8;
-    }
+    memcpy(addrInPage(p,pos,b->nbytes),&(b->bitstring[0]),b->nbytes);
 }
 
 // show Bits on stdout
