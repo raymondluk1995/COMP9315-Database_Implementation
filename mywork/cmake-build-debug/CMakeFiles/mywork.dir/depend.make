@@ -42,6 +42,7 @@ CMakeFiles/mywork.dir/psig.c.o: ../psig.c
 CMakeFiles/mywork.dir/psig.c.o: ../psig.h
 CMakeFiles/mywork.dir/psig.c.o: ../query.h
 CMakeFiles/mywork.dir/psig.c.o: ../reln.h
+CMakeFiles/mywork.dir/psig.c.o: ../tsig.h
 CMakeFiles/mywork.dir/psig.c.o: ../tuple.h
 CMakeFiles/mywork.dir/psig.c.o: ../util.h
 
@@ -90,11 +91,11 @@ CMakeFiles/mywork.dir/tuple.c.o: ../util.h
 
 CMakeFiles/mywork.dir/util.c.o: ../util.c
 
-CMakeFiles/mywork.dir/x1.c.o: ../bits.h
-CMakeFiles/mywork.dir/x1.c.o: ../defs.h
-CMakeFiles/mywork.dir/x1.c.o: ../page.h
-CMakeFiles/mywork.dir/x1.c.o: ../reln.h
-CMakeFiles/mywork.dir/x1.c.o: ../tuple.h
-CMakeFiles/mywork.dir/x1.c.o: ../util.h
-CMakeFiles/mywork.dir/x1.c.o: ../x1.c
+CMakeFiles/mywork.dir/x1_copy.c.o: ../bits.h
+CMakeFiles/mywork.dir/x1_copy.c.o: ../defs.h
+CMakeFiles/mywork.dir/x1_copy.c.o: ../page.h
+CMakeFiles/mywork.dir/x1_copy.c.o: ../reln.h
+CMakeFiles/mywork.dir/x1_copy.c.o: ../tuple.h
+CMakeFiles/mywork.dir/x1_copy.c.o: ../util.h
+CMakeFiles/mywork.dir/x1_copy.c.o: ../x1_copy.c
 

@@ -33,9 +33,9 @@ Bits newBits(int nbits) {
 
 void freeBits(Bits b) {
     assert(b != NULL);
-    for (int i = 0; i < b->nbytes; i++) {
-        free(&b->bitstring[i]);
-    }
+//    for (int i = 0; i < b->nbytes; i++) {
+//        free(&b->bitstring[i]);
+//    }
     free(b);
 }
 

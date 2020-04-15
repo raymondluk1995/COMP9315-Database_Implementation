@@ -56,16 +56,15 @@ void scanAndDisplayMatchingTuples(Query q)
 {
 	assert(q != NULL);
 	//TODO
-	Tuple q_tuple = q->qstring; // query tuple
-    for (int i =0;i<nPages(q->rel);i++){
-        if(bitIsSet(q->pages,i)){
+    for (q->curpage =0;q->curpage<nPages(q->rel);q->curpage++){
+        if(bitIsSet(q->pages,q->curpage)){
             q->ntuppages++;
-            Page p = getPage(dataFile(q->rel),i);
+            Page p = getPage(dataFile(q->rel),q->curpage);
             Bool found = FALSE;
-            for (int j=0;j<pageNitems((p));j++){
+            for (q->curtup=0;q->curtup<pageNitems((p));q->curtup++){
                 q->ntuples++;
-                Tuple s_tuple = getTupleFromPage(q->rel,p,j); // search tuple
-                if(tupleMatch(q->rel,q_tuple,s_tuple)){
+                Tuple s_tuple = getTupleFromPage(q->rel,p,q->curtup); // search tuple
+                if(tupleMatch(q->rel,q->qstring,s_tuple)){
                     showTuple(q->rel,s_tuple);
                     found = TRUE;
                 }

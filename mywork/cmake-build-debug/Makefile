@@ -393,32 +393,32 @@ util.c.s:
 	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/util.c.s
 .PHONY : util.c.s
 
-x1.o: x1.c.o
+x1_copy.o: x1_copy.c.o
 
-.PHONY : x1.o
+.PHONY : x1_copy.o
 
 # target to build an object file
-x1.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/x1.c.o
-.PHONY : x1.c.o
+x1_copy.c.o:
+	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/x1_copy.c.o
+.PHONY : x1_copy.c.o
 
-x1.i: x1.c.i
+x1_copy.i: x1_copy.c.i
 
-.PHONY : x1.i
+.PHONY : x1_copy.i
 
 # target to preprocess a source file
-x1.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/x1.c.i
-.PHONY : x1.c.i
+x1_copy.c.i:
+	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/x1_copy.c.i
+.PHONY : x1_copy.c.i
 
-x1.s: x1.c.s
+x1_copy.s: x1_copy.c.s
 
-.PHONY : x1.s
+.PHONY : x1_copy.s
 
 # target to generate assembly for a file
-x1.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/x1.c.s
-.PHONY : x1.c.s
+x1_copy.c.s:
+	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/x1_copy.c.s
+.PHONY : x1_copy.c.s
 
 # Help Target
 help:
@@ -459,9 +459,9 @@ help:
 	@echo "... util.o"
 	@echo "... util.i"
 	@echo "... util.s"
-	@echo "... x1.o"
-	@echo "... x1.i"
-	@echo "... x1.s"
+	@echo "... x1_copy.o"
+	@echo "... x1_copy.i"
+	@echo "... x1_copy.s"
 .PHONY : help
 
 

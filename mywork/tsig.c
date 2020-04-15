@@ -36,17 +36,13 @@ Bits makeTupleSig(Reln r, Tuple t)
 {
 	assert(r != NULL && t != NULL);
 	//TODO
-	Bits TupleSig = newBits(tsigBits(r));
-	// Since Tuple is a pointer, we need to make a copy string for strtok() later
-	char * temp = malloc(sizeof(char)*tupSize(r));
-	strcpy(temp,t);
-	char * token = strtok(temp,",");
-
-	while(token!=NULL){
-	    orBits(TupleSig,codeWord(token,tsigBits(r),codeBits(r)));
-	    token = strtok(NULL,",");
-	}
-	return TupleSig;
+	Bits tupleSig = newBits(tsigBits(r));
+	char ** attributes = tupleVals(r,t);
+    for (Count i=0;i<nAttrs(r);i++){
+        orBits(tupleSig,codeWord(attributes[i],tsigBits(r),codeBits(r)));
+    }
+    free(attributes);
+	return tupleSig;
 }
 
 // find "matching" pages using tuple signatures
@@ -55,27 +51,24 @@ void findPagesUsingTupSigs(Query q)
 {
 	assert(q != NULL);
 	//TODO
-
 	Bits querySig = makeTupleSig(q->rel,q->qstring);
-
-	for (int i =0;i<nTsigPages(q->rel);i++){
+    unsetAllBits(q->pages);
+	for (PageID pid =0;pid<nTsigPages(q->rel);pid++){
 	    q->nsigpages ++;
-	    Page p = getPage(tsigFile(q->rel),i);
-	    for (int j=0;j<pageNitems(p);j++){
+	    Page p = getPage(tsigFile(q->rel),pid);
+	    for (Count tid=0;tid<pageNitems(p);tid++){
 	        q->nsigs++;
 	        Bits tupleSig = newBits(tsigBits(q->rel));
-	        getBits(p,j,tupleSig);
+	        getBits(p,tid,tupleSig);
 
 	        // Check whether query signature is a subset of tuple signature
 	        if(isSubset(querySig,tupleSig)){
 	            //?
-	            int tuple_position = i*maxTsigsPP(q->rel)+j;
-	            setBit(q->pages,(int)tuple_position/maxTupsPP(q->rel));
+	            Offset tuple_position = pid*maxTsigsPP(q->rel)+tid;
+	            setBit(q->pages,(Offset)tuple_position/maxTupsPP(q->rel));
 	        }
-
+	        freeBits(tupleSig);
 	    }
-
-
 	}
 
 	// The printf below is primarily for debugging

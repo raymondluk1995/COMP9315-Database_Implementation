@@ -14,7 +14,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/tsig.c" "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles/mywork.dir/tsig.c.o"
   "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/tuple.c" "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles/mywork.dir/tuple.c.o"
   "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/util.c" "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles/mywork.dir/util.c.o"
-  "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/x1.c" "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles/mywork.dir/x1.c.o"
+  "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/x1_copy.c" "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles/mywork.dir/x1_copy.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

@@ -14,6 +14,9 @@ int main(int argc, char **argv)
 //	setBit(a,2);
 //	setBit(a, 3);
 	setBit(a, 10);
+	if(bitIsSet(a,10)){
+	    printf("%s\n","blah");
+	}
 	setBit(a, 40);
 	//showBits(a);
 
