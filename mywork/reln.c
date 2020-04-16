@@ -10,6 +10,8 @@
 #include "page.h"
 #include "tuple.h"
 #include "tsig.h"
+#include "psig.h"
+#include "bsig.h"
 #include "bits.h"
 #include "hash.h"
 // open a file with a specified suffix
@@ -55,10 +57,31 @@ Status newRelation(char *name, Count nattrs, float pF,
 	addPage(r->dataf); p->npages = 1; p->ntups = 0;
 	addPage(r->tsigf); p->tsigNpages = 1; p->ntsigs = 0;
 	addPage(r->psigf); p->psigNpages = 1; p->npsigs = 0;
-	addPage(r->bsigf); p->bsigNpages = 1; p->nbsigs = 0; // replace this
+	//addPage(r->bsigf); p->bsigNpages = 1; p->nbsigs = 0; // replace this
 	// Create a file containing "pm" all-zeroes bit-strings,
     // each of which has length "bm" bits
 	//TODO
+	//?
+	p->bsigNpages = 0;
+	p->nbsigs = 0;
+	// iceil(psigBits(r),maxBsigsPP(r)) is how many bSig pages we need to create
+	for (PageID bsig_pid=0;bsig_pid<iceil(psigBits(r),maxBsigsPP(r));bsig_pid++){
+        Page page = newPage();
+        // fill each page with all-zeros bit-strings
+        for (Count j=0;j<maxBsigsPP((r));j++){
+            Bits bSig = newBits(bsigBits(r));
+            putBits(page,j,bSig);
+            p->nbsigs++;
+            addOneItem(page);
+            freeBits(bSig);
+            // When there are "pm" bit-strings already, we should stop creating new bit-strings
+            if(p->nbsigs==psigBits(r)){
+                break;
+            }
+        }
+        putPage(r->bsigf,bsig_pid,page);
+        p->bsigNpages++;
+	}
 	closeRelation(r);
 	return 0;
 }
@@ -137,11 +160,9 @@ PageID addToRelation(Reln r, Tuple t)
 
 	// compute tuple signature and add to tsigf
 	//TODO
-	Page tuple_page;
-	PageID tuple_pid;
-	tuple_pid = rp->tsigNpages -1;
-	tuple_page = getPage(tsigFile(r),tuple_pid);
-	if(pageNitems(tuple_page)==rp->tsigPP){
+	PageID tuple_pid = rp->tsigNpages -1; // current tuple page id in tuple signature file
+	Page tuple_page = getPage(tsigFile(r),tuple_pid);
+	if(pageNitems(tuple_page)==maxTsigsPP(r)){
 	    addPage(tsigFile(r));
 	    rp->tsigNpages++;
 	    tuple_pid++;
@@ -160,7 +181,23 @@ PageID addToRelation(Reln r, Tuple t)
 	// compute page signature and add to psigf
 
 	//TODO
-
+	//?
+	PageID page_pid = rp->psigNpages -1;
+	Page page_page = getPage(psigFile(r),page_pid);
+	if(pageNitems(page_page)==maxPsigsPP(r)){
+	    addPage(psigFile(r));
+	    rp->psigNpages++;
+	    page_pid++;
+	    free(page_page);
+	    page_page = newPage();
+	    if(page_page==NULL) return NO_PAGE;
+	}
+	Bits pageSig = makePageSig(r,t);
+	putBits(page_page,pid%maxPsigsPP(r),pageSig);
+	addOneItem(page_page);
+	rp->npsigs++;
+	putPage(psigFile(r),page_pid,page_page);
+	freeBits(pageSig);
 	// use page signature to update bit-slices
 
 	//TODO

@@ -21,9 +21,6 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
   <component name="ProjectId" id="1ZwGZAx7vf1dCX4bvCAxuoO5Z6s" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -125,7 +122,8 @@
       <workItem from="1586586573019" duration="1786000" />
       <workItem from="1586944827109" duration="4468000" />
       <workItem from="1586954874200" duration="339000" />
-      <workItem from="1586991171449" duration="351000" />
+      <workItem from="1586991171449" duration="1030000" />
+      <workItem from="1587015563382" duration="6427000" />
     </task>
     <servers />
   </component>
@@ -187,10 +185,10 @@
     </state>
     <state width="640" height="444" key="ImportCMakeProjectWizard.topPanel/0.0.1440.900@0.0.1440.900" timestamp="1586090947902" />
     <state width="640" height="400" key="ImportCMakeProjectWizard.topPanel/0.23.1440.812@0.23.1440.812" timestamp="1585743224910" />
-    <state x="376" y="262" key="com.intellij.ide.util.TipDialog" timestamp="1586991171093">
+    <state x="376" y="262" key="com.intellij.ide.util.TipDialog" timestamp="1587015564583">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="376" y="262" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1586991171093" />
+    <state x="376" y="262" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1587015564583" />
     <state x="376" y="259" key="com.intellij.ide.util.TipDialog/0.23.1440.812@0.23.1440.812" timestamp="1586065351638" />
     <state x="376" y="260" key="com.intellij.ide.util.TipDialog/0.23.1440.815@0.23.1440.815" timestamp="1586299179778" />
     <state x="385" y="210" key="run.anything.popup" timestamp="1586090924687">

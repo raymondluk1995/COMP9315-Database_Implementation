@@ -44,10 +44,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/mywork"
+CMAKE_SOURCE_DIR = "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/mywork/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug"
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ preinstall:
 CMakeFiles/mywork.dir/all:
 	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/depend
 	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/mywork/cmake-build-debug/CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target mywork"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target mywork"
 .PHONY : CMakeFiles/mywork.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mywork.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/mywork/cmake-build-debug/CMakeFiles" 12
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles" 12
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mywork.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/mywork/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/mywork.dir/rule
 
 # Convenience name for target.
