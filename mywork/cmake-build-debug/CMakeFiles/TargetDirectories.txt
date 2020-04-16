@@ -1,3 +1,3 @@
-/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles/mywork.dir
+/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/mywork/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/mywork/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/mywork/cmake-build-debug/CMakeFiles/mywork.dir
