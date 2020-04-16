@@ -136,7 +136,7 @@ void closeRelation(Reln r)
 // returns page where inserted
 // returns NO_PAGE if insert fails completely
 
-PageID addToRelation(Reln r, Tuple t)
+        PageID addToRelation(Reln r, Tuple t)
 {
 	assert(r != NULL && t != NULL && strlen(t) == tupSize(r));
 	Page p;  PageID pid;
@@ -197,11 +197,32 @@ PageID addToRelation(Reln r, Tuple t)
 	addOneItem(page_page);
 	rp->npsigs++;
 	putPage(psigFile(r),page_pid,page_page);
-	freeBits(pageSig);
 	// use page signature to update bit-slices
 
 	//TODO
+	// created by vigo on 16th April, 8:00 pm
+	File bitSigFile = bsigFile(r);
+	 // the amount of bitSig stored in file
+    Count numOfbitSigPP = maxBsigsPP(r);
+    // width(size) of a bitSig, representing the amount of pages it contains
+    Count bitSigWidth = bsigBits(r);
+    // width of page signature (#bits)
+    Count pageSigWidth = psigBits(r);
+    // the bitSig need to be updated
+    Bits bitSig = newBits(bitSigWidth);
+    for (Count index = 0; index < pageSigWidth; index++){
+        if (bitIsSet(pageSig, index)){
+            // get index'th bit slice from bsigFile
+            Page bitSigPage = getPage(bitSigFile, index/numOfbitSigPP);
+            getBits(bitSigPage, index%numOfbitSigPP, bitSig);
+            // set the PID'th bit in Slice
+            setBit(bitSig, pid);
+            // write updated Slice back to bsigFile
+            putPage(bitSigFile, index/numOfbitSigPP, bitSigPage);
+        }
+    }
 
+	freeBits(pageSig);
 	return nPages(r)-1;
 }
 
