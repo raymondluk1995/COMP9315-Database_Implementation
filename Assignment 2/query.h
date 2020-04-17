@@ -1,7 +1,10 @@
-// query.h ... interface to query scan functions
-// part of SIMC signature files
-// See query.c for details of Query type and functions
-// Written by John Shepherd, March 2020
+/*
+    COMP9315 20T1 Assignment 2
+    Group Name: Tonight Fight Tiger
+    Students:
+        Raymond Lu z5277884
+        Haowei Huang z5247672
+*/
 
 #ifndef QUERY_H
 #define QUERY_H 1

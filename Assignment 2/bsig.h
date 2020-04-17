@@ -1,6 +1,10 @@
-// bsig.h ... interface to functions on bit-slices
-// part of SIMC signature files
-// Written by John Shepherd, March 2020
+/*
+    COMP9315 20T1 Assignment 2
+    Group Name: Tonight Fight Tiger
+    Students:
+        Raymond Lu z5277884
+        Haowei Huang z5247672
+*/
 
 #ifndef BSIG_H
 #define BSIG_H 1

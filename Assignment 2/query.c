@@ -20,11 +20,13 @@
 
 int checkQuery(Reln r, char *q)
 {
-	if (*q == '\0') return 0;
+	if (*q == '\0')
+		return 0;
 	char *c;
 	int nattr = 1;
 	for (c = q; *c != '\0'; c++)
-		if (*c == ',') nattr++;
+		if (*c == ',')
+			nattr++;
 	return (nattr == nAttrs(r));
 }
 
@@ -35,17 +37,27 @@ Query startQuery(Reln r, char *q, char sigs)
 {
 	Query new = malloc(sizeof(QueryRep));
 	assert(new != NULL);
-	if (!checkQuery(r,q)) return NULL;
+	if (!checkQuery(r, q))
+		return NULL;
 	new->rel = r;
 	new->qstring = q;
 	new->nsigs = new->nsigpages = 0;
 	new->ntuples = new->ntuppages = new->nfalse = 0;
 	new->pages = newBits(nPages(r));
-	switch (sigs) {
-	case 't': findPagesUsingTupSigs(new); break;
-	case 'p': findPagesUsingPageSigs(new); break;
-	case 'b': findPagesUsingBitSlices(new); break;
-	default:  setAllBits(new->pages); break;
+	switch (sigs)
+	{
+	case 't':
+		findPagesUsingTupSigs(new);
+		break;
+	case 'p':
+		findPagesUsingPageSigs(new);
+		break;
+	case 'b':
+		findPagesUsingBitSlices(new);
+		break;
+	default:
+		setAllBits(new->pages);
+		break;
 	}
 	new->curpage = 0;
 	return new;
@@ -58,25 +70,28 @@ Query startQuery(Reln r, char *q, char sigs)
 void scanAndDisplayMatchingTuples(Query q)
 {
 	assert(q != NULL);
-	//TODO
-    for (q->curpage =0;q->curpage<nPages(q->rel);q->curpage++){
-        if(bitIsSet(q->pages,q->curpage)){
-            q->ntuppages++;
-            Page p = getPage(dataFile(q->rel),q->curpage);
-            Status found = FALSE;
-            for (q->curtup=0;q->curtup<pageNitems((p));q->curtup++){
-                q->ntuples++;
-                Tuple s_tuple = getTupleFromPage(q->rel,p,q->curtup); // search tuple
-                if(tupleMatch(q->rel,q->qstring,s_tuple)){
-                    showTuple(q->rel,s_tuple);
-                    found = TRUE;
-                }
-            }
-            if(found==FALSE) // no tuples in Page i are results
-                q->nfalse++;
-            free(p);
-        }
-    }
+	for (q->curpage = 0; q->curpage < nPages(q->rel); q->curpage++)
+	{
+		if (bitIsSet(q->pages, q->curpage))
+		{
+			q->ntuppages++;									// one more data page read
+			Page p = getPage(dataFile(q->rel), q->curpage); // get the current data page
+			Status found = FALSE;
+			for (q->curtup = 0; q->curtup < pageNitems((p)); q->curtup++)
+			{ // iterate through all items in current data page
+				q->ntuples++;
+				Tuple s_tuple = getTupleFromPage(q->rel, p, q->curtup); // s_tuple stands for search tuple
+				if (tupleMatch(q->rel, q->qstring, s_tuple))
+				{
+					showTuple(q->rel, s_tuple);
+					found = TRUE;
+				}
+			}
+			if (found == FALSE) // no tuples in current page are matched
+				q->nfalse++;
+			free(p);
+		}
+	}
 }
 
 // print statistics on query
