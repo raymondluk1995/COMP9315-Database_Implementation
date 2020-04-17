@@ -55,23 +55,24 @@ void findPagesUsingTupSigs(Query q)
     unsetAllBits(q->pages);
     // tsig_pid stands for the page id in the tuple-signature file
 	for (PageID tsig_pid =0;tsig_pid<nTsigPages(q->rel);tsig_pid++){
-	    q->nsigpages ++;
-	    Page current_tsig_page = getPage(tsigFile(q->rel),tsig_pid);
+	    Page tsig_page = getPage(tsigFile(q->rel),tsig_pid);
+		q->nsigpages ++;
         // tid stands for tuple id in the current tuple-signature page
-	    for (Offset tid=0;tid<pageNitems(current_tsig_page);tid++){
-	        q->nsigs++;
+	    for (Offset tid=0;tid<pageNitems(tsig_page);tid++){
 	        Bits tupleSig = newBits(tsigBits(q->rel));
-	        getBits(current_tsig_page,tid,tupleSig);
-
+	        getBits(tsig_page,tid,tupleSig);
+			q->nsigs++;
 	        // Check whether query signature is a subset of tuple signature
 	        if(isSubset(querySig,tupleSig)){
 	            //?
 	            Offset tuple_position = tsig_pid*maxTsigsPP(q->rel)+tid;
-	            setBit(q->pages,(Offset)tuple_position/maxTupsPP(q->rel));
+				PageID data_pid = iceil(tuple_position,maxTupsPP(q->rel))-1;
+			    setBit(q->pages,data_pid);
 	        }
 	        freeBits(tupleSig);
 	    }
-	    free(current_tsig_page);
+	    free(tsig_page);
 	}
 	freeBits(querySig);
+
 }

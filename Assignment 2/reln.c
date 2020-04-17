@@ -206,15 +206,8 @@ PageID addToRelation(Reln r, Tuple t)
 	putPage(psigFile(r),page_pid,page_page);
 
 	//TODO
-	// Page bsig_page;
-    // PageID bsig_pid= -1;
     for (Offset index=0;index<psigBits(r);index++){
         if(bitIsSet(pageSig,index)){
-            // if(bsig_pid!=index/maxBsigsPP(r)){ // A new bit-sliced signature page should be read
-            //     bsig_pid = index/maxBsigsPP(r);
-			// 	free(bsig_page);
-            //     bsig_page = getPage(bsigFile(r),bsig_pid);
-            // }
 			PageID bsig_pid = index/maxBsigsPP(r);
 			Page bsig_page = getPage(bsigFile(r),bsig_pid);
             Bits slice = newBits(bsigBits(r));
@@ -222,38 +215,8 @@ PageID addToRelation(Reln r, Tuple t)
             setBit(slice,pid);
 			putBits(bsig_page,index%maxBsigsPP(r),slice);
             putPage(bsigFile(r),bsig_pid,bsig_page);
-
-			// since putPage() frees the page, we use parts of its source code here
-			// assert(bsig_pid>=0);
-			// int ok = lseek(bsigFile(r),bsig_pid*PAGESIZE,SEEK_SET);
-			// assert(ok>=0);;
-			// int n = write(bsigFile(r),bsig_page,PAGESIZE);
-			// assert(n==PAGESIZE);
-            // freeBits(slice);
         }
     }
-
-
-	// PageID currentTupleInPageID = nPsigs(r)-1;
-
-	// for (int i=0;i<psigBits(r);i++){
-	// 	// printf("!!!!!!!!%d\n",i);
-	// 	if (bitIsSet(pageSig, i)){
-	// 		//PageID bsigLocation = iceil(i+1,maxBsigsPP(r))-1;
-	// 		PageID bsigLocation = i/maxBsigsPP(r);
-	// 		// printf("!!!!!!!!!!!!%d\n", bsigLocation);
-	// 		Page bslPage = getPage(bsigFile(r), bsigLocation);
-	// 		Bits bs = newBits(bsigBits(r));
-
-	// 		getBits(bslPage, i%maxBsigsPP(r), bs);
-	// 		setBit(bs, currentTupleInPageID);
-	// 		putBits(bslPage, i%maxBsigsPP(r), bs);
-
-	// 		putPage(r->bsigf, bsigLocation, bslPage);
-	// 		freeBits(bs);
-	// 	}
-	// }
-
 
 	freeBits(pageSig);
 	return nPages(r)-1;

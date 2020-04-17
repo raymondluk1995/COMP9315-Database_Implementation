@@ -55,11 +55,6 @@ Bool bitIsSet(Bits b, int position) {
 Bool isSubset(Bits b1, Bits b2) {
     assert(b1 != NULL && b2 != NULL);
     assert(b1->nbytes == b2->nbytes);
-    // check bit by bit
-//    for (int i = 0; i < b1->nbits; i++) {
-//        if (b1->bitstring[i / 8] >> (i % 8) != b2->bitstring[i / 8] >> i % 8)
-//            return FALSE;
-//    }
     for (int i =0;i<b1->nbytes;i++){
         if((b1->bitstring[i]&b2->bitstring[i])!=b1->bitstring[i])
             return FALSE;
