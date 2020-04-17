@@ -17,7 +17,7 @@ void findPagesUsingBitSlices(Query q)
     setAllBits(q->pages);
     PageID bsig_pid = -1;
     Page bsig_page;
-    for (PageID index=0;index<psigBits(q->rel);index++){
+    for (Offset index=0;index<psigBits(q->rel);index++){
         if(bitIsSet(querySig,index)){
             if(bsig_pid!=index/maxBsigsPP(q->rel)){ // A new bit-sliced signature page should be read
                 bsig_pid = index/maxBsigsPP(q->rel);

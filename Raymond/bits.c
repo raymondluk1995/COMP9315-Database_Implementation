@@ -57,7 +57,7 @@ Bool isSubset(Bits b1, Bits b2) {
 //            return FALSE;
 //    }
     for (int i =0;i<b1->nbytes;i++){
-        if(b1->bitstring[i]&b2->bitstring[i]!=b1->bitstring[i])
+        if((b1->bitstring[i]&b2->bitstring[i])!=b1->bitstring[i])
             return FALSE;
     }
     return TRUE;
@@ -85,7 +85,7 @@ void setAllBits(Bits b) {
 void unsetBit(Bits b, int position) {
     assert(b != NULL);
     assert(0 <= position && position < b->nbits);
-    b->bitstring[position / 8] &= ~(1 << (position % 8));
+    b->bitstring[position / 8] &= (~(1 << (position % 8)));
 }
 
 // set all bits to 0
@@ -93,7 +93,7 @@ void unsetBit(Bits b, int position) {
 void unsetAllBits(Bits b) {
     assert(b != NULL);
     for (int i = 0; i < b->nbits; i++) {
-        b->bitstring[i / 8] &= ~(1 << (i % 8));
+        b->bitstring[i / 8] &= (~(1 << (i % 8)));
     }
 }
 

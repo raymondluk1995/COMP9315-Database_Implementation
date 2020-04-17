@@ -49,7 +49,7 @@ void findPagesUsingPageSigs(Query q)
 	    q->nsigpages++;
 	    Page current_psig_page = getPage(psigFile(q->rel),psig_pid);
         // tid stands for tuple id in the current page-signature page
-	    for (Count tid=0;tid<pageNitems(current_psig_page);tid++){
+	    for (Offset tid=0;tid<pageNitems(current_psig_page);tid++){
 	        q->nsigs++;
 	        Bits pageSig = newBits(psigBits(q->rel));
 	        getBits(current_psig_page,tid,pageSig);

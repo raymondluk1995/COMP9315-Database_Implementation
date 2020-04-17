@@ -1,0 +1,67 @@
+./create R 10000 6 1000
+./insert R < R.in
+./stats R
+Global Info:
+Dynamic:
+  #items:  tuples: 0  tsigs: 0  psigs: 0  bsigs: 6304
+  #pages:  tuples: 1  tsigs: 1  psigs: 1  bsigs: 28
+Static:
+  tups   #attrs: 6  size: 56 bytes  max/page: 73
+  sigs   bits/attr: 9
+  tsigs  size: 88 bits (11 bytes)  max/page: 372
+  psigs  size: 6304 bits (788 bytes)  max/page: 5
+  bsigs  size: 144 bits (18 bytes)  max/page: 227
+./select R '?,?,?,?,?,?' x | tail -6
+Query Stats:
+# sig pages read:    0
+# signatures read:   0
+# data pages read:   1
+# tuples examined:   1
+# false match pages: 0
+./select R '1234999,?,?,?,?,?' x
+Query Stats:
+# sig pages read:    0
+# signatures read:   0
+# data pages read:   1
+# tuples examined:   1
+# false match pages: 1
+./select R '1234999,?,?,?,?,?' t
+Matched Pages:00000000
+Query Stats:
+# sig pages read:    1
+# signatures read:   1
+# data pages read:   0
+# tuples examined:   0
+# false match pages: 0
+./select R '1234999,?,?,?,?,?' p
+Query Stats:
+# sig pages read:    1
+# signatures read:   1
+# data pages read:   0
+# tuples examined:   0
+# false match pages: 0
+./select R '1234999,?,?,?,?,?' b
+grep 'a3-241,a4-158,a5-407' R.data
+./select R '?,?,a3-241,a4-158,a5-407,?' x
+Query Stats:
+# sig pages read:    0
+# signatures read:   0
+# data pages read:   1
+# tuples examined:   1
+# false match pages: 1
+./select R '?,?,a3-241,a4-158,a5-407,?' t
+Matched Pages:00000000
+Query Stats:
+# sig pages read:    1
+# signatures read:   1
+# data pages read:   0
+# tuples examined:   0
+# false match pages: 0
+./select R '?,?,a3-241,a4-158,a5-407,?' p
+Query Stats:
+# sig pages read:    1
+# signatures read:   1
+# data pages read:   0
+# tuples examined:   0
+# false match pages: 0
+./select R '?,?,a3-241,a4-158,a5-407,?' b

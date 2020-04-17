@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork"
+CMAKE_SOURCE_DIR = "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/Raymond"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/Raymond/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles" "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/Raymond/cmake-build-debug/CMakeFiles" "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/Raymond/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/Raymond/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mywork
+# Target rules for targets named Raymond
 
 # Build rule for target.
-mywork: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mywork
-.PHONY : mywork
+Raymond: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Raymond
+.PHONY : Raymond
 
 # fast build rule for target.
-mywork/fast:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/build
-.PHONY : mywork/fast
+Raymond/fast:
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/build
+.PHONY : Raymond/fast
 
 bits.o: bits.c.o
 
@@ -129,7 +129,7 @@ bits.o: bits.c.o
 
 # target to build an object file
 bits.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/bits.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/bits.c.o
 .PHONY : bits.c.o
 
 bits.i: bits.c.i
@@ -138,7 +138,7 @@ bits.i: bits.c.i
 
 # target to preprocess a source file
 bits.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/bits.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/bits.c.i
 .PHONY : bits.c.i
 
 bits.s: bits.c.s
@@ -147,7 +147,7 @@ bits.s: bits.c.s
 
 # target to generate assembly for a file
 bits.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/bits.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/bits.c.s
 .PHONY : bits.c.s
 
 bsig.o: bsig.c.o
@@ -156,7 +156,7 @@ bsig.o: bsig.c.o
 
 # target to build an object file
 bsig.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/bsig.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/bsig.c.o
 .PHONY : bsig.c.o
 
 bsig.i: bsig.c.i
@@ -165,7 +165,7 @@ bsig.i: bsig.c.i
 
 # target to preprocess a source file
 bsig.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/bsig.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/bsig.c.i
 .PHONY : bsig.c.i
 
 bsig.s: bsig.c.s
@@ -174,7 +174,7 @@ bsig.s: bsig.c.s
 
 # target to generate assembly for a file
 bsig.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/bsig.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/bsig.c.s
 .PHONY : bsig.c.s
 
 hash.o: hash.c.o
@@ -183,7 +183,7 @@ hash.o: hash.c.o
 
 # target to build an object file
 hash.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/hash.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/hash.c.o
 .PHONY : hash.c.o
 
 hash.i: hash.c.i
@@ -192,7 +192,7 @@ hash.i: hash.c.i
 
 # target to preprocess a source file
 hash.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/hash.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/hash.c.i
 .PHONY : hash.c.i
 
 hash.s: hash.c.s
@@ -201,7 +201,7 @@ hash.s: hash.c.s
 
 # target to generate assembly for a file
 hash.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/hash.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/hash.c.s
 .PHONY : hash.c.s
 
 page.o: page.c.o
@@ -210,7 +210,7 @@ page.o: page.c.o
 
 # target to build an object file
 page.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/page.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/page.c.o
 .PHONY : page.c.o
 
 page.i: page.c.i
@@ -219,7 +219,7 @@ page.i: page.c.i
 
 # target to preprocess a source file
 page.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/page.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/page.c.i
 .PHONY : page.c.i
 
 page.s: page.c.s
@@ -228,7 +228,7 @@ page.s: page.c.s
 
 # target to generate assembly for a file
 page.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/page.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/page.c.s
 .PHONY : page.c.s
 
 psig.o: psig.c.o
@@ -237,7 +237,7 @@ psig.o: psig.c.o
 
 # target to build an object file
 psig.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/psig.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/psig.c.o
 .PHONY : psig.c.o
 
 psig.i: psig.c.i
@@ -246,7 +246,7 @@ psig.i: psig.c.i
 
 # target to preprocess a source file
 psig.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/psig.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/psig.c.i
 .PHONY : psig.c.i
 
 psig.s: psig.c.s
@@ -255,7 +255,7 @@ psig.s: psig.c.s
 
 # target to generate assembly for a file
 psig.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/psig.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/psig.c.s
 .PHONY : psig.c.s
 
 query.o: query.c.o
@@ -264,7 +264,7 @@ query.o: query.c.o
 
 # target to build an object file
 query.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/query.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/query.c.o
 .PHONY : query.c.o
 
 query.i: query.c.i
@@ -273,7 +273,7 @@ query.i: query.c.i
 
 # target to preprocess a source file
 query.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/query.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/query.c.i
 .PHONY : query.c.i
 
 query.s: query.c.s
@@ -282,7 +282,7 @@ query.s: query.c.s
 
 # target to generate assembly for a file
 query.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/query.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/query.c.s
 .PHONY : query.c.s
 
 reln.o: reln.c.o
@@ -291,7 +291,7 @@ reln.o: reln.c.o
 
 # target to build an object file
 reln.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/reln.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/reln.c.o
 .PHONY : reln.c.o
 
 reln.i: reln.c.i
@@ -300,7 +300,7 @@ reln.i: reln.c.i
 
 # target to preprocess a source file
 reln.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/reln.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/reln.c.i
 .PHONY : reln.c.i
 
 reln.s: reln.c.s
@@ -309,7 +309,7 @@ reln.s: reln.c.s
 
 # target to generate assembly for a file
 reln.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/reln.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/reln.c.s
 .PHONY : reln.c.s
 
 tsig.o: tsig.c.o
@@ -318,7 +318,7 @@ tsig.o: tsig.c.o
 
 # target to build an object file
 tsig.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/tsig.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/tsig.c.o
 .PHONY : tsig.c.o
 
 tsig.i: tsig.c.i
@@ -327,7 +327,7 @@ tsig.i: tsig.c.i
 
 # target to preprocess a source file
 tsig.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/tsig.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/tsig.c.i
 .PHONY : tsig.c.i
 
 tsig.s: tsig.c.s
@@ -336,7 +336,7 @@ tsig.s: tsig.c.s
 
 # target to generate assembly for a file
 tsig.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/tsig.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/tsig.c.s
 .PHONY : tsig.c.s
 
 tuple.o: tuple.c.o
@@ -345,7 +345,7 @@ tuple.o: tuple.c.o
 
 # target to build an object file
 tuple.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/tuple.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/tuple.c.o
 .PHONY : tuple.c.o
 
 tuple.i: tuple.c.i
@@ -354,7 +354,7 @@ tuple.i: tuple.c.i
 
 # target to preprocess a source file
 tuple.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/tuple.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/tuple.c.i
 .PHONY : tuple.c.i
 
 tuple.s: tuple.c.s
@@ -363,7 +363,7 @@ tuple.s: tuple.c.s
 
 # target to generate assembly for a file
 tuple.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/tuple.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/tuple.c.s
 .PHONY : tuple.c.s
 
 util.o: util.c.o
@@ -372,7 +372,7 @@ util.o: util.c.o
 
 # target to build an object file
 util.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/util.c.o
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/util.c.o
 .PHONY : util.c.o
 
 util.i: util.c.i
@@ -381,7 +381,7 @@ util.i: util.c.i
 
 # target to preprocess a source file
 util.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/util.c.i
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/util.c.i
 .PHONY : util.c.i
 
 util.s: util.c.s
@@ -390,35 +390,35 @@ util.s: util.c.s
 
 # target to generate assembly for a file
 util.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/util.c.s
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/util.c.s
 .PHONY : util.c.s
 
-x1_copy.o: x1_copy.c.o
+x2.o: x2.c.o
 
-.PHONY : x1_copy.o
+.PHONY : x2.o
 
 # target to build an object file
-x1_copy.c.o:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/x1_copy.c.o
-.PHONY : x1_copy.c.o
+x2.c.o:
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/x2.c.o
+.PHONY : x2.c.o
 
-x1_copy.i: x1_copy.c.i
+x2.i: x2.c.i
 
-.PHONY : x1_copy.i
+.PHONY : x2.i
 
 # target to preprocess a source file
-x1_copy.c.i:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/x1_copy.c.i
-.PHONY : x1_copy.c.i
+x2.c.i:
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/x2.c.i
+.PHONY : x2.c.i
 
-x1_copy.s: x1_copy.c.s
+x2.s: x2.c.s
 
-.PHONY : x1_copy.s
+.PHONY : x2.s
 
 # target to generate assembly for a file
-x1_copy.c.s:
-	$(MAKE) -f CMakeFiles/mywork.dir/build.make CMakeFiles/mywork.dir/x1_copy.c.s
-.PHONY : x1_copy.c.s
+x2.c.s:
+	$(MAKE) -f CMakeFiles/Raymond.dir/build.make CMakeFiles/Raymond.dir/x2.c.s
+.PHONY : x2.c.s
 
 # Help Target
 help:
@@ -428,7 +428,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... mywork"
+	@echo "... Raymond"
 	@echo "... bits.o"
 	@echo "... bits.i"
 	@echo "... bits.s"
@@ -459,9 +459,9 @@ help:
 	@echo "... util.o"
 	@echo "... util.i"
 	@echo "... util.s"
-	@echo "... x1_copy.o"
-	@echo "... x1_copy.i"
-	@echo "... x1_copy.s"
+	@echo "... x2.o"
+	@echo "... x2.i"
+	@echo "... x2.s"
 .PHONY : help
 
 

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork
+# Install script for directory: /Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/Raymond
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/mywork/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/minruilu/Desktop/OneDrive - UNSW/UNSW/2020 Semester 1/comp9315/Assignment/COMP9315-Database_Implementation/Raymond/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

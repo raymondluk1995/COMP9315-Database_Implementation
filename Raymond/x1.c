@@ -22,6 +22,7 @@ int main(int argc, char **argv)
 	setAllBits(b);
 	printf("t=3: "); showBits(b); printf("\n");
 	unsetBit(b, 40);
+	if(!bitIsSet(b,40)) printf("Bit 40 is unset\n");
 	printf("t=4: "); showBits(b); printf("\n");
 	if (bitIsSet(b,20)) printf("Bit 20 is set\n");
 	if (bitIsSet(b,40)) printf("Bit 40 is set\n");

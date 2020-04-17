@@ -60,7 +60,7 @@ void scanAndDisplayMatchingTuples(Query q)
         if(bitIsSet(q->pages,q->curpage)){
             q->ntuppages++;
             Page p = getPage(dataFile(q->rel),q->curpage);
-            Bool found = FALSE;
+            Status found = FALSE;
             for (q->curtup=0;q->curtup<pageNitems((p));q->curtup++){
                 q->ntuples++;
                 Tuple s_tuple = getTupleFromPage(q->rel,p,q->curtup); // search tuple

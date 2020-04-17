@@ -68,7 +68,7 @@ Status newRelation(char *name, Count nattrs, float pF,
 	for (PageID bsig_pid=0;bsig_pid<iceil(psigBits(r),maxBsigsPP(r));bsig_pid++){
         Page page = newPage();
         // fill each page with all-zeros bit-strings
-        for (Count j=0;j<maxBsigsPP((r));j++){
+        for (Offset j=0;j<maxBsigsPP((r));j++){
             Bits bSig = newBits(bsigBits(r));
             putBits(page,j,bSig);
             p->nbsigs++;
@@ -224,7 +224,7 @@ PageID addToRelation(Reln r, Tuple t)
 
     Page bsig_page;
     PageID bsig_pid= -1;
-    for (PageID index=0;index<psigBits(r);index++){
+    for (Offset index=0;index<psigBits(r);index++){
         if(bitIsSet(pageSig,index)){
             if(bsig_pid!=index/maxBsigsPP(r)){ // A new bit-sliced signature page should be read
                 bsig_pid = index/maxBsigsPP(r);

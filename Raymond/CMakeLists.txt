@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.15)
-project(mywork C)
+project(Raymond C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 
-add_executable(mywork
+add_executable(Raymond
         bits.c
         bits.h
         bsig.c
@@ -27,5 +27,5 @@ add_executable(mywork
         tuple.h
         util.c
         util.h
-        x1_copy.c
+        x2.c
         )
