@@ -157,25 +157,6 @@ PageID addToRelation(Reln r, Tuple t)
 	putPage(tsigFile(r),tuple_pid,tuple_page);
 	freeBits(tupleSig);
 	// compute page signature and add to psigf
-
-	// //TODO
-	// PageID page_pid = rp->psigNpages -1;
-	// Page page_page = getPage(psigFile(r),page_pid);
-	// if(pageNitems(page_page)==maxPsigsPP(r)){
-	//     addPage(psigFile(r));
-	//     rp->psigNpages++;
-	//     page_pid++;
-	//     free(page_page);
-	//     page_page = newPage();
-	//     if(page_page==NULL) return NO_PAGE;
-	// }
-	// Bits pageSig = makePageSig(r,t);
-	// putBits(page_page,pid%maxPsigsPP(r),pageSig);
-	// addOneItem(page_page);
-	// rp->npsigs++;
-	// putPage(psigFile(r),page_pid,page_page);
-	// // use page signature to update bit-slices
-
 	PageID page_pid = rp->psigNpages -1;
 	Page page_page = getPage(psigFile(r),page_pid);
 	Page last_data_page = getPage(dataFile(r),pid);
