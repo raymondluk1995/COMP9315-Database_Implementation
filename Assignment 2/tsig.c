@@ -74,8 +74,4 @@ void findPagesUsingTupSigs(Query q)
 	    free(current_tsig_page);
 	}
 	freeBits(querySig);
-
-	// The printf below is primarily for debugging
-	// Remove it before submitting this function
-	printf("Matched Pages:"); showBits(q->pages); putchar('\n');
 }

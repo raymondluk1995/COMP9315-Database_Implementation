@@ -12,5 +12,6 @@
 
 Bits makeTupleSig(Reln, Tuple);
 void findPagesUsingTupSigs(Query);
+Bits codeWord(char *, int, int);
 
 #endif
