@@ -1,7 +1,10 @@
-// query.c ... query scan functions
-// part of SIMC signature files
-// Manage creating and using Query objects
-// Written by John Shepherd, March 2020
+/*
+    COMP9315 20T1 Assignment 2
+    Group Name: Tonight Fight Tiger
+    Students:
+        Raymond Lu z5277884
+        Haowei Huang z5247672
+*/
 
 #include "defs.h"
 #include "query.h"

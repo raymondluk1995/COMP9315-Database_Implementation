@@ -1,6 +1,4 @@
-// tsig.c ... functions on Tuple Signatures (tsig's)
-// part of SIMC signature files
-// Written by John Shepherd, March 2020
+
 
 #include <unistd.h>
 #include <string.h>
@@ -64,15 +62,12 @@ void findPagesUsingTupSigs(Query q)
 			q->nsigs++;
 	        // Check whether query signature is a subset of tuple signature
 	        if(isSubset(querySig,tupleSig)){
-	            //?
-	            Offset tuple_position = tsig_pid*maxTsigsPP(q->rel)+tid;
-				PageID data_pid = iceil(tuple_position,maxTupsPP(q->rel))-1;
-			    setBit(q->pages,data_pid);
+				Offset tuple_position = tsig_pid*maxTsigsPP(q->rel)+tid;
+			    setBit(q->pages,tuple_position/maxTupsPP(q->rel));
 	        }
 	        freeBits(tupleSig);
 	    }
 	    free(tsig_page);
 	}
 	freeBits(querySig);
-
 }

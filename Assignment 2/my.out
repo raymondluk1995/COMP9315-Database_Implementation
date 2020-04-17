@@ -62,13 +62,14 @@ Query Stats:
 # tuples examined:   10000
 # false match pages: 135
 ./select R '?,?,a3-241,a4-158,a5-407,?' t
+1237049,NuNjiaBJPosMaDopkazN,a3-241,a4-158,a5-407,a6-490
 1242029,YaoJCaowEZYBxpbfntjv,a3-241,a4-158,a5-407,a6-490
 Query Stats:
 # sig pages read:    27
 # signatures read:   10000
 # data pages read:   2
 # tuples examined:   146
-# false match pages: 1
+# false match pages: 0
 ./select R '?,?,a3-241,a4-158,a5-407,?' p
 1237049,NuNjiaBJPosMaDopkazN,a3-241,a4-158,a5-407,a6-490
 1242029,YaoJCaowEZYBxpbfntjv,a3-241,a4-158,a5-407,a6-490
