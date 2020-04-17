@@ -18,6 +18,10 @@ typedef struct _BitsRep {
     // actual array size is nbytes
 } BitsRep;
 
+
+Count nbits(Bits b){
+    return (b->nbits);
+}
 // create a new Bits object
 
 Bits newBits(int nbits) {

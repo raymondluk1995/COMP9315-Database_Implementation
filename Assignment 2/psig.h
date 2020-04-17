@@ -13,4 +13,5 @@
 Bits makePageSig(Reln, Tuple);
 void findPagesUsingPageSigs(Query);
 Status pageIsNew(Page);
+Bits makePageQuerySig(Reln, Tuple);
 #endif

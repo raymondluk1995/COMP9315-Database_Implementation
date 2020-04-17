@@ -57,10 +57,32 @@ Status newRelation(char *name, Count nattrs, float pF,
 	addPage(r->dataf); p->npages = 1; p->ntups = 0;
 	addPage(r->tsigf); p->tsigNpages = 1; p->ntsigs = 0;
 	addPage(r->psigf); p->psigNpages = 1; p->npsigs = 0;
-	addPage(r->bsigf); p->bsigNpages = 1; p->nbsigs = 0; // replace this
+	//addPage(r->bsigf); p->bsigNpages = 1; p->nbsigs = 0; // replace this
 	// Create a file containing "pm" all-zeroes bit-strings,
     // each of which has length "bm" bits
 	//TODO
+
+
+	p->bsigNpages = 0;
+	p->nbsigs = 0;
+	// iceil(psigBits(r),maxBsigsPP(r)) is how many bSig pages we need to create
+	for (PageID bsig_pid=0;bsig_pid<iceil(psigBits(r),maxBsigsPP(r));bsig_pid++){
+        Page page = newPage();
+        // fill each page with all-zeros bit-strings
+        for (Offset j=0;j<maxBsigsPP((r));j++){
+            Bits bSig = newBits(bsigBits(r));
+            putBits(page,j,bSig);
+            p->nbsigs++;
+            addOneItem(page);
+            freeBits(bSig);
+            // When there are "pm" bit-strings already, we should stop creating new bit-strings
+            if(p->nbsigs==psigBits(r)){
+                break;
+            }
+        }
+        putPage(r->bsigf,bsig_pid,page);
+        p->bsigNpages++;
+	}
 	closeRelation(r);
 	return 0;
 }
@@ -180,7 +202,25 @@ PageID addToRelation(Reln r, Tuple t)
 	putPage(psigFile(r),page_pid,page_page);
 
 	//TODO
-	
+	Page bsig_page;
+    PageID bsig_pid= -1;
+    for (Offset index=0;index<psigBits(r);index++){
+        if(bitIsSet(pageSig,index)){
+            if(bsig_pid!=index/maxBsigsPP(r)){ // A new bit-sliced signature page should be read
+                bsig_pid = index/maxBsigsPP(r);
+                bsig_page = getPage(bsigFile(r),bsig_pid);
+            }
+			// bsig_pid = iceil(index+1,maxBsigsPP(r))-1;
+			// bsig_page = getPage(bsigFile(r),bsig_pid);
+		
+            Bits slice = newBits(bsigBits(r));
+            getBits(bsig_page,index%maxBsigsPP(r),slice);
+            setBit(slice,pid);
+			putBits(bsig_page,index%maxBsigsPP(r),slice);
+            putPage(bsigFile(r),bsig_pid,bsig_page);
+            freeBits(slice);
+        }
+    }
 	freeBits(pageSig);
 	return nPages(r)-1;
 }

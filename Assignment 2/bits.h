@@ -24,5 +24,6 @@ void orBits(Bits, Bits);
 void getBits(Page, Offset, Bits);
 void putBits(Page, Offset, Bits);
 void showBits(Bits);
+Count nbits(Bits);
 
 #endif
