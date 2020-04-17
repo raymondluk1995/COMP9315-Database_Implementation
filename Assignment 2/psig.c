@@ -8,7 +8,7 @@
 #include "psig.h"
 #include "tsig.h"
 
-Bool pageIsNew(Page p){
+Status pageIsNew(Page p){
     return (pageNitems(p)==1);
 }
 

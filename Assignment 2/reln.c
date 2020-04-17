@@ -144,11 +144,11 @@ PageID addToRelation(Reln r, Tuple t)
 	Page tuple_page = getPage(tsigFile(r),tuple_pid);
 	if(pageNitems(tuple_page)==maxTsigsPP(r)){
 	    addPage(tsigFile(r));
-	    rp->tsigNpages++;
 	    tuple_pid++;
 	    free(tuple_page);
 	    tuple_page = newPage();
 	    if (tuple_page==NULL) return NO_PAGE;
+		rp->tsigNpages++;
 	}
 	Bits tupleSig = makeTupleSig(r,t);
 	putBits(tuple_page,pageNitems(tuple_page),tupleSig);
@@ -158,25 +158,51 @@ PageID addToRelation(Reln r, Tuple t)
 	freeBits(tupleSig);
 	// compute page signature and add to psigf
 
-	//TODO
+	// //TODO
+	// PageID page_pid = rp->psigNpages -1;
+	// Page page_page = getPage(psigFile(r),page_pid);
+	// if(pageNitems(page_page)==maxPsigsPP(r)){
+	//     addPage(psigFile(r));
+	//     rp->psigNpages++;
+	//     page_pid++;
+	//     free(page_page);
+	//     page_page = newPage();
+	//     if(page_page==NULL) return NO_PAGE;
+	// }
+	// Bits pageSig = makePageSig(r,t);
+	// putBits(page_page,pid%maxPsigsPP(r),pageSig);
+	// addOneItem(page_page);
+	// rp->npsigs++;
+	// putPage(psigFile(r),page_pid,page_page);
+	// // use page signature to update bit-slices
+
 	PageID page_pid = rp->psigNpages -1;
 	Page page_page = getPage(psigFile(r),page_pid);
-	if(pageNitems(page_page)==maxPsigsPP(r)){
-	    addPage(psigFile(r));
-	    rp->psigNpages++;
-	    page_pid++;
-	    free(page_page);
-	    page_page = newPage();
-	    if(page_page==NULL) return NO_PAGE;
-	}
+	Page last_data_page = getPage(dataFile(r),pid);
 	Bits pageSig = makePageSig(r,t);
-	putBits(page_page,pid%maxPsigsPP(r),pageSig);
-	addOneItem(page_page);
-	rp->npsigs++;
+	if(pageIsNew(last_data_page)){
+		if(pageNitems(page_page)==maxPsigsPP(r)){
+			addPage(psigFile(r));
+			page_pid++;
+			free(page_page);
+			page_page = newPage();
+			if (page_page==NULL) return NO_PAGE;
+			rp->psigNpages++;
+			putBits(page_page,0,pageSig);
+		}
+		else{
+			putBits(page_page,pid%maxPsigsPP(r),pageSig);
+		}
+		addOneItem(page_page);
+		rp->npsigs++;
+	}
+	else{
+		putBits(page_page,pid%maxPsigsPP(r),pageSig);
+	}
 	putPage(psigFile(r),page_pid,page_page);
-	// use page signature to update bit-slices
 
 	//TODO
+	
 	freeBits(pageSig);
 	return nPages(r)-1;
 }
