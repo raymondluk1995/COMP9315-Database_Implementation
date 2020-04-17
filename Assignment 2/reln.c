@@ -38,7 +38,7 @@ Status newRelation(char *name, Count nattrs, float pF,
 	p->tupsize = 28 + 7*(nattrs-2);
 	Count available = (PAGESIZE-sizeof(Count));
 	p->tupPP = available/p->tupsize;
-	p->tk = tk; 
+	p->tk = tk;
 	if (tm%8 > 0) tm += 8-(tm%8); // round up to byte size
 	p->tm = tm; p->tsigSize = tm/8; p->tsigPP = available/(tm/8);
 	if (pm%8 > 0) pm += 8-(pm%8); // round up to byte size
@@ -118,7 +118,7 @@ PageID addToRelation(Reln r, Tuple t)
 	assert(r != NULL && t != NULL && strlen(t) == tupSize(r));
 	Page p;  PageID pid;
 	RelnParams *rp = &(r->params);
-	
+
 	// add tuple to last page
 	pid = rp->npages-1;
 	p = getPage(r->dataf, pid);
@@ -136,9 +136,24 @@ PageID addToRelation(Reln r, Tuple t)
 	putPage(r->dataf, pid, p);
 
 	// compute tuple signature and add to tsigf
-	
-	//TODO
 
+	//TODO
+	PageID tuple_pid = rp->tsigNpages -1; // current tuple page id in tuple signature file
+	Page tuple_page = getPage(tsigFile(r),tuple_pid);
+	if(pageNitems(tuple_page)==maxTsigsPP(r)){
+	    addPage(tsigFile(r));
+	    rp->tsigNpages++;
+	    tuple_pid++;
+	    free(tuple_page);
+	    tuple_page = newPage();
+	    if (tuple_page==NULL) return NO_PAGE;
+	}
+	Bits tupleSig = makeTupleSig(r,t);
+	putBits(tuple_page,pageNitems(tuple_page),tupleSig);
+	addOneItem(tuple_page);
+	rp->ntsigs++;
+	putPage(tsigFile(r),tuple_pid,tuple_page);
+	freeBits(tupleSig);
 	// compute page signature and add to psigf
 
 	//TODO
