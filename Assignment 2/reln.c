@@ -169,11 +169,8 @@ PageID addToRelation(Reln r, Tuple t)
 			page_page = newPage();
 			if (page_page==NULL) return NO_PAGE;
 			rp->psigNpages++;
-			putBits(page_page,0,pageSig);
 		}
-		else{
-			putBits(page_page,pid%maxPsigsPP(r),pageSig);
-		}
+		putBits(page_page,pid%maxPsigsPP(r),pageSig);
 		addOneItem(page_page);
 		rp->npsigs++;
 	}
