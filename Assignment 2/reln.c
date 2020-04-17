@@ -203,3 +203,18 @@ void relationStats(Reln r)
 	printf("  bsigs  size: %d bits (%d bytes)  max/page: %d\n",
 			p->bm, p->bsigSize, p->bsigPP);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
