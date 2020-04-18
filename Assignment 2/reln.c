@@ -236,10 +236,12 @@ PageID addToRelation(Reln r, Tuple t)
 	else
 		putBits(page_page, pid % maxPsigsPP(r), pageSig);
 	putPage(psigFile(r), page_pid, page_page);
-
-	// update corresponding bit-sliced signature
+	free(last_data_page);
+	
+	// compute bit-sliced signature and add to bsigf
 	for (Offset index = 0; index < psigBits(r); index++)
 	{
+		// since putPage() frees the input page, we need to read the page in each loop
 		if (bitIsSet(pageSig, index))
 		{
 			PageID bsig_pid = index / maxBsigsPP(r);

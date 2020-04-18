@@ -30,7 +30,7 @@ void findPagesUsingBitSlices(Query q)
         if (bitIsSet(querySig, index))
         {
             if (bsig_pid != index / maxBsigsPP(q->rel))
-            { // A new bit-sliced signature page should be read
+            {   // A new bit-sliced signature page should be read
                 bsig_pid = index / maxBsigsPP(q->rel);
                 bsig_page = getPage(bsigFile(q->rel), bsig_pid);
                 q->nsigpages++; // one more signature page read
@@ -52,4 +52,5 @@ void findPagesUsingBitSlices(Query q)
         }
     }
     freeBits(querySig);
+    free(bsig_page);
 }
