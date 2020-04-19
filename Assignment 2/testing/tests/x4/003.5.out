@@ -1,0 +1,80 @@
+Global Info:
+Dynamic:
+  #items:  tuples: 50  tsigs: 50  psigs: 1  bsigs: 12888
+  #pages:  tuples: 1  tsigs: 1  psigs: 1  bsigs: 4
+Static:
+  tups   #attrs: 7  size: 63 bytes  max/page: 64
+  sigs   bits/attr: 19
+  tsigs  size: 208 bits (26 bytes)  max/page: 157
+  psigs  size: 12888 bits (1611 bytes)  max/page: 2
+  bsigs  size: 8 bits (1 bytes)  max/page: 4092
+1000040,usjyvmUkjCxURMWwdwNc,a3-040,a4-040,a5-040,a6-040,a7-040
+Query Stats:
+# sig pages read:    3
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0
+1000040,usjyvmUkjCxURMWwdwNc,a3-040,a4-040,a5-040,a6-040,a7-040
+Query Stats:
+# sig pages read:    3
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0
+1000015,upUuycutKLKuqPXrrOBA,a3-015,a4-015,a5-015,a6-015,a7-015
+Query Stats:
+# sig pages read:    4
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0
+1000021,KuaWqEKBqDzxMqtzZpVK,a3-021,a4-021,a5-021,a6-021,a7-021
+Query Stats:
+# sig pages read:    4
+# signatures read:   57
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0
+1000021,KuaWqEKBqDzxMqtzZpVK,a3-021,a4-021,a5-021,a6-021,a7-021
+Query Stats:
+# sig pages read:    4
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0
+1000029,MSGHHneudKMbxlHqqHKU,a3-029,a4-029,a5-029,a6-029,a7-029
+Query Stats:
+# sig pages read:    3
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0
+1000042,MspDGlBljRPfCrYQyscR,a3-042,a4-042,a5-042,a6-042,a7-042
+Query Stats:
+# sig pages read:    4
+# signatures read:   57
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0
+1000000,swkvmlTUpjZTexFJuVfQ,a3-000,a4-000,a5-000,a6-000,a7-000
+Query Stats:
+# sig pages read:    4
+# signatures read:   94
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0
+1000038,YXFEeXGXyiTkBBdwOuHn,a3-038,a4-038,a5-038,a6-038,a7-038
+Query Stats:
+# sig pages read:    4
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0
+1000029,MSGHHneudKMbxlHqqHKU,a3-029,a4-029,a5-029,a6-029,a7-029
+Query Stats:
+# sig pages read:    3
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   50
+# false match pages: 0

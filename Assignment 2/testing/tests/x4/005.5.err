@@ -1,0 +1,2 @@
+free(): double free detected in tcache 2
+xargs: ./select: terminated by signal 6

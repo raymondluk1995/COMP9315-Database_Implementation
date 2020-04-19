@@ -1,0 +1,108 @@
+Global Info:
+Dynamic:
+  #items:  tuples: 100  tsigs: 100  psigs: 1  bsigs: 8400
+  #pages:  tuples: 1  tsigs: 1  psigs: 1  bsigs: 3
+Static:
+  tups   #attrs: 2  size: 28 bytes  max/page: 146
+  sigs   bits/attr: 19
+  tsigs  size: 64 bits (8 bytes)  max/page: 511
+  psigs  size: 8400 bits (1050 bytes)  max/page: 3
+  bsigs  size: 8 bits (1 bytes)  max/page: 4092
+1000010,DwepVNTZNdLFYuqiMoZJ
+Query Stats:
+# sig pages read:    3
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000011,HihgUtiScXCGuixRWqQl
+Query Stats:
+# sig pages read:    3
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000012,uBQsVJAkXbThkaPeWXzY
+Query Stats:
+# sig pages read:    3
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000013,xbgtjDkHwDTQelKCUMMu
+Query Stats:
+# sig pages read:    2
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000014,OhBAJqghPFIOiOhsUUZq
+Query Stats:
+# sig pages read:    2
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000015,xuIBGsFAerUuaXwKPDRh
+Query Stats:
+# sig pages read:    3
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000016,izVrQFlKzMayhIZNCFPi
+Query Stats:
+# sig pages read:    2
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000021,kEtRyyQGJJFrIZgPLqhD
+Query Stats:
+# sig pages read:    3
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000022,vnihZeDVrwZBCssatKic
+Query Stats:
+# sig pages read:    3
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000023,tOuDNctasAfppnxoTCMM
+Query Stats:
+# sig pages read:    2
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000024,ALncGhcBRlDMBzqQCltw
+Query Stats:
+# sig pages read:    3
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000025,nyofonthPfURtJTBRxck
+Query Stats:
+# sig pages read:    2
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000093,dvtIAFtaCykaBXpFNIMO
+Query Stats:
+# sig pages read:    2
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0
+1000093,dvtIAFtaCykaBXpFNIMO
+Query Stats:
+# sig pages read:    2
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   100
+# false match pages: 0

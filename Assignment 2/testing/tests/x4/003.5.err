@@ -1,0 +1,2 @@
+select: bits.c:49: bitIsSet: Assertion `0 <= position && position < b->nbits' failed.
+xargs: ./select: terminated by signal 6

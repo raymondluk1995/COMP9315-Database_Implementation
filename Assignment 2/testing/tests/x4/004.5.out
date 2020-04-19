@@ -1,0 +1,73 @@
+Global Info:
+Dynamic:
+  #items:  tuples: 10  tsigs: 10  psigs: 1  bsigs: 13720
+  #pages:  tuples: 1  tsigs: 1  psigs: 1  bsigs: 4
+Static:
+  tups   #attrs: 9  size: 77 bytes  max/page: 53
+  sigs   bits/attr: 19
+  tsigs  size: 264 bits (33 bytes)  max/page: 124
+  psigs  size: 13720 bits (1715 bytes)  max/page: 2
+  bsigs  size: 8 bits (1 bytes)  max/page: 4092
+1000000,swkvmlTUpjZTexFJuVfQ,a3-000,a4-000,a5-000,a6-000,a7-000,a8-000,a9-000
+Query Stats:
+# sig pages read:    4
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   10
+# false match pages: 0
+1000000,swkvmlTUpjZTexFJuVfQ,a3-000,a4-000,a5-000,a6-000,a7-000,a8-000,a9-000
+Query Stats:
+# sig pages read:    3
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   10
+# false match pages: 0
+1000000,swkvmlTUpjZTexFJuVfQ,a3-000,a4-000,a5-000,a6-000,a7-000,a8-000,a9-000
+Query Stats:
+# sig pages read:    4
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   10
+# false match pages: 0
+1000000,swkvmlTUpjZTexFJuVfQ,a3-000,a4-000,a5-000,a6-000,a7-000,a8-000,a9-000
+Query Stats:
+# sig pages read:    3
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   10
+# false match pages: 0
+1000000,swkvmlTUpjZTexFJuVfQ,a3-000,a4-000,a5-000,a6-000,a7-000,a8-000,a9-000
+Query Stats:
+# sig pages read:    4
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   10
+# false match pages: 0
+1000000,swkvmlTUpjZTexFJuVfQ,a3-000,a4-000,a5-000,a6-000,a7-000,a8-000,a9-000
+Query Stats:
+# sig pages read:    4
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   10
+# false match pages: 0
+1000000,swkvmlTUpjZTexFJuVfQ,a3-000,a4-000,a5-000,a6-000,a7-000,a8-000,a9-000
+Query Stats:
+# sig pages read:    3
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   10
+# false match pages: 0
+1000009,wRDcQjlqxfMMmifGqKOI,a3-009,a4-009,a5-009,a6-009,a7-009,a8-009,a9-009
+Query Stats:
+# sig pages read:    4
+# signatures read:   19
+# data pages read:   1
+# tuples examined:   10
+# false match pages: 0
+1000005,dwxkjBCMWFypjEcpsRsR,a3-005,a4-005,a5-005,a6-005,a7-005,a8-005,a9-005
+Query Stats:
+# sig pages read:    4
+# signatures read:   38
+# data pages read:   1
+# tuples examined:   10
+# false match pages: 0
