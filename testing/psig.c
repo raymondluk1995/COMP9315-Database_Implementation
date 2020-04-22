@@ -12,11 +12,10 @@
 #include "psig.h"
 #include "tsig.h"
 
-Status pageIsNew(Page p) 
+Status pageIsNew(Page p)
 {
 	return (pageNitems(p) == 1);
 }
-
 
 // /* When we make the page signature, we need to check the last data page is a new page or not (
 //  * i.e. a new page is a page with just one tuple).
@@ -36,7 +35,7 @@ Bits makePageSig(Reln r, Tuple t)
 void findPagesUsingPageSigs(Query q)
 {
 	assert(q != NULL);
-	Bits querySig = makePageSig(q->rel,q->qstring);
+	Bits querySig = makePageSig(q->rel, q->qstring);
 	unsetAllBits(q->pages);
 	// psig_pid stands for the page id in the page signature file
 	for (PageID psig_pid = 0; psig_pid < nPsigPages(q->rel); psig_pid++)

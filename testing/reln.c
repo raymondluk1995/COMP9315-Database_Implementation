@@ -189,7 +189,7 @@ PageID addToRelation(Reln r, Tuple t)
 	rp->ntups++; //written to disk in closeRelation()
 	putPage(r->dataf, pid, p);
 
-	// compute tuple signature and add to tsigf
+	/****** compute tuple signature and add to tsigf******/
 	PageID tuple_pid = rp->tsigNpages - 1; // current tuple page id in tuple signature file
 	Page tuple_page = getPage(tsigFile(r), tuple_pid);
 	// check if room on last tuple signature page; if not add new page
@@ -210,17 +210,12 @@ PageID addToRelation(Reln r, Tuple t)
 	putPage(tsigFile(r), tuple_pid, tuple_page);
 	freeBits(tupleSig);
 
-	// compute page signature and add to psigf
-
+	/*****compute page signature and add to psigf*****/
 	PageID page_pid = rp->psigNpages - 1;
 	Page page_page = getPage(psigFile(r), page_pid);
 	Page last_data_page = getPage(dataFile(r), pid);
-
-	Bits pageSig = makePageSig(r, t);
-	Bits PPsig = newBits(psigBits(r));
-	Offset PPsig_offset = pageNitems(page_page) - 1;
-	getBits(page_page, PPsig_offset, PPsig);
-
+	Bits pageSig = makePageSig(r, t); // page signature of newly inserted tuple
+	Bits PPsig = newBits(psigBits(r)); // current data page's page signature
 	if (pageIsNew(last_data_page))
 	{
 		if (pageNitems(page_page) == maxPsigsPP(r))
@@ -233,19 +228,21 @@ PageID addToRelation(Reln r, Tuple t)
 				return NO_PAGE;
 			rp->psigNpages++;
 		}
-		putBits(page_page, 0, pageSig);
+		putBits(page_page, pid % maxPsigsPP(r), pageSig);
 		addOneItem(page_page);
 		rp->npsigs++;
 	}
-	else
+	else // the last data page is not new
 	{
+		Offset PPsig_offset = pageNitems(page_page) - 1;
+		getBits(page_page, PPsig_offset, PPsig);
 		orBits(PPsig, pageSig);
 		putBits(page_page, pid % maxPsigsPP(r), PPsig);
 	}
 	putPage(psigFile(r), page_pid, page_page);
 	free(last_data_page);
 
-	// compute bit-sliced signature and add to bsigf
+	/*****compute bit-sliced signature and add to bsigf*****/
 	for (Offset index = 0; index < psigBits(r); index++)
 	{
 		// since putPage() frees the input page, we need to read the page in each loop

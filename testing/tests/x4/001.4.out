@@ -114,11 +114,12 @@ Query Stats:
 # data pages read:   2
 # tuples examined:   100
 # false match pages: 0
+1000036,eNLLeLZdGjkWovSdevGZ,a3-036,a4-036,a5-036
 Query Stats:
 # sig pages read:    1
 # signatures read:   2
-# data pages read:   0
-# tuples examined:   0
+# data pages read:   1
+# tuples examined:   83
 # false match pages: 0
 1000086,kSXEMMtdeLnlZdSPvodU,a3-086,a4-086,a5-086
 Query Stats:
@@ -127,39 +128,45 @@ Query Stats:
 # data pages read:   1
 # tuples examined:   17
 # false match pages: 0
+1000058,iWlGQOLHPvvCljAYMuvW,a3-058,a4-058,a5-058
 Query Stats:
 # sig pages read:    1
 # signatures read:   2
-# data pages read:   0
-# tuples examined:   0
+# data pages read:   1
+# tuples examined:   83
 # false match pages: 0
+1000021,TLrpbwfZiUclPBRClNBT,a3-021,a4-021,a5-021
 Query Stats:
 # sig pages read:    1
 # signatures read:   2
-# data pages read:   0
-# tuples examined:   0
+# data pages read:   1
+# tuples examined:   83
 # false match pages: 0
+1000027,JdvSyHoCPBSibMHkujbh,a3-027,a4-027,a5-027
 Query Stats:
 # sig pages read:    1
 # signatures read:   2
-# data pages read:   0
-# tuples examined:   0
+# data pages read:   1
+# tuples examined:   83
 # false match pages: 0
+1000037,TbTfklkXJvsOjFbnrCTz,a3-037,a4-037,a5-037
 Query Stats:
 # sig pages read:    1
 # signatures read:   2
-# data pages read:   0
-# tuples examined:   0
+# data pages read:   1
+# tuples examined:   83
 # false match pages: 0
+1000052,jPpSItshIjEJlQVWvxst,a3-052,a4-052,a5-052
 Query Stats:
 # sig pages read:    1
 # signatures read:   2
-# data pages read:   0
-# tuples examined:   0
+# data pages read:   1
+# tuples examined:   83
 # false match pages: 0
+1000052,jPpSItshIjEJlQVWvxst,a3-052,a4-052,a5-052
 Query Stats:
 # sig pages read:    1
 # signatures read:   2
-# data pages read:   0
-# tuples examined:   0
+# data pages read:   1
+# tuples examined:   83
 # false match pages: 0
