@@ -1,0 +1,44 @@
+< 11936 total, 1571 set, 10365 zero
+< 11936 total, 1573 set, 10363 zero
+< 11936 total, 1575 set, 10361 zero
+< 11936 total, 1490 set, 10446 zero
+
+> 11936 total, 95 set, 11841 zero
+> 11936 total, 95 set, 11841 zero
+> 11936 total, 95 set, 11841 zero
+> 11936 total, 95 set, 11841 zero
+
+
+-----------------------------------------------
+< 11936 total, 1487 set, 10449 zero
+< 11936 total, 1572 set, 10364 zero
+< 11936 total, 1578 set, 10358 zero
+< 11936 total, 1564 set, 10372 zero
+< 11936 total, 1575 set, 10361 zero
+< 11936 total, 1570 set, 10366 zero
+< 11936 total, 1572 set, 10364 zero
+< 11936 total, 1573 set, 10363 zero
+
+> 11936 total, 93 set, 11843 zero
+> 11936 total, 95 set, 11841 zero
+> 11936 total, 95 set, 11841 zero
+> 11936 total, 95 set, 11841 zero
+> 11936 total, 95 set, 11841 zero
+> 11936 total, 95 set, 11841 zero
+> 11936 total, 94 set, 11842 zero
+> 11936 total, 95 set, 11841 zero
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
