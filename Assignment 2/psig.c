@@ -17,9 +17,11 @@ Status pageIsNew(Page p)
 	return (pageNitems(p) == 1);
 }
 
-// A query's page signature should be different from normal page signature
-// since it is not related to data pages
-Bits makePageQuerySig(Reln r, Tuple t)
+
+// /* When we make the page signature, we need to check the last data page is a new page or not (
+//  * i.e. a new page is a page with just one tuple).
+//  * */
+Bits makePageSig(Reln r, Tuple t)
 {
 	assert(r != NULL && t != NULL);
 	Bits querySig = newBits(psigBits(r));
@@ -30,33 +32,11 @@ Bits makePageQuerySig(Reln r, Tuple t)
 	return (querySig);
 }
 
-/* When we make the page signature, we need to check the last data page is a new page or not (
- * i.e. a new page is a page with just one tuple).
- * */
-Bits makePageSig(Reln r, Tuple t)
-{
-	assert(r != NULL && t != NULL);
-	Page last_data_page = getPage(dataFile(r), nPages(r) - 1);
-	Page last_sig_page = getPage(psigFile(r), nPsigPages(r) - 1);
-	Bits pageSig = newBits(psigBits(r));
-	// if a data page is not new, that means this data page should have already got
-	// a Page Signature
-	if (!pageIsNew((last_data_page)))
-		getBits(last_sig_page, pageNitems(last_sig_page) - 1, pageSig);
-	char **attributes = tupleVals(r, t);
-	for (Count i = 0; i < nAttrs(r); i++)
-		orBits(pageSig, codeWord(attributes[i], psigBits(r), codeBits(r)));
-	free(attributes);
-	free(last_data_page);
-	free(last_sig_page);
-	return (pageSig);
-}
-
 // find "matching" pages using page signatures
 void findPagesUsingPageSigs(Query q)
 {
 	assert(q != NULL);
-	Bits querySig = makePageQuerySig(q->rel, q->qstring);
+	Bits querySig = makePageSig(q->rel,q->qstring);
 	unsetAllBits(q->pages);
 	// psig_pid stands for the page id in the page signature file
 	for (PageID psig_pid = 0; psig_pid < nPsigPages(q->rel); psig_pid++)

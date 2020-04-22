@@ -14,6 +14,9 @@ echo "./insert R < R.in"
 echo "./stats R"
 ./stats R
 
+echo "./select R '?,?,?,?,?,?' b" 
+./select R '?,?,?,?,?,?' > select_all.out
+
 echo "./select R '1234999,?,?,?,?,?'"
 ./select R '1234999,?,?,?,?,?'
 

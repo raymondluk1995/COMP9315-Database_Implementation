@@ -47,8 +47,8 @@ do
   while IFS="" read -r p1 && read -r p2 || [ -n "$p1" ]
   do
     ./x3_3 << EOF >> "${file%.stdin}.out" 2>> "${file%.stdin}.err"
-"$p1"
-"$p2"
+$p1
+$p2
 EOF
   done < "$file"
   if [[ $(wc -c "${file%.stdin}.err" | cut -d' ' -f 1) -ne 0 ]]
@@ -107,8 +107,8 @@ do
   while IFS="" read -r p1 && read -r p2 || [ -n "$p1" ]
   do
     ./x3_4 << EOF >> "${file%.stdin}.out" 2>> "${file%.stdin}.err"
-"$p1"
-"$p2"
+$p1
+$p2
 EOF
   done < "$file"
   if [[ $(wc -c "${file%.stdin}.err" | cut -d' ' -f 1) -ne 0 ]]

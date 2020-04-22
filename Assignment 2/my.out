@@ -35,12 +35,11 @@ Query Stats:
 # tuples examined:   511
 # false match pages: 6
 ./select R '1234999,?,?,?,?,?' p
-1234999,uoJaryfGRruwAPWFPICh,a3-183,a4-100,a5-017,a6-432
 Query Stats:
 # sig pages read:    28
 # signatures read:   137
-# data pages read:   1
-# tuples examined:   73
+# data pages read:   0
+# tuples examined:   0
 # false match pages: 0
 ./select R '1234999,?,?,?,?,?' b
 1234999,uoJaryfGRruwAPWFPICh,a3-183,a4-100,a5-017,a6-432
@@ -71,14 +70,13 @@ Query Stats:
 # tuples examined:   146
 # false match pages: 0
 ./select R '?,?,a3-241,a4-158,a5-407,?' p
-1237049,NuNjiaBJPosMaDopkazN,a3-241,a4-158,a5-407,a6-490
 1242029,YaoJCaowEZYBxpbfntjv,a3-241,a4-158,a5-407,a6-490
 Query Stats:
 # sig pages read:    28
 # signatures read:   137
 # data pages read:   2
 # tuples examined:   146
-# false match pages: 0
+# false match pages: 1
 ./select R '?,?,a3-241,a4-158,a5-407,?' b
 1237049,NuNjiaBJPosMaDopkazN,a3-241,a4-158,a5-407,a6-490
 1242029,YaoJCaowEZYBxpbfntjv,a3-241,a4-158,a5-407,a6-490

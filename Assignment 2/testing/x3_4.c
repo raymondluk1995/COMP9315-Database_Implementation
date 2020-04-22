@@ -16,7 +16,7 @@ int main(void)
 	Tuple q = readTuple(r, stdin);
 	Bits bq = makePageSig(r, q);
 	showBits(bq); putchar('\n');
-	if (isSubset(bq,b))
+	if (isSubset(bq,b) && isSubset(b, bq))
 		printf("Matches\n");
 	else
 		printf("No match\n");

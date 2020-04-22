@@ -80,6 +80,8 @@ void scanAndDisplayMatchingTuples(Query q)
 			for (q->curtup = 0; q->curtup < pageNitems((p)); q->curtup++)
 			{ // iterate through all items in current data page
 				Tuple s_tuple = getTupleFromPage(q->rel, p, q->curtup); // s_tuple stands for search tuple
+				if(strlen(s_tuple)==0)
+					break;
 				q->ntuples++; //  one more data tuple read
 				if (tupleMatch(q->rel, q->qstring, s_tuple))
 				{
