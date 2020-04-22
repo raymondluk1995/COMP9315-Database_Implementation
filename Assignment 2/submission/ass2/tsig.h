@@ -6,15 +6,16 @@
         Haowei Huang z5247672
 */
 
-#ifndef PSIG_H
-#define PSIG_H 1
+#ifndef TSIG_H
+#define TSIG_H 1
 
 #include "defs.h"
 #include "query.h"
 #include "reln.h"
 #include "bits.h"
 
-Bits makePageSig(Reln, Tuple);
-void findPagesUsingPageSigs(Query);
-Status pageIsNew(Page);
+Bits makeTupleSig(Reln, Tuple);
+void findPagesUsingTupSigs(Query);
+Bits codeWord(char *, int, int);
+
 #endif
