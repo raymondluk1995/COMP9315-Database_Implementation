@@ -36,7 +36,6 @@ Bits makePageSig(Reln r, Tuple t)
 void findPagesUsingPageSigs(Query q)
 {
 	assert(q != NULL);
-	//Bits querySig = makePageQuerySig(q->rel, q->qstring);
 	Bits querySig = makePageSig(q->rel,q->qstring);
 	unsetAllBits(q->pages);
 	// psig_pid stands for the page id in the page signature file

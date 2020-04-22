@@ -216,13 +216,15 @@ PageID addToRelation(Reln r, Tuple t)
 	Page page_page = getPage(psigFile(r), page_pid);
 	Page last_data_page = getPage(dataFile(r), pid);
 
-	Bits pageSig = makePageSig(r,t);
+	Bits pageSig = makePageSig(r, t);
 	Bits PPsig = newBits(psigBits(r));
-	Offset PPsig_offset = pageNitems(page_page)-1;
-	getBits(page_page,PPsig_offset,PPsig);
+	Offset PPsig_offset = pageNitems(page_page) - 1;
+	getBits(page_page, PPsig_offset, PPsig);
 
-	if(pageIsNew(last_data_page)){
-		if(pageNitems(page_page)==maxPsigsPP(r)){
+	if (pageIsNew(last_data_page))
+	{
+		if (pageNitems(page_page) == maxPsigsPP(r))
+		{
 			addPage(psigFile(r));
 			page_pid++;
 			free(page_page);
@@ -231,20 +233,18 @@ PageID addToRelation(Reln r, Tuple t)
 				return NO_PAGE;
 			rp->psigNpages++;
 		}
-		putBits(page_page,0, pageSig);
+		putBits(page_page, 0, pageSig);
 		addOneItem(page_page);
 		rp->npsigs++;
 	}
-	else{
-		orBits(PPsig,pageSig);
+	else
+	{
+		orBits(PPsig, pageSig);
 		putBits(page_page, pid % maxPsigsPP(r), PPsig);
 	}
-	putPage(psigFile(r),page_pid,page_page);
+	putPage(psigFile(r), page_pid, page_page);
 	free(last_data_page);
 
-
-
-	
 	// compute bit-sliced signature and add to bsigf
 	for (Offset index = 0; index < psigBits(r); index++)
 	{
